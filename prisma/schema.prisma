@@ -8,21 +8,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Snippet {
+  id         Int      @id @default(autoincrement())
+  title      String
+  code       String
+  desc       String?
+  accountId  String
+  languageId String
+  // Relations
+  account    Account  @relation(fields: [accountId], references: [id])
+  language   Language @relation(fields: [languageId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
 model Language {
-  id       String     @id @default(cuid())
-  name     String
-  usedFor  String @db.Text
-  history  String @db.Text
-  creators Creators[]
-  courses  Courses[]
-  books    Books[]
-  videos   Videos[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id           String         @id @default(cuid())
+  name         String
+  usedFor      String         @db.Text
+  history      String         @db.Text
+  logoUrl      String
+  creators     Creators[]
+  courses      Courses[]
+  books        Books[]
+  videos       Videos[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  Snippet      Snippet[]
+  TalkingPoint TalkingPoint[]
 }
 
 model Creators {
-  id         String    @id @default(cuid())
+  id         String   @id @default(cuid())
   name       String
   desc       String
   link       String
@@ -32,7 +49,7 @@ model Creators {
 }
 
 model Courses {
-  id         String    @id @default(cuid())
+  id         String   @id @default(cuid())
   name       String
   desc       String
   link       String
@@ -43,7 +60,7 @@ model Courses {
 }
 
 model Books {
-  id         String    @id @default(cuid())
+  id         String   @id @default(cuid())
   name       String
   desc       String
   link       String
@@ -54,24 +71,87 @@ model Books {
 }
 
 model Videos {
-  id         String    @id @default(cuid())
+  id         String   @id @default(cuid())
   link       String
   Language   Language @relation(fields: [languageId], references: [id])
   languageId String
 }
 
-// model TalkingPoint{
-//   id      String @id @default(cuid())
-//   title   String
-//   desc String
-//   userId  String
-//   topicId String
+model TalkingPoint {
+  id      String @id @default(cuid())
+  title   String
+  desc    String
+  userId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  language   Language  @relation(fields: [languageId], references: [id])
+  comments   Comment[]
+  languageId String
+}
 
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
+model Comment {
+  id       String  @id @default(cuid())
+  content  String
+  talkingPointId   String
+  userId   String
+  parentId String?
 
-//   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   topic    Topic     @relation(fields: [topicId], references: [id])
-//   comments Comment[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-// }
+  parent       Comment?     @relation("Comments", fields: [parentId], references: [id], onDelete: Cascade)
+  talkingPoint TalkingPoint @relation(fields: [id], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  children     Comment[]    @relation("Comments")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Snippet Snippet[]
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+
+  // Comment       Comment[]
+  TalkingPoint TalkingPoint[]
+  Comment      Comment[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
