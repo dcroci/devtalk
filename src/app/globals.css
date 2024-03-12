@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
 [data-overlay-container="true"] {
   height: 100%;
   width: 100%;
