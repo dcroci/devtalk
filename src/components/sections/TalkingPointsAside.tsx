@@ -1,12 +1,12 @@
-function TalkingPointsAside() {
+interface SideNavProps {
+  logoUrl: string;
+}
+
+function TalkingPointsAside({ logoUrl }: SideNavProps) {
   return (
     <aside className="h-fit w-full rounded bg-darkGray">
       <div className="flex items-center">
-        <img
-          className="w-[40px]"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png"
-          alt=""
-        />
+        <img className="w-[40px]" src={logoUrl} alt="" />
         <h2 className="ml-16 text-[16px] font-semibold text-almostWhite">
           Talking Points
         </h2>
