@@ -28,54 +28,81 @@ model Language {
   usedFor      String         @db.Text
   history      String         @db.Text
   logoUrl      String
-  creators     Creators[]
-  courses      Courses[]
-  books        Books[]
-  videos       Videos[]
+  latestRelease Float?
+  documentation String?
+
+
+  creator1Name String?
+  creator1Desc String?
+  creator1Link String?
+  creator1Image String?
+
+  creator2Name String?
+  creator2Desc String?
+  creator2Link String?
+  creator2Image String?
+
+  creator3Name String?
+  creator3Desc String?
+  creator3Link String?
+  creator3Image String?
+
+
+  course1Name String?
+  course1Desc String?
+  course1Link String?
+  course1Image String?
+  course1Author String?
+
+  course2Name String?
+  course2Desc String?
+  course2Link String?
+  course2Image String?
+  course2Author String?
+
+  course3Name String?
+  course3Desc String?
+  course3Link String?
+  course3Image String?
+  course3Author String?
+
+
+  book1Name String?
+  book1Desc String?
+  book1Link String?
+  book1Image String?
+  book1Author String?
+
+  book2Name String?
+  book2Desc String?
+  book2Link String?
+  book2Image String?
+  book2Author String?
+
+  book3Name String?
+  book3Desc String?
+  book3Link String?
+  book3Image String?
+  book3Author String?
+
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
   Snippet      Snippet[]
   TalkingPoint TalkingPoint[]
 }
 
-model Creators {
-  id         String   @id @default(cuid())
-  name       String
-  desc       String
-  link       String
-  imageUrl   String
-  Language   Language @relation(fields: [languageId], references: [id])
-  languageId String
-}
 
-model Courses {
-  id         String   @id @default(cuid())
-  name       String
-  desc       String
-  link       String
-  imageUrl   String
-  author     String
-  Language   Language @relation(fields: [languageId], references: [id])
-  languageId String
-}
 
-model Books {
-  id         String   @id @default(cuid())
-  name       String
-  desc       String
-  link       String
-  imageUrl   String
-  author     String
-  Language   Language @relation(fields: [languageId], references: [id])
-  languageId String
-}
 
-model Videos {
-  id         String   @id @default(cuid())
-  link       String
-  Language   Language @relation(fields: [languageId], references: [id])
-  languageId String
-}
+
+
+
+// model Videos {
+//   id         String   @id @default(cuid())
+//   link       String
+//   Language   Language @relation(fields: [languageId], references: [id])
+//   languageId String
+// }
 
 model TalkingPoint {
   id      String @id @default(cuid())
