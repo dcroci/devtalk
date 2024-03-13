@@ -15,10 +15,11 @@ async function NewSnippetPage({ params }: any) {
   if (!language) {
     notFound();
   }
+
   return (
     <>
       <SideNav language={language} />
-      <SnippetCreateForm />
+      <SnippetCreateForm language={language} />
       <TalkingPointsAside logoUrl={language.logoUrl} />
     </>
   );

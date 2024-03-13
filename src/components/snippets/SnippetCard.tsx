@@ -13,13 +13,12 @@ interface SnippetCardProps {
   logoUrl: string;
 }
 function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
-  console.log(`/${languageName.toLowerCase()}/snippets/${snippet.id}`);
   return (
     <Link
       href={`/${languageName.toLowerCase()}/snippets/${snippet.id}`}
       className="h-fit"
     >
-      <Card className="max-w-[400px] ">
+      <Card className="max-w-[400px] bg-almostBlack">
         <CardHeader className="flex gap-3 bg-[#18181b] text-white">
           <img src={`${logoUrl}`} alt="" className="w-8" />
 
@@ -29,7 +28,7 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
         </CardHeader>
         <Divider />
         <CardBody className="bg-[#18181b] text-white">
-          <p>Make beautiful websites regardless of your design experience.</p>
+          <p>This is a function that does this one thing</p>
         </CardBody>
         <Divider />
         <CardFooter className="bg-[#18181b] text-white">
