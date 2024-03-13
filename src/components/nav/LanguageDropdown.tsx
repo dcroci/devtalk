@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import {
   Dropdown,
@@ -8,8 +9,9 @@ import {
 import Link from "next/link";
 
 export default function LanguageDropdown({ languages }: any) {
+  console.log(languages);
   return (
-    <Dropdown className=" bg-almostBlack text-medGray">
+    <Dropdown className="bg-almostBlack text-medGray">
       <DropdownTrigger className="cursor-pointer">
         <p className="flex items-center">
           Languages
@@ -29,11 +31,15 @@ export default function LanguageDropdown({ languages }: any) {
           </svg>
         </p>
       </DropdownTrigger>
-      <DropdownMenu aria-label="Dynamic Actions" items={languages}>
+      <DropdownMenu aria-label="Dynamic Actions">
         {languages.map((language: any) => (
-          <DropdownItem className="hover:bg-darkGray" key={language}>
-            <Link href={`/${language.toLowerCase()}`} className="w-full">
-              {language}
+          <DropdownItem className="p-0 hover:bg-darkGray" key={language.id}>
+            <Link
+              href={`/${language.name.toLowerCase()}`}
+              className="flex gap-2 p-2"
+            >
+              <img src={language.logoUrl} alt="" className="h-6 w-6" />
+              {language.name}
             </Link>
           </DropdownItem>
         ))}

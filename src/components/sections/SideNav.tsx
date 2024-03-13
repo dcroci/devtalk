@@ -78,8 +78,12 @@ export default function SideNav({ language }: Language) {
       </AccordionItem>
       <AccordionItem key="4" aria-label="Talking Points" title="Talking Points">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <li>New</li>
-          <li>Popular</li>
+          <Link href={`/${language.name.toLowerCase()}/talkingpoints/new`}>
+            New
+          </Link>
+          <Link href={`/${language.name.toLowerCase()}/talkingpoints/popular`}>
+            Popular
+          </Link>
           <li>Create</li>
         </ul>
       </AccordionItem>

@@ -9,22 +9,27 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@nextui-org/react";
+import Image from "next/image";
 
 async function Navbar() {
-  const languages = await db.language.findMany({});
-  let languageNames: any = [];
-  languages.map((language) => languageNames.push(language.name));
+  const languages = await db.language.findMany({
+    select: {
+      name: true,
+      logoUrl: true,
+    },
+  });
+
   const session = await auth();
 
   return (
-    <nav className="sticky top-0 col-span-full flex h-[70px] justify-between border-b-1 border-darkGray bg-almostBlack/95">
+    <nav className="sticky top-0 z-50 col-span-full flex h-[70px] justify-between border-b-1 border-darkGray bg-almostBlack/95">
       <ul className="flex items-center gap-4">
         <li className="text-[16px] font-bold text-almostWhite">
           <Link href="/">DevTalk</Link>
         </li>
         <ul className="flex items-center gap-2 text-[14px] font-normal text-medGray">
           <li className="cursor-pointer">
-            <LanguageDropdown languages={languageNames} />
+            <LanguageDropdown languages={languages} />
           </li>
           <li>Blog</li>
           <li>About</li>
@@ -51,18 +56,22 @@ async function Navbar() {
         </li>
         <li>
           <Link href="https://twitter.com/ " target="_blank">
-            <img
+            <Image
               src="/assets/x-logo.webp"
               alt=""
+              width={35}
+              height={35}
               className="h-[35px] w-[35px]"
             />
           </Link>
         </li>
         <li>
           <Link href="https://github.com/dcroci/devtalk" target="_blank">
-            <img
+            <Image
               src="/assets/github-logo.svg"
               alt=""
+              width={35}
+              height={35}
               className="h-[35px] w-[35px]"
             />
           </Link>
