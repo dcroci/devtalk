@@ -12,3 +12,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
+.text-shadow {
+  text-shadow:
+    0 0 0.5em #8900f2bf,
+    0 0 0.1em #8900f2bf;
+}
