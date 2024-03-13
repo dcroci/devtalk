@@ -33,26 +33,85 @@ function SnippetCreateForm({ language }: any) {
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
           <Input
-            label="Search"
+            label="Title"
             radius="lg"
             name="title"
             id="title"
             classNames={{
-              label: "text-white/90",
+              input: [
+                "shadow-xl",
+                "bg-darkGray",
+                "dark:bg-darkGray/60",
+                "backdrop-blur-xl",
+                "backdrop-saturate-200",
+                "focus:bg-darkGray",
+                "group-data-[focused=true]:bg-darkGray-200/50",
+                "dark:group-data-[focused=true]:bg-darkGray/60",
+                "!cursor-text",
+                "data-[hover:true]:bg-darkGray",
+              ],
+              base: [
+                "shadow-xl",
+                "bg-darkGray",
+                "dark:bg-darkGray/60",
+                "backdrop-blur-xl",
+                "backdrop-saturate-200",
+                "focus:bg-darkGray",
+                "group-data-[focused=true]:bg-darkGray-200/50",
+                "dark:group-data-[focused=true]:bg-darkGray/60",
+                "!cursor-text",
+                "data-[hover:true]:bg-darkGray",
+              ],
+              label: [
+                "shadow-xl",
+                "bg-darkGray",
+                "dark:bg-darkGray/60",
+                "backdrop-blur-xl",
+                "backdrop-saturate-200",
+                "focus:bg-darkGray",
+                "group-data-[focused=true]:bg-darkGray-200/50",
+                "dark:group-data-[focused=true]:bg-darkGray/60",
+                "!cursor-text",
+                "data-[hover:true]:bg-darkGray",
+              ],
+              mainWrapper: [
+                "shadow-xl",
+                "bg-darkGray",
+                "dark:bg-darkGray/60",
+                "backdrop-blur-xl",
+                "backdrop-saturate-200",
+                "focus:bg-darkGray",
+                "group-data-[focused=true]:bg-darkGray-200/50",
+                "dark:group-data-[focused=true]:bg-darkGray/60",
+                "!cursor-text",
+                "data-[hover:true]:bg-darkGray",
+              ],
               inputWrapper: [
                 "shadow-xl",
                 "bg-darkGray",
                 "dark:bg-darkGray/60",
                 "backdrop-blur-xl",
                 "backdrop-saturate-200",
-                "hover:bg-darkGray-200/70",
-                "dark:hover:bg-darkGray/70",
+                "focus:bg-darkGray",
                 "group-data-[focused=true]:bg-darkGray-200/50",
                 "dark:group-data-[focused=true]:bg-darkGray/60",
                 "!cursor-text",
+                "data-[hover:true]:bg-darkGray",
+              ],
+              innerWrapper: [
+                "shadow-xl",
+                "bg-darkGray",
+                "dark:bg-darkGray/60",
+                "backdrop-blur-xl",
+                "backdrop-saturate-200",
+                "focus:bg-darkGray",
+                "group-data-[focused=true]:bg-darkGray-200/50",
+                "dark:group-data-[focused=true]:bg-darkGray/60",
+                "!cursor-text",
+                "data-[hover:true]:bg-darkGray",
               ],
             }}
-            placeholder="Type to search..."
+            placeholder="What does this Snippet do?"
           />
         </div>
         <div className="flex flex-col gap-4">
