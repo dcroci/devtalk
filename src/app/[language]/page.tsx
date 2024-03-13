@@ -26,7 +26,7 @@ async function ShowLanguagePage({ params }: ShowLanguageProps) {
     <>
       <SideNav language={language} />
       <LanguageMain language={language} />
-      <TalkingPointsAside logoUrl={language.logoUrl} />
+      <TalkingPointsAside logoUrl={language.logoUrl} languageId={language.id} />
     </>
   );
 }
