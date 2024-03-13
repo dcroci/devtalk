@@ -26,15 +26,19 @@ export default function SideNav({ language }: Language) {
       >
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <li className="hover:underline">
-            <Link href={`/${language.name}/#useCase`}>Use Case</Link>
+            <Link href={`/${language.name.toLowerCase()}/#useCase`}>
+              Use Case
+            </Link>
           </li>
-          <Link href={`/${language.name}/#history`}>History</Link>
+          <Link href={`/${language.name.toLowerCase()}/#history`}>History</Link>
           <li>
-            <Link href={`/${language.name}/#documentation`}>Documentation</Link>
+            <Link href={`/${language.name.toLowerCase()}/#documentation`}>
+              Documentation
+            </Link>
           </li>
           <li>
             {" "}
-            <Link href={`/${language.name}/#latestRelease`}>
+            <Link href={`/${language.name.toLowerCase()}/#latestRelease`}>
               Latest Release
             </Link>
           </li>
@@ -43,16 +47,20 @@ export default function SideNav({ language }: Language) {
       <AccordionItem key="2" aria-label="Resources" title="Resources">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <li>
-            <Link href="#contentCreators">Content Creators</Link>
+            <Link href={`/${language.name.toLowerCase()}/#contentCreators`}>
+              Content Creators
+            </Link>
           </li>
           <li>
-            <Link href="#courses">Courses</Link>
+            <Link href={`/${language.name.toLowerCase()}/#courses`}>
+              Courses
+            </Link>
           </li>
           <li>
-            <Link href="#books">Books</Link>
+            <Link href={`/${language.name.toLowerCase()}/#books`}>Books</Link>
           </li>
           <li>
-            <Link href="#videos">Videos</Link>
+            <Link href={`/${language.name.toLowerCase()}/#videos`}>Videos</Link>
           </li>
           <li className="flex w-fit items-center gap-2 ">
             Interview Prep
@@ -79,15 +87,15 @@ export default function SideNav({ language }: Language) {
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <li>
             <Link href={`/${language.name.toLowerCase()}/snippets/new`}>
-              New
+              Create
             </Link>
           </li>
           <li>
-            <Link href={`/${language.name.toLowerCase()}/snippets/`}>
+            <Link href={`/${language.name.toLowerCase()}/snippets`}>
               Popular
             </Link>
           </li>
-          <li>Create</li>
+          <li>New</li>
         </ul>
       </AccordionItem>
 

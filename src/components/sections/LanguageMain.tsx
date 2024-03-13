@@ -1,65 +1,60 @@
+import { Button } from "@nextui-org/react";
 import Link from "next/link";
 
-function LanguageMain() {
+export interface Language {
+  language: {
+    id: string;
+    name: string;
+    usedFor: string;
+    history: string;
+    createdAt: Date;
+    updatedAt: Date;
+    logoUrl: string;
+  };
+}
+
+function LanguageMain({ language }: Language) {
+  console.log(language);
   return (
     <main className="col-start-2 col-end-5 flex flex-col gap-4">
-      <section>
-        <h1 className="flex h-14 items-center text-[36px] font-bold text-almostWhite">
-          JavaScript
+      <p className="text-small text-medGray">
+        <Link href="/">Home</Link> /{" "}
+        <Link
+          href={`/${language.name.toLowerCase()}`}
+          className="text-almostWhite"
+        >
+          {language.name}
+        </Link>{" "}
+      </p>
+      <section className="flex flex-col gap-2">
+        {/* This is where the programming language will go dynamically */}
+        <h1 className="flex  items-center text-[36px] font-bold text-almostWhite">
+          {language.name}
         </h1>
 
+        {/* This is where the language description will go dynamically */}
         <p className="text-medGray">
           Dive into coding with Dev Talk, where every line of code connects you
           to a world of resources, expert insights, and a vibrant developer
           community.
         </p>
-        <img
-          className="w-[224px]"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png"
-          alt=""
-        />
+        {/* This is where the language logo will go dynamically */}
+        <img className="w-[224px]" src={language.logoUrl} alt="" />
       </section>
-      <section id="useCase">
+      <section id="useCase" className="border-b-1 border-darkGray pb-4">
+        {/* This is where the language use case will go dynamically */}
         <h2 className="text-[24px] font-semibold text-almostWhite">
-          What is JavaScript used for?
+          What is {language.name} used for?
         </h2>
-        <p className="text-medGray">
-          Dive into coding with Dev Talk, where every line of code connects you
-          to a world of resources, expert insights, and a vibrant developer
-          community.Dive into coding with Dev Talk, where every line of code
-          connects you to a world of resources, expert insights, and a vibrant
-          developer community.Dive into coding with Dev Talk, where every line
-          of code connects you to a world of resources, expert insights, and a
-          vibrant developer community.Dive into coding with Dev Talk, where
-          every line of code connects you to a world of resources, expert
-          insights, and a vibrant developer community.Dive into coding with Dev
-          Talk, where every line of code connects you to a world of resources,
-          expert insights, and a vibrant developer community.Dive into coding
-          with Dev Talk, where every line of code connects you to a world of
-          resources, expert insights, and a vibrant developer community.
-        </p>
+        <p className="text-medGray">{language.usedFor}</p>
       </section>
-      <section id="history">
+      <section id="history" className="border-b-1 border-darkGray pb-4">
         <h2 className="text-[24px] font-semibold text-almostWhite">
-          The History of JavaScript
+          The History of {language.name}
         </h2>
-        <p className="text-medGray">
-          Dive into coding with Dev Talk, where every line of code connects you
-          to a world of resources, expert insights, and a vibrant developer
-          community.Dive into coding with Dev Talk, where every line of code
-          connects you to a world of resources, expert insights, and a vibrant
-          developer community.Dive into coding with Dev Talk, where every line
-          of code connects you to a world of resources, expert insights, and a
-          vibrant developer community.Dive into coding with Dev Talk, where
-          every line of code connects you to a world of resources, expert
-          insights, and a vibrant developer community.Dive into coding with Dev
-          Talk, where every line of code connects you to a world of resources,
-          expert insights, and a vibrant developer community.Dive into coding
-          with Dev Talk, where every line of code connects you to a world of
-          resources, expert insights, and a vibrant developer community.
-        </p>
+        <p className="text-medGray">{language.history}</p>
       </section>
-      <section id="documentation">
+      <section id="documentation" className="border-b-1 border-darkGray pb-4">
         <h2 className="text-[24px] font-semibold text-almostWhite">
           Documentation
         </h2>
@@ -69,7 +64,7 @@ function LanguageMain() {
           community.
         </p>
       </section>
-      <section id="latestRelease">
+      <section id="latestRelease" className="border-b-1 border-darkGray pb-4">
         <h2 className="text-[24px] font-semibold text-almostWhite">
           Latest Release
         </h2>
@@ -86,7 +81,10 @@ function LanguageMain() {
           to a world of resources, expert insights, and a vibrant developer
           community.
         </p>
-        <section id="contentCreators" className="flex flex-col gap-4">
+        <section
+          id="contentCreators"
+          className="flex flex-col gap-4 border-b-1 border-darkGray pb-4"
+        >
           <section>
             <h2 className="text-[24px] font-semibold text-almostWhite">
               Content Creators
@@ -115,11 +113,10 @@ function LanguageMain() {
                 where every line of code connects you to a world of resources,
                 expert insights, and a vibrant developer community.
               </p>
-              <Link
-                href={"/"}
-                className=" ml-auto flex w-fit rounded bg-purple px-4 py-2 font-semibold text-almostWhite"
-              >
-                View Channel
+              <Link href={"/"} className=" ml-auto flex w-fit ">
+                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  View Channel
+                </Button>
               </Link>
             </div>
           </section>
@@ -140,11 +137,10 @@ function LanguageMain() {
                 where every line of code connects you to a world of resources,
                 expert insights, and a vibrant developer community.
               </p>
-              <Link
-                href={"/"}
-                className=" ml-auto flex w-fit rounded bg-purple px-4 py-2 font-semibold text-almostWhite"
-              >
-                View Channel
+              <Link href={"/"} className=" ml-auto flex w-fit ">
+                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  View Channel
+                </Button>
               </Link>
             </div>
           </section>
@@ -165,16 +161,18 @@ function LanguageMain() {
                 where every line of code connects you to a world of resources,
                 expert insights, and a vibrant developer community.
               </p>
-              <Link
-                href={"/"}
-                className=" ml-auto flex w-fit rounded bg-purple px-4 py-2 font-semibold text-almostWhite"
-              >
-                View Channel
+              <Link href={"/"} className=" ml-auto flex w-fit ">
+                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  View Channel
+                </Button>
               </Link>
             </div>
           </section>
         </section>
-        <section id="courses" className="grid grid-cols-2 gap-4">
+        <section
+          id="courses"
+          className="grid grid-cols-2 gap-4 border-b-1 border-darkGray pb-4"
+        >
           <section className="col-span-full">
             <h2 className="text-[24px] font-semibold text-almostWhite">
               Popular Courses
@@ -202,11 +200,10 @@ function LanguageMain() {
                 where every line of code connects you to a world of resources,
                 expert insights, and a vibrant developer community.
               </p>
-              <Link
-                href={"/"}
-                className=" ml-auto flex w-fit rounded bg-purple px-4 py-2 font-semibold text-almostWhite"
-              >
-                View Course
+              <Link href={"/"} className=" ml-auto flex w-fit ">
+                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  View Course
+                </Button>
               </Link>
             </div>
           </section>
@@ -226,11 +223,10 @@ function LanguageMain() {
                 where every line of code connects you to a world of resources,
                 expert insights, and a vibrant developer community.
               </p>
-              <Link
-                href={"/"}
-                className=" ml-auto flex w-fit rounded bg-purple px-4 py-2 font-semibold text-almostWhite"
-              >
-                View Course
+              <Link href={"/"} className=" ml-auto flex w-fit ">
+                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  View Course
+                </Button>
               </Link>
             </div>
           </section>

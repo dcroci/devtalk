@@ -3,7 +3,9 @@ import SideNav from "@/components/sections/SideNav";
 import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
 import getCurrentSession from "@/scripts/getCurrentSession";
 import Link from "next/link";
+import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 import { notFound } from "next/navigation";
+import { deleteSnippet } from "@/actions/deleteSnippet";
 
 async function ShowSnippetPage({ params }: any) {
   //get the user's current session
@@ -25,16 +27,22 @@ async function ShowSnippetPage({ params }: any) {
       },
     },
   });
-  console.log(language);
+
   //if there is no snippet with that ID, return not found
   if (!snippet || !language) {
     return notFound();
   }
+  const deleteSnippetAction = deleteSnippet.bind(
+    null,
+    snippet.id,
+    language.name,
+  );
 
   const { title, code } = snippet;
   return (
     <>
       <SideNav language={language} />
+
       <div className="col-span-3">
         <div className=" flex items-center justify-between">
           <h1 className="flex h-14 items-center text-[36px] font-bold text-almostWhite">
@@ -48,7 +56,7 @@ async function ShowSnippetPage({ params }: any) {
               >
                 Edit
               </Link>
-              <form>
+              <form action={deleteSnippetAction}>
                 <button className="rounded border p-2 text-[14px] font-bold text-white">
                   Delete
                 </button>

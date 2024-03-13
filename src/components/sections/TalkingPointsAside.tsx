@@ -4,16 +4,16 @@ interface SideNavProps {
 
 function TalkingPointsAside({ logoUrl }: SideNavProps) {
   return (
-    <aside className="h-fit w-full rounded bg-darkGray">
-      <div className="flex items-center">
+    <aside className="flex h-fit w-full flex-col items-center rounded border-2 border-darkGray p-2">
+      <div className="mb-2 flex items-center gap-2">
         <img className="w-[40px]" src={logoUrl} alt="" />
-        <h2 className="ml-16 text-[16px] font-semibold text-almostWhite">
+        <h2 className=" text-[16px] font-semibold text-almostWhite">
           Talking Points
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-4 p-4">
+      <div className="grid grid-cols-1 gap-4 ">
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -43,7 +43,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -73,7 +73,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -103,7 +103,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -133,7 +133,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -163,7 +163,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -193,7 +193,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -223,7 +223,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -253,7 +253,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -283,7 +283,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -313,7 +313,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -343,7 +343,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -373,7 +373,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -403,7 +403,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -433,7 +433,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -463,7 +463,7 @@ function TalkingPointsAside({ logoUrl }: SideNavProps) {
           </div>
         </div>
         <div>
-          <div className="mx-auto flex   items-center gap-4 rounded bg-almostBlack p-2">
+          <div className="mx-auto flex   items-center gap-4 rounded  p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
