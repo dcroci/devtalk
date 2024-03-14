@@ -18,9 +18,7 @@ async function NewSnippetPage({ params }: any) {
 
   return (
     <>
-      <SideNav language={language} />
       <SnippetCreateForm language={language} />
-      <TalkingPointsAside logoUrl={language.logoUrl} />
     </>
   );
 }

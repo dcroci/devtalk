@@ -24,7 +24,6 @@ async function ShowTalkingPointPage({ params }: any) {
   }
   return (
     <>
-      <SideNav language={language} />
       <main className="col-start-2 col-end-5">
         <ShowTalkingPoint talkingPoint={talkingPoint} />
         <CommentCreateForm talkingPointId={talkingPoint.id} startOpen />

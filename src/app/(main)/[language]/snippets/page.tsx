@@ -24,8 +24,6 @@ async function ShowSnippetsPage({ params }: any) {
   }
   return (
     <>
-      <SideNav language={language} />
-
       <main className="col-start-2 col-end-5 flex flex-col gap-4">
         <p className="text-small text-medGray">
           <Link href="/">Home</Link> /{" "}
@@ -47,8 +45,6 @@ async function ShowSnippetsPage({ params }: any) {
           ))}
         </div>
       </main>
-
-      <TalkingPointsAside logoUrl={language.logoUrl} />
     </>
   );
 }
