@@ -2,9 +2,7 @@
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";
 
-import { Language } from "./LanguageMain";
-
-export default function SideNav({ language }: Language) {
+export default function SideNav({ language }: any) {
   const itemClasses = {
     base: "py-0 w-full col-start-1 col-end-2",
     title: "font-normal text-[14px] text-almostWhite",
@@ -13,6 +11,7 @@ export default function SideNav({ language }: Language) {
     indicator: "text-medium",
     content: "text-small",
   };
+
   return (
     <Accordion
       defaultExpandedKeys={["1", "2", "3", "4", "5"]}
@@ -105,8 +104,17 @@ export default function SideNav({ language }: Language) {
 
       <AccordionItem key="5" aria-label="Accordion 3" title="Project Showcase">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <li>View Projects</li>
-          <li>Showcase Your Project</li>
+          <li>
+            {" "}
+            <Link href={`/${language.name.toLowerCase()}/showcase`}>
+              View Projects
+            </Link>
+          </li>
+          <li>
+            <Link href={`/${language.name.toLowerCase()}/showcase/new`}>
+              Showcase Your Project
+            </Link>
+          </li>
         </ul>
       </AccordionItem>
     </Accordion>

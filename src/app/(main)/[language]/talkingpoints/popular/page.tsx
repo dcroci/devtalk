@@ -27,7 +27,6 @@ async function TopicShowPage({ params }: TopicShowPageProps) {
 
   return (
     <>
-      <SideNav language={language} />
       <div className="col-start-2 col-end-5  gap-4 p-4">
         <div className="col-span-3 flex items-center justify-between">
           <h1 className=" text-[36px] font-bold text-almostWhite">
@@ -43,10 +42,6 @@ async function TopicShowPage({ params }: TopicShowPageProps) {
           />
         </div>
       </div>
-      <TalkingPointsAside
-        logoUrl={language?.logoUrl}
-        languageId={language.id}
-      />
     </>
   );
 }

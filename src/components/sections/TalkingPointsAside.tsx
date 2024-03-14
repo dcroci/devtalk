@@ -2,20 +2,19 @@ import { db } from "@/app/db";
 import Link from "next/link";
 
 interface SideNavProps {
-  logoUrl: string;
-  languageId: string;
+  language: any;
 }
 
-async function TalkingPointsAside({ logoUrl, languageId }: SideNavProps) {
+async function TalkingPointsAside({ language }: SideNavProps) {
   const talkingPoints = await db.talkingPoint.findMany({
-    where: { languageId: languageId },
-    include: { user: true, language: true },
+    where: { languageId: language.id },
+    include: { user: true, language: true, comments: true },
   });
 
   return (
     <aside className="flex h-fit w-full flex-col items-center rounded border-2 border-darkGray p-2">
       <div className="mb-2 flex items-center gap-2">
-        <img className="w-[40px]" src={logoUrl} alt="" />
+        <img className="w-[40px]" src={language.logoUrl} alt="" />
         <h2 className=" text-[16px] font-semibold text-almostWhite">
           Talking Points
         </h2>
@@ -42,7 +41,7 @@ async function TalkingPointsAside({ logoUrl, languageId }: SideNavProps) {
                 />
               </svg> */}
                 <img
-                  src={talkingPoint.user.image}
+                  src={talkingPoint.user.image || ""}
                   alt=""
                   className="w-10 rounded-full border-2 border-purple"
                 />
@@ -55,7 +54,8 @@ async function TalkingPointsAside({ logoUrl, languageId }: SideNavProps) {
                   </h3>
                   <div>
                     <p className="text-[14px] text-medGray">
-                      16 Comments · 12 Likes
+                      {talkingPoint.comments.length} Comments ·{" "}
+                      {talkingPoint.likes} Likes
                     </p>
                   </div>
                 </div>

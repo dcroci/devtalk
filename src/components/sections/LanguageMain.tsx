@@ -1,19 +1,8 @@
 import { Button } from "@nextui-org/react";
+import { Language } from "@prisma/client";
 import Link from "next/link";
 
-export interface Language {
-  language: {
-    id: string;
-    name: string;
-    usedFor: string;
-    history: string;
-    createdAt: Date;
-    updatedAt: Date;
-    logoUrl: string;
-  };
-}
-
-function LanguageMain({ language }: Language) {
+function LanguageMain({ language }: any) {
   console.log(language);
   return (
     <main className="col-start-2 col-end-5 flex flex-col gap-4">
@@ -95,79 +84,78 @@ function LanguageMain({ language }: Language) {
               developer community.
             </p>
           </section>
-
-          <section className="grid grid-cols-4">
-            <img
-              src="https://yt3.googleusercontent.com/ytc/AIdro_k-KLe5SzhIK9AaYnUzMdTt3RHX6LuK5VM7MFta=s176-c-k-c0x00ffffff-no-rj"
-              alt=""
-              className="col-start-1 col-end-1 rounded-full"
-            />
-            <div className="col-start-2 col-end-5">
-              <h3 className="text-[18px] font-semibold text-almostWhite">
-                Web Dev Simplified
-              </h3>
-              <p className="text-medGray">
-                Dive into coding with Dev Talk, where every line of code
-                connects you to a world of resources, expert insights, and a
-                vibrant developer community. Dive into coding with Dev Talk,
-                where every line of code connects you to a world of resources,
-                expert insights, and a vibrant developer community.
-              </p>
-              <Link href={"/"} className=" ml-auto flex w-fit ">
-                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
-                  View Channel
-                </Button>
-              </Link>
-            </div>
-          </section>
-          <section className="grid grid-cols-4">
-            <img
-              src="https://yt3.googleusercontent.com/ytc/AIdro_k-KLe5SzhIK9AaYnUzMdTt3RHX6LuK5VM7MFta=s176-c-k-c0x00ffffff-no-rj"
-              alt=""
-              className="col-start-1 col-end-1 rounded-full"
-            />
-            <div className="col-start-2 col-end-5">
-              <h3 className="text-[18px] font-semibold text-almostWhite">
-                Web Dev Simplified
-              </h3>
-              <p className="text-medGray">
-                Dive into coding with Dev Talk, where every line of code
-                connects you to a world of resources, expert insights, and a
-                vibrant developer community. Dive into coding with Dev Talk,
-                where every line of code connects you to a world of resources,
-                expert insights, and a vibrant developer community.
-              </p>
-              <Link href={"/"} className=" ml-auto flex w-fit ">
-                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
-                  View Channel
-                </Button>
-              </Link>
-            </div>
-          </section>
-          <section className="grid grid-cols-4">
-            <img
-              src="https://yt3.googleusercontent.com/ytc/AIdro_k-KLe5SzhIK9AaYnUzMdTt3RHX6LuK5VM7MFta=s176-c-k-c0x00ffffff-no-rj"
-              alt=""
-              className="col-start-1 col-end-1 rounded-full"
-            />
-            <div className="col-start-2 col-end-5">
-              <h3 className="text-[18px] font-semibold text-almostWhite">
-                Web Dev Simplified
-              </h3>
-              <p className="text-medGray">
-                Dive into coding with Dev Talk, where every line of code
-                connects you to a world of resources, expert insights, and a
-                vibrant developer community. Dive into coding with Dev Talk,
-                where every line of code connects you to a world of resources,
-                expert insights, and a vibrant developer community.
-              </p>
-              <Link href={"/"} className=" ml-auto flex w-fit ">
-                <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
-                  View Channel
-                </Button>
-              </Link>
-            </div>
-          </section>
+          {language.creator1Name && (
+            <section className="grid grid-cols-4">
+              <img
+                src={language.creator1Image}
+                alt=""
+                className="col-start-1 col-end-1 rounded-full"
+              />
+              <div className="col-start-2 col-end-5">
+                <h3 className="text-[18px] font-semibold text-almostWhite">
+                  {language.creator1Name}
+                </h3>
+                <p className="text-medGray">{language.creator1Desc}</p>
+                <Link
+                  href={language.creator1Link}
+                  target="_blank"
+                  className=" ml-auto mt-2 flex w-fit"
+                >
+                  <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                    View Channel
+                  </Button>
+                </Link>
+              </div>
+            </section>
+          )}
+          {language.creator2Name && (
+            <section className="grid grid-cols-4">
+              <img
+                src={language.creator2Image}
+                alt=""
+                className="col-start-1 col-end-1 rounded-full"
+              />
+              <div className="col-start-2 col-end-5">
+                <h3 className="text-[18px] font-semibold text-almostWhite">
+                  {language.creator2Name}
+                </h3>
+                <p className="text-medGray">{language.creator2Desc}</p>
+                <Link
+                  href={language.creator2Link}
+                  className=" ml-auto mt-2 flex w-fit"
+                  target="_blank"
+                >
+                  <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                    View Channel
+                  </Button>
+                </Link>
+              </div>
+            </section>
+          )}
+          {language.creator3Name && (
+            <section className="grid grid-cols-4">
+              <img
+                src={language.creator3Image}
+                alt=""
+                className="col-start-1 col-end-1 rounded-full"
+              />
+              <div className="col-start-2 col-end-5">
+                <h3 className="text-[18px] font-semibold text-almostWhite">
+                  {language.creator3Name}
+                </h3>
+                <p className="text-medGray">{language.creator3Desc}</p>
+                <Link
+                  href={language.creator3Link}
+                  className=" ml-auto mt-2 flex w-fit"
+                  target="_blank"
+                >
+                  <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                    View Channel
+                  </Button>
+                </Link>
+              </div>
+            </section>
+          )}
         </section>
         <section
           id="courses"

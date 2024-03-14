@@ -25,27 +25,29 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
   return (
     <Popover placement="left">
       <PopoverTrigger>
-        <Button className="bg-purple  font-bold text-almostWhite">
-          Create a Post
+        <Button className=" bg-purple  text-2xl font-semibold text-almostWhite">
+          +
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="border-2 border-white bg-almostWhite text-white">
+      <PopoverContent className="border-2 border-almostBlack bg-almostBlack text-almostBlack shadow-sm shadow-medGray">
         <form action={action}>
           <div className="flex w-80 flex-col gap-4 p-4">
-            <h3 className="text-lg">Create a Post</h3>
+            <h3 className="text-lg font-semibold text-almostWhite">
+              Create a Talking Point
+            </h3>
             <Input
               label="Title"
               name="title"
-              labelPlacement="outside"
-              placeholder="Title"
+              labelPlacement="inside"
+              placeholder="How do I create an array?"
               isInvalid={!!formState.errors.title}
               errorMessage={formState.errors.title?.join(", ")}
             />
             <Textarea
               label="Content"
               name="content"
-              labelPlacement="outside"
-              placeholder="Write your post"
+              labelPlacement="inside"
+              placeholder="Write your Talking Point"
               isInvalid={!!formState.errors.content}
               errorMessage={formState.errors.content?.join(", ")}
             />
@@ -55,7 +57,12 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
               </div>
             ) : null}
 
-            <Button type="submit">Save</Button>
+            <Button
+              type="submit"
+              className="bg-purple  font-bold text-almostWhite"
+            >
+              Create
+            </Button>
           </div>
         </form>
       </PopoverContent>

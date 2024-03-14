@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
-import { Providers } from "./providers";
+import "../globals.css";
+import { Providers } from "../providers";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/sections/Footer";
 
 const geistFont = localFont({
-  src: "./fonts/GeistVariableVF.ttf",
+  src: "../fonts/GeistVariableVF.ttf",
   display: "swap",
 });
 

@@ -1,7 +1,7 @@
 import LanguageMain from "@/components/sections/LanguageMain";
 import SideNav from "@/components/sections/SideNav";
 import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
-import { db } from "../db";
+import { db } from "../../db";
 import { notFound } from "next/navigation";
 interface ShowLanguageProps {
   params: {
@@ -22,13 +22,7 @@ async function ShowLanguagePage({ params }: ShowLanguageProps) {
     notFound();
   }
 
-  return (
-    <>
-      <SideNav language={language} />
-      <LanguageMain language={language} />
-      <TalkingPointsAside logoUrl={language.logoUrl} languageId={language.id} />
-    </>
-  );
+  return <LanguageMain language={language} />;
 }
 
 export default ShowLanguagePage;
