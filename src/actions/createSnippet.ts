@@ -7,9 +7,7 @@ import { redirect } from "next/navigation";
 export async function createSnippet(
   formState: { message: string },
   formData: FormData,
-  language: any,
 ) {
-  console.log(language);
   const session = await auth();
   if (!session || !session.user) {
     return { message: "You must be signed in to create a snippet." };
@@ -61,5 +59,4 @@ export async function createSnippet(
   });
 
   redirect(`/${languageQ.name.toLowerCase()}/snippets`);
-  return {};
 }
