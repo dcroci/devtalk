@@ -42,14 +42,14 @@ export async function createComment(
   }
 
   try {
-    // await db.comment.create({
-    //   data: {
-    //     content: result.data.content,
-    //     talkingPointId: talkingPointId,
-    //     parentId: parentId,
-    //     userId: session.user.id,
-    //   },
-    // });
+    await db.comment.create({
+      data: {
+        content: result.data.content,
+        talkingPointId: talkingPointId,
+        parentId: parentId,
+        userId: session.user.id,
+      },
+    });
     console.log(talkingPointId, parentId, session.user.id);
   } catch (err) {
     if (err instanceof Error) {
