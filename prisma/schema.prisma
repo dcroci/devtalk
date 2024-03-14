@@ -168,8 +168,6 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-
-  // Comment       Comment[]
   TalkingPoint TalkingPoint[]
   Comment      Comment[]
 }
