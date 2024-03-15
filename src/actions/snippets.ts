@@ -2,8 +2,10 @@
 
 import { db } from "@/app/db";
 import { auth } from "@/auth";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+//CREATE A SNIPPET
 export async function createSnippet(
   formState: { message: string },
   formData: FormData,
@@ -59,4 +61,22 @@ export async function createSnippet(
   });
 
   redirect(`/${languageQ.name.toLowerCase()}/snippets`);
+}
+//EDIT SNIPPET
+export async function editSnippet(id: number, code: string, language: string) {
+  await db.snippet.update({
+    where: { id },
+    data: { code },
+  });
+
+  revalidatePath(`/${language}/snippets/${id}`);
+  redirect(`/${language}/snippets/${id}`);
+}
+//DELETE A SNIPPET
+export async function deleteSnippet(id: number, language: string) {
+  await db.snippet.delete({
+    where: { id },
+  });
+  revalidatePath(`/${language.toLowerCase()}/snippets`);
+  redirect(`/${language.toLowerCase()}/snippets`);
 }

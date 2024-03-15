@@ -5,10 +5,10 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/app/db";
 
+//CREATE COMMENT
 const createCommentSchema = z.object({
   content: z.string().min(3),
 });
-
 interface CreateCommentFormState {
   errors: {
     content?: string[];
@@ -16,7 +16,6 @@ interface CreateCommentFormState {
   };
   success?: boolean;
 }
-
 export async function createComment(
   { talkingPointId, parentId }: { talkingPointId: string; parentId?: string },
   formState: CreateCommentFormState,
