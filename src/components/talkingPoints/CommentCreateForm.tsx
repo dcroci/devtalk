@@ -3,7 +3,7 @@
 import { useFormState } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import { Textarea, Button } from "@nextui-org/react";
-import { createComment } from "@/actions/createComment";
+import { createComment } from "@/actions/comments";
 
 interface CommentCreateFormProps {
   talkingPointId: string;

@@ -4,7 +4,7 @@ import getCurrentSession from "@/scripts/getCurrentSession";
 import Link from "next/link";
 
 import { notFound } from "next/navigation";
-import { deleteSnippet } from "@/actions/deleteSnippet";
+import { deleteSnippet } from "@/actions/snippets";
 
 async function ShowSnippetPage({ params }: any) {
   //get the user's current session

@@ -1,5 +1,5 @@
 "use client";
-import { createSnippet } from "@/actions/createSnippet";
+import { createSnippet } from "@/actions/snippets";
 import { useFormState } from "react-dom";
 import { Editor } from "@monaco-editor/react";
 import { useState } from "react";
@@ -13,7 +13,6 @@ function SnippetCreateForm({ language }: any) {
     setCode(value);
   }
 
-  // console.log(language);
   return (
     <form action={action} className="col-span-3 ">
       <p className="text-small text-medGray">

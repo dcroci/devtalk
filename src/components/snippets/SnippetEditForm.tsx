@@ -1,7 +1,7 @@
 "use client";
 import { Editor } from "@monaco-editor/react";
 import { useState } from "react";
-import { editSnippet } from "@/actions/editSnippet";
+import { editSnippet } from "@/actions/snippets";
 
 function SnippetEditForm({ snippet, language }: any) {
   console.log(snippet);

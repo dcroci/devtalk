@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import { createTalkingPoint } from "@/actions/createTalkingPoint";
+import { createTalkingPoint } from "@/actions/talkingpoints";
 import {
   Input,
   Button,
