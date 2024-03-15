@@ -79,7 +79,7 @@ async function Navbar() {
 
         {session?.user ? (
           <Popover>
-            <PopoverTrigger>
+            <PopoverTrigger className="transition-all duration-1000 hover:cursor-pointer hover:shadow-lg hover:shadow-purple">
               <Avatar
                 src={session.user.image || ""}
                 className="border-2 border-purple"
