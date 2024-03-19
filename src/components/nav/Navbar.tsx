@@ -13,12 +13,7 @@ import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 
 async function Navbar() {
-  const languages = await db.language.findMany({
-    select: {
-      name: true,
-      logoUrl: true,
-    },
-  });
+  const languages = await db.language.findMany({});
 
   const session = await auth();
 
