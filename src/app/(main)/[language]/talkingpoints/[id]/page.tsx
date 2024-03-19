@@ -8,26 +8,20 @@ import { fetchCommentsByPostId } from "@/app/db/queries/comments";
 import CommentList from "@/components/talkingPoints/CommentList";
 
 async function ShowTalkingPointPage({ params }: any) {
-  const talkingPoint = await db.talkingPoint.findFirst({
-    where: { id: params.id },
-  });
-  const language = await db.language.findFirst({
-    where: {
-      name: {
-        equals: params.language,
-        mode: "insensitive",
-      },
-    },
-  });
-  if (!talkingPoint) {
-    notFound();
-  }
+  // const talkingPoint = await db.talkingPoint.findFirst({
+  //   where: { id: params.id },
+  //   include: { user: true, language: { select: { name: true } } },
+  // });
+
+  // if (!talkingPoint) {
+  //   notFound();
+  // }
   return (
     <>
       <main className="col-start-2 col-end-5">
-        <ShowTalkingPoint talkingPoint={talkingPoint} />
-        <CommentCreateForm talkingPointId={talkingPoint.id} startOpen />
-        <CommentList fetchData={() => fetchCommentsByPostId(talkingPoint.id)} />
+        <ShowTalkingPoint talkingPointId={params.id} />
+        <CommentCreateForm talkingPointId={params.id} startOpen />
+        <CommentList fetchData={() => fetchCommentsByPostId(params.id)} />
       </main>
     </>
   );

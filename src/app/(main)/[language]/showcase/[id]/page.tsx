@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { db } from "@/app/db";
 import Link from "next/link";
 import {
@@ -77,7 +78,8 @@ async function ShowProductPage({ params }: ShowProductPageParams) {
             </PopoverTrigger>
             <PopoverContent>
               <ul className="text-almostWhite">
-                {currentUser?.user.id === product?.user.id ? (
+                {currentUser?.user &&
+                currentUser?.user.id === product?.user.id ? (
                   <>
                     <li className="flex items-center justify-between gap-2 p-2">
                       Edit{" "}
