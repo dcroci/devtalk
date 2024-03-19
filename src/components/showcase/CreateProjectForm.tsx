@@ -88,12 +88,11 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
           >
             {languages.map((language: any) => (
               <Checkbox
-                className="flex items-center gap-2  p-0 hover:bg-darkGray"
+                className="mx-4 flex  items-center  gap-4 p-0 hover:bg-darkGray"
                 key={language.id}
                 name={language.name}
                 id={language.name}
                 value={language.name}
-                className="mx-4 flex gap-4"
               >
                 <img src={language.logoUrl} alt="" className="h-6 w-6" />
                 <p>{language.name}</p>
