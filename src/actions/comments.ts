@@ -1,9 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/app/db";
+import { revalidatePath } from "next/cache";
 
 //CREATE COMMENT
 const createCommentSchema = z.object({
@@ -78,7 +78,9 @@ export async function createComment(
     };
   }
 
-  //   revalidatePath(paths.postShow(topic.slug, postId));
+  revalidatePath(
+    `/${language.name.toLowerCase()}/talkingpoints/${talkingPointId}`,
+  );
   return {
     errors: {},
     success: true,
