@@ -3,7 +3,7 @@ import type { TalkingPoint, User, Language } from "@prisma/client";
 import Link from "next/link";
 
 import type { PostWithData } from "@/app/db/queries/posts";
-import { likeTalkingPoint } from "@/actions/talkingpoints";
+// import { likeTalkingPoint } from "@/actions/talkingpoints";
 import { Button } from "@nextui-org/react";
 import fixWordLength from "@/scripts/fixWordLength";
 import TimeAgo from "../common/TimeAgo";
@@ -19,7 +19,7 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
     if (!topicSlug) {
       throw new Error("Need a slug to link to a post");
     }
-    const like = likeTalkingPoint.bind(null, talkingPoint.id);
+    // const like = likeTalkingPoint.bind(null, talkingPoint.id);
 
     return (
       <div
@@ -70,7 +70,9 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
           </div>
         </div>
         <div className="absolute bottom-0 right-2 top-0 flex flex-col justify-center gap-2">
-          <form action={like}>
+          <form
+          // action={like}
+          >
             <button type="submit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
