@@ -15,7 +15,9 @@ model Snippet {
   desc       String?
   accountId  String
   languageId String
+  userId     String
   // Relations
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   account    Account  @relation(fields: [accountId], references: [id])
   language   Language @relation(fields: [languageId], references: [id])
   createdAt  DateTime @default(now())
@@ -23,117 +25,120 @@ model Snippet {
 }
 
 model Language {
-  id           String         @id @default(cuid())
-  name         String
-  usedFor      String         @db.Text
-  history      String         @db.Text
-  logoUrl      String
+  id            String  @id @default(cuid())
+  name          String
+  usedFor       String  @db.Text
+  history       String  @db.Text
+  logoUrl       String
   latestRelease Float?
   documentation String?
 
-
-  creator1Name String?
-  creator1Desc String?
-  creator1Link String?
+  creator1Name  String?
+  creator1Desc  String?
+  creator1Link  String?
   creator1Image String?
 
-  creator2Name String?
-  creator2Desc String?
-  creator2Link String?
+  creator2Name  String?
+  creator2Desc  String?
+  creator2Link  String?
   creator2Image String?
 
-  creator3Name String?
-  creator3Desc String?
-  creator3Link String?
+  creator3Name  String?
+  creator3Desc  String?
+  creator3Link  String?
   creator3Image String?
 
-
-  course1Name String?
-  course1Desc String?
-  course1Link String?
-  course1Image String?
+  course1Name   String?
+  course1Desc   String?
+  course1Link   String?
+  course1Image  String?
   course1Author String?
 
-  course2Name String?
-  course2Desc String?
-  course2Link String?
-  course2Image String?
+  course2Name   String?
+  course2Desc   String?
+  course2Link   String?
+  course2Image  String?
   course2Author String?
 
-  course3Name String?
-  course3Desc String?
-  course3Link String?
-  course3Image String?
+  course3Name   String?
+  course3Desc   String?
+  course3Link   String?
+  course3Image  String?
   course3Author String?
 
-
-  book1Name String?
-  book1Desc String?
-  book1Link String?
-  book1Image String?
+  book1Name   String?
+  book1Desc   String?
+  book1Link   String?
+  book1Image  String?
   book1Author String?
 
-  book2Name String?
-  book2Desc String?
-  book2Link String?
-  book2Image String?
+  book2Name   String?
+  book2Desc   String?
+  book2Link   String?
+  book2Image  String?
   book2Author String?
 
-  book3Name String?
-  book3Desc String?
-  book3Link String?
-  book3Image String?
+  book3Name   String?
+  book3Desc   String?
+  book3Link   String?
+  book3Image  String?
   book3Author String?
 
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
   Snippet      Snippet[]
   TalkingPoint TalkingPoint[]
+  Project      Project[]
 }
 
-
-
-
-
-
-
-// model Videos {
-//   id         String   @id @default(cuid())
-//   link       String
-//   Language   Language @relation(fields: [languageId], references: [id])
-//   languageId String
-// }
-
 model TalkingPoint {
-  id      String @id @default(cuid())
-  title   String
-  desc    String
-  userId  String
-  likes Int @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String    @id @default(cuid())
+  title      String
+  desc       String
+  userId     String
+  likes      Int       @default(0)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   language   Language  @relation(fields: [languageId], references: [id])
   comments   Comment[]
   languageId String
 }
 
+model Project {
+  id           String    @id @default(cuid())
+  title        String
+  desc         String
+  userId       String
+  imgUrl       String    @default("https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg")
+  likes        Int
+  technologies String[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
+  languageId   String
+  language     Language  @relation(fields: [languageId], references: [id])
+  comments     Comment[]
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 model Comment {
-  id       String  @id @default(cuid())
-  content  String
-  talkingPointId   String
-  userId   String
-  parentId String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  parent       Comment?     @relation("Comments", fields: [parentId], references: [id], onDelete: Cascade)
-  talkingPoint TalkingPoint @relation(fields: [id], references: [id], onDelete: Cascade)
-  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  children     Comment[]    @relation("Comments")
+  id             String       @id @default(cuid())
+  content        String
+  talkingPointId String
+  userId         String
+  parentId       String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  parent         Comment?     @relation("Comments", fields: [parentId], references: [id], onDelete: Cascade)
+  talkingPoint   TalkingPoint @relation(fields: [talkingPointId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  children       Comment[]    @relation("Comments")
+  Project        Project?     @relation(fields: [projectId], references: [id])
+  projectId      String?
 }
 
 model Account {
-  id                String  @id @default(cuid())
+  id                String    @id @default(cuid())
   userId            String
   type              String
   provider          String
@@ -145,9 +150,8 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  Snippet Snippet[]
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Snippet           Snippet[]
 
   @@unique([provider, providerAccountId])
 }
@@ -161,15 +165,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  TalkingPoint TalkingPoint[]
-  Comment      Comment[]
+  TalkingPoint  TalkingPoint[]
+  Comment       Comment[]
+  projects      Project[]
+  Snippet       Snippet[]
 }
 
 model VerificationToken {
