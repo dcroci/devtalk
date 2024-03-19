@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
+import { notFound } from "next/navigation";
 
 async function Navbar() {
   const languages = await db.language.findMany({
@@ -18,6 +19,9 @@ async function Navbar() {
       name: "asc",
     },
   });
+  if (!languages) {
+    notFound();
+  }
 
   const session = await auth();
 
