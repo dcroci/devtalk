@@ -4,7 +4,6 @@ import { useState } from "react";
 import { editSnippet } from "@/actions/snippets";
 
 function SnippetEditForm({ snippet, language }: any) {
-  console.log(snippet);
   const [code, setCode] = useState(snippet.code);
   function handleEditorChange(value: string = "") {
     setCode(value);
@@ -16,9 +15,9 @@ function SnippetEditForm({ snippet, language }: any) {
     language,
   );
   return (
-    <div className="col-span-full">
+    <div className="col-span-3">
       <h1 className="col-span-full h-fit text-[36px] font-bold text-almostWhite">
-        {`${snippet[0].title} Snippets`}
+        {`Edit ${snippet[0].title} `}
       </h1>
       <h1>{snippet[0].title}</h1>
       <Editor

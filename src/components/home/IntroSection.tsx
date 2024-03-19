@@ -5,18 +5,18 @@ function IntroSection() {
         Where Code Meets{" "}
         <span className="text-shadow text-purple shadow-md">Community</span>
       </h1>
-      <p className="col-start-2 col-end-5 mb-10 px-8 pb-4 text-center text-[20px] font-normal text-medGray">
+      <p className="col-start-2 col-end-5 mb-10 pb-4 text-center text-[20px] font-normal text-medGray md:px-8">
         Dive into coding with Dev Talk, where every line of code connects you to
         a world of resources, expert insights, and a vibrant developer
         community.
       </p>
-      <div className="col-span-full flex gap-4">
+      <div className="col-span-full grid grid-cols-1 gap-4 sm:grid-cols-3">
         <section className="w-[1000px min-h-[380px] rounded border-2 border-darkGray p-[24px] ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            className="mx-auto h-60 w-60  stroke-almostWhite"
+            className="mx-auto h-60 w-40  stroke-almostWhite"
           >
             <path
               strokeLinecap="round"
@@ -39,7 +39,7 @@ function IntroSection() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            className="mx-auto h-60 w-60  stroke-almostWhite"
+            className="mx-auto h-60 w-40  stroke-almostWhite"
           >
             <path
               strokeLinecap="round"
@@ -62,7 +62,7 @@ function IntroSection() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            className="mx-auto h-60 w-60  stroke-almostWhite"
+            className="mx-auto h-60 w-40  stroke-almostWhite"
           >
             <path
               strokeLinecap="round"

@@ -5,7 +5,6 @@ interface CommentListProps {
   fetchData: () => Promise<CommentWithAuthor[]>;
 }
 
-// TODO: Get a list of comments from somewhere
 export default async function CommentList({ fetchData }: CommentListProps) {
   const comments = await fetchData();
   const topLevelComments = comments.filter(
@@ -24,7 +23,9 @@ export default async function CommentList({ fetchData }: CommentListProps) {
   return (
     <div className="space-y-3">
       <h1 className="text-lg font-bold text-almostWhite">
-        All {comments.length} comments
+        {comments.length > 0
+          ? `All ${comments.length} comments`
+          : "Be the first comment!"}
       </h1>
       {renderedComments}
     </div>

@@ -45,11 +45,11 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
                 <Link
                   href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
                 >
-                  <h3 className="flex flex-col text-xl font-semibold text-white">
+                  <h3 className="mb-2 flex flex-col text-xl font-semibold text-white">
                     {talkingPoint.title}{" "}
                   </h3>
                 </Link>
-                <p className=" z-40  bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal text-transparent">
+                <p className=" z-40  bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
                   {fixWordLength(talkingPoint.desc, 600)}
                 </p>
               </div>

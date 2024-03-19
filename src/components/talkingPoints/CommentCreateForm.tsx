@@ -70,34 +70,6 @@ export default function CommentCreateForm({
 
   return (
     <div>
-      <div className="flex items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          className="h-6 w-6 stroke-almostWhite"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
-          />
-        </svg>
-
-        <p className="text-almostWhite">{245}</p>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          className="h-6 w-6 stroke-almostWhite"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-          />
-        </svg>
-      </div>
       <div className="flex flex-col">
         <Button
           size="sm"
