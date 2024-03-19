@@ -11,6 +11,8 @@ const createProjectSchema = z.object({
   title: z.string().min(3),
   content: z.string().min(10),
   imgUrl: z.string(),
+  githubLink: z.string().url(),
+  liveSiteLink: z.string().url(),
   //   languages: z.any(),
 });
 interface CreateProjectFormState {
@@ -18,6 +20,8 @@ interface CreateProjectFormState {
     title?: string[];
     content?: string[];
     imgUrl?: string[];
+    githubLink?: string[];
+    liveSiteLink?: string[];
     // languages?: any;
     _form?: string[];
   };
@@ -32,6 +36,8 @@ export async function createProject(
     title: formData.get("title"),
     content: formData.get("content"),
     imgUrl: formData.get("imgUrl"),
+    githubLink: formData.get("githubLink"),
+    liveSiteLink: formData.get("liveSiteLink"),
     // languages: formData.get("languages"),
   });
   if (!result.success) {
@@ -74,6 +80,8 @@ export async function createProject(
         userId: session.user.id,
         languageId: language.id,
         likes: 0,
+        githubLink: result.data.githubLink,
+        liveSiteLink: result.data.liveSiteLink,
         // technologies: result.data.languages,
       },
     });

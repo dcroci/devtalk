@@ -46,7 +46,7 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
               label="Title"
               name="title"
               labelPlacement="inside"
-              placeholder="How do I create an array?"
+              placeholder="Name of your project"
               isInvalid={!!formState.errors.title}
               errorMessage={formState.errors.title?.join(", ")}
             />
@@ -62,7 +62,7 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
               label="Content"
               name="content"
               labelPlacement="inside"
-              placeholder="Write your Talking Point"
+              placeholder="Tell us about your project"
               isInvalid={!!formState.errors.content}
               errorMessage={formState.errors.content?.join(", ")}
             />
@@ -71,7 +71,22 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
                 {formState.errors._form?.join(", ")}
               </div>
             ) : null}
-
+            <Input
+              label="GitHub Link"
+              name="githubLink"
+              labelPlacement="inside"
+              placeholder="Link to GitHub repo"
+              isInvalid={!!formState.errors.githubLink}
+              errorMessage={formState.errors.githubLink?.join(", ")}
+            />
+            <Input
+              label="Live Site Link"
+              name="liveSiteLink"
+              labelPlacement="inside"
+              placeholder="Link to live site"
+              isInvalid={!!formState.errors.liveSiteLink}
+              errorMessage={formState.errors.liveSiteLink?.join(", ")}
+            />
             <Button
               type="submit"
               className="bg-purple  font-bold text-almostWhite"
