@@ -54,6 +54,9 @@ export async function createSnippet(
       account: {
         connect: { id: existingAccount?.id }, // Connect the snippet to the user's account
       },
+      user: {
+        connect: { id: existingAccount?.userId },
+      },
       language: {
         connect: { id: languageQ.id }, // Connect the snippet to the selected language
       },
