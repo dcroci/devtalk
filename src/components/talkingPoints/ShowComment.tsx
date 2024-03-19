@@ -26,7 +26,7 @@ export default function ShowComment({ commentId, comments }: ShowCommentProps) {
 
   return (
     <div className="mb-1 rounded  border-l-2 border-purple ">
-      <div className="flex gap-3 bg-darkGray p-2">
+      <div className="flex gap-3 border-b-2 border-b-darkGray bg-almostBlack p-2">
         <img
           src={comment.user.image || ""}
           alt="user image"

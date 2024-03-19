@@ -49,12 +49,13 @@ export default function CommentCreateForm({
     >
       <div className="space-y-2  px-1 text-almostWhite">
         <Textarea
-          className="bg-almostBlack"
+          className="border-purple  "
           name="content"
           placeholder="Enter your comment"
           isInvalid={!!formState.errors.content}
           errorMessage={formState.errors.content?.join(", ")}
           autoFocus
+          variant="bordered"
         />
 
         {formState.errors._form ? (
@@ -63,7 +64,12 @@ export default function CommentCreateForm({
           </div>
         ) : null}
 
-        <button>Create Comment</button>
+        <Button
+          type="submit"
+          className="jus ml-auto flex w-min bg-purple font-bold text-white"
+        >
+          Create Comment
+        </Button>
       </div>
     </motion.form>
   );
@@ -76,6 +82,8 @@ export default function CommentCreateForm({
           className="w-min bg-transparent p-0 text-white"
           onClick={() => setOpen(!open)}
         >
+          {" "}
+          256
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
