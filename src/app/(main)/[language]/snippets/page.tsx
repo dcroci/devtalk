@@ -1,10 +1,7 @@
 import { db } from "@/app/db";
-import SnippetCard from "@/components/snippets/SnippetCard";
-import SideNav from "@/components/sections/SideNav";
-import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
 import { notFound } from "next/navigation";
-import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
 import Link from "next/link";
+import SnippetList from "@/components/snippets/SnippetList";
 
 async function ShowSnippetsPage({ params }: any) {
   const language = await db.language.findFirst({
@@ -34,16 +31,7 @@ async function ShowSnippetsPage({ params }: any) {
           {`${language.name} Snippets`}
         </h1>
 
-        <div className="grid w-full grid-cols-2 gap-4">
-          {snippets.map((snippet) => (
-            <SnippetCard
-              snippet={snippet}
-              languageName={language.name}
-              logoUrl={language.logoUrl}
-              key={snippet.id}
-            />
-          ))}
-        </div>
+        <SnippetList language={language} snippets={snippets} />
       </main>
     </>
   );
