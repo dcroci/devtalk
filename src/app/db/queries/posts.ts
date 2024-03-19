@@ -15,5 +15,8 @@ export function fetchPostsByTopicSlug(name: string): Promise<PostWithData[]> {
       user: { select: { name: true, image: true } },
       _count: { select: { comments: true } },
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 }
