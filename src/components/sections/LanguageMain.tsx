@@ -3,9 +3,8 @@ import { Language } from "@prisma/client";
 import Link from "next/link";
 
 function LanguageMain({ language }: any) {
-  console.log(language);
   return (
-    <main className="col-start-2 col-end-5 flex flex-col gap-4">
+    <main className="col-start-1 col-end-6 flex flex-col gap-4 px-2 md:col-start-2 md:col-end-5">
       <p className="text-small text-medGray">
         <Link href="/">Home</Link> /{" "}
         <Link
@@ -22,7 +21,7 @@ function LanguageMain({ language }: any) {
         </h1>
 
         {/* This is where the language description will go dynamically */}
-        <p className="text-medGray">
+        <p className="leading-relaxed text-medGray">
           Dive into coding with Dev Talk, where every line of code connects you
           to a world of resources, expert insights, and a vibrant developer
           community.
@@ -35,13 +34,13 @@ function LanguageMain({ language }: any) {
         <h2 className="text-[24px] font-semibold text-almostWhite">
           What is {language.name} used for?
         </h2>
-        <p className="text-medGray">{language.usedFor}</p>
+        <p className="leading-relaxed text-medGray">{language.usedFor}</p>
       </section>
       <section id="history" className="border-b-1 border-darkGray pb-4">
         <h2 className="text-[24px] font-semibold text-almostWhite">
           The History of {language.name}
         </h2>
-        <p className="text-medGray">{language.history}</p>
+        <p className="leading-relaxed text-medGray">{language.history}</p>
       </section>
       <section id="documentation" className="border-b-1 border-darkGray pb-4">
         <h2 className="text-[24px] font-semibold text-almostWhite">
@@ -95,7 +94,9 @@ function LanguageMain({ language }: any) {
                 <h3 className="text-[18px] font-semibold text-almostWhite">
                   {language.creator1Name}
                 </h3>
-                <p className="text-medGray">{language.creator1Desc}</p>
+                <p className="leading-relaxed text-medGray">
+                  {language.creator1Desc}
+                </p>
                 <Link
                   href={language.creator1Link}
                   target="_blank"
@@ -119,7 +120,9 @@ function LanguageMain({ language }: any) {
                 <h3 className="text-[18px] font-semibold text-almostWhite">
                   {language.creator2Name}
                 </h3>
-                <p className="text-medGray">{language.creator2Desc}</p>
+                <p className="leading-relaxed text-medGray">
+                  {language.creator2Desc}
+                </p>
                 <Link
                   href={language.creator2Link}
                   className=" ml-auto mt-2 flex w-fit"
@@ -143,7 +146,9 @@ function LanguageMain({ language }: any) {
                 <h3 className="text-[18px] font-semibold text-almostWhite">
                   {language.creator3Name}
                 </h3>
-                <p className="text-medGray">{language.creator3Desc}</p>
+                <p className="leading-relaxed text-medGray">
+                  {language.creator3Desc}
+                </p>
                 <Link
                   href={language.creator3Link}
                   className=" ml-auto mt-2 flex w-fit"

@@ -9,7 +9,6 @@ import {
 import Link from "next/link";
 
 export default function LanguageDropdown({ languages }: any) {
-  console.log(languages);
   return (
     <Dropdown className="bg-almostBlack text-medGray">
       <DropdownTrigger className="cursor-pointer">

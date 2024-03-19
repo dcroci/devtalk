@@ -6,7 +6,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Input } from "@nextui-org/react";
 function SnippetCreateForm({ language }: any) {
-  console.log(language);
   const [formState, action] = useFormState(createSnippet, { message: "" });
   const [code, setCode] = useState("");
   function handleEditorChange(value: string = "") {
