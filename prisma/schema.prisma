@@ -30,7 +30,7 @@ model Language {
   usedFor       String  @db.Text
   history       String  @db.Text
   logoUrl       String
-  latestRelease Float?
+  latestRelease String?
   documentation String?
 
   creator1Name  String?
