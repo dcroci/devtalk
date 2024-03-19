@@ -12,10 +12,9 @@ async function TalkingPointsAside({ language }: SideNavProps) {
   });
 
   return (
-    <aside className="flex h-fit w-full flex-col items-center rounded border-2 border-darkGray p-2">
-      <div className="mb-2 flex items-center gap-2">
-        <img className="w-[40px]" src={language.logoUrl} alt="" />
-        <h2 className=" text-[16px] font-semibold text-almostWhite">
+    <aside className="mb-2 flex h-fit w-full flex-col items-center rounded border-2 border-darkGray p-2">
+      <div className="mb-2 flex w-full items-center gap-2">
+        <h2 className=" w-full border-b-2 border-purple text-center text-[16px] font-semibold text-almostWhite">
           Talking Points
         </h2>
       </div>
@@ -23,7 +22,7 @@ async function TalkingPointsAside({ language }: SideNavProps) {
         {talkingPoints.map((talkingPoint) => (
           <Link
             key={talkingPoint.id}
-            href={`${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
+            href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
           >
             <div>
               <div className="mx-auto flex   items-center gap-4 rounded  p-2">

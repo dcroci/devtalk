@@ -8,6 +8,7 @@ import SideNav from "@/components/sections/SideNav";
 import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
 import { db } from "../../db";
 import { notFound } from "next/navigation";
+import SnippetsAside from "@/components/sections/SnippetsAside";
 
 const geistFont = localFont({
   src: "../../fonts/GeistVariableVF.ttf",
@@ -50,12 +51,20 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${geistFont.className} bg-almostBlack`}>
-      <body className="px-2 xl:container">
+      <body className="px-2 dark xl:container">
         <Providers>
           <Navbar />
           <SideNav language={language} />
           {children}
-          <TalkingPointsAside language={language} />
+          <div className="col-start-5 gap-4">
+            <img
+              src={`${language.logoUrl}`}
+              alt=""
+              className="mx-auto mb-2 w-40"
+            />
+            <TalkingPointsAside language={language} />
+            <SnippetsAside language={language} />
+          </div>
           <Footer />
         </Providers>
       </body>
