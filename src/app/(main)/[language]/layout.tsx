@@ -56,7 +56,7 @@ export default async function RootLayout({
           <Navbar />
           <SideNav language={language} />
           {children}
-          <div className="col-start-5 gap-4">
+          <div className="col-start-5 hidden gap-4 md:flex md:flex-col">
             <img
               src={`${language.logoUrl}`}
               alt=""

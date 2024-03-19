@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Filter from "@/components/common/Filter";
 import { Card, CardHeader, CardBody, Button } from "@nextui-org/react";
 import fixWordLength from "@/scripts/fixWordLength";
@@ -29,7 +30,7 @@ async function ShowShowcasePage({ params }: any) {
   });
 
   return (
-    <main className="col-span-3 ">
+    <main className=" col-start-1 col-end-6 md:col-start-2 md:col-end-5">
       <p className="text-small text-medGray ">
         <Link href="/">Home</Link> /{" "}
         <Link href={`/${""}`}>{language.name}</Link> /{" "}
@@ -42,7 +43,7 @@ async function ShowShowcasePage({ params }: any) {
         </h1>
         <CreateProjectForm languageId={language.id} languages={languages} />
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4  lg:grid-cols-2">
         {projects.map((project) => (
           <Card
             className="rounded-none border-l-2 border-purple bg-transparent py-4 "
@@ -63,7 +64,7 @@ async function ShowShowcasePage({ params }: any) {
             <CardBody className="mx-auto flex items-center justify-center overflow-visible py-2">
               <img
                 alt="Card background"
-                className="  mb-2 h-52 w-full w-full rounded-xl object-cover shadow-md shadow-purple"
+                className="  mb-2 h-52 w-full  rounded-xl object-cover shadow-md shadow-purple"
                 src={project.imgUrl}
               />
               <ul className="flex w-full flex-wrap items-center gap-2">

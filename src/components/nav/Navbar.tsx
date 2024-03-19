@@ -10,6 +10,7 @@ import {
   PopoverTrigger,
 } from "@nextui-org/react";
 import Image from "next/image";
+import HamburgerMenu from "./HamburgerMenu";
 
 async function Navbar() {
   const languages = await db.language.findMany({
@@ -24,6 +25,9 @@ async function Navbar() {
   return (
     <nav className="sticky top-0 z-50 col-span-full flex h-[70px] justify-between border-b-1 border-darkGray bg-almostBlack/95">
       <ul className="flex items-center gap-4">
+        <li className="md:hidden">
+          <HamburgerMenu />
+        </li>
         <li className="text-[16px] font-bold text-almostWhite">
           <Link href="/">DevTalk</Link>
         </li>
@@ -86,7 +90,10 @@ async function Navbar() {
               />
             </PopoverTrigger>
             <PopoverContent>
-              <form action={actions.signOut} className="hover:cursor-pointer">
+              <form
+                action={actions.signOut}
+                className="text-almostWhite hover:cursor-pointer"
+              >
                 <button type="submit">Sign Out</button>
               </form>
             </PopoverContent>
