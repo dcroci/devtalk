@@ -3,8 +3,11 @@ import type { TalkingPoint, User, Language } from "@prisma/client";
 import Link from "next/link";
 
 import type { PostWithData } from "@/app/db/queries/posts";
-import likeTalkingPoint from "@/actions/likeTalkingPoint";
+import { likeTalkingPoint } from "@/actions/talkingpoints";
 import { Button } from "@nextui-org/react";
+import fixWordLength from "@/scripts/fixWordLength";
+import TimeAgo from "../common/TimeAgo";
+import ShareBtn from "../common/ShareBtn";
 interface PostListProps {
   fetchData: () => Promise<PostWithData[]>;
 }
@@ -21,30 +24,37 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
     return (
       <div
         key={talkingPoint.id}
-        className="relative rounded border-2 border-darkGray  bg-almostBlack p-2"
+        className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-100 hover:border-l-8"
       >
-        {/* <Link href={paths.postShow(topicSlug, post.id)}> */}
-
-        <div className="flex min-h-[120px] flex-row items-center gap-8">
-          <div className="flex">
-            <img
-              src={talkingPoint.user.image || ""}
-              alt=""
-              className="h-14 w-14 rounded-full border-2 border-purple"
-            />
-          </div>
+        <div className="flex min-h-[120px] flex-row items-center gap-8 px-6 py-2  ">
           <div className="flex h-full flex-col justify-between">
             <div>
-              <Link
-                href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
-              >
-                <h3 className="text-xl font-semibold text-white">
-                  {talkingPoint.title}
-                </h3>
-              </Link>
-              <p className=" font-normal text-medGray">{talkingPoint.desc}</p>
+              <div className="mb-2 flex items-center gap-3">
+                <img
+                  src={talkingPoint.user.image || ""}
+                  alt=""
+                  className="h-10 min-h-10 w-10 min-w-10 rounded-full border-2 border-purple"
+                />
+
+                <span className="text-small text-medGray">
+                  {talkingPoint.user.name + " • "}
+                  <TimeAgo date={new Date(talkingPoint.createdAt)} />
+                </span>
+              </div>
+              <div>
+                <Link
+                  href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
+                >
+                  <h3 className="flex flex-col text-xl font-semibold text-white">
+                    {talkingPoint.title}{" "}
+                  </h3>
+                </Link>
+                <p className=" z-40  bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal text-transparent">
+                  {fixWordLength(talkingPoint.desc, 600)}
+                </p>
+              </div>
             </div>
-            <div className="mt-2 flex gap-4">
+            <div className="mt-2 flex items-center gap-4">
               <Button
                 size="sm"
                 className="flex items-center justify-center rounded border-2 border-purple bg-transparent text-small text-almostWhite"
@@ -55,12 +65,7 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
                   Comment
                 </Link>
               </Button>
-              <Button
-                size="sm"
-                className="flex items-center justify-center rounded bg-purple  text-small text-white"
-              >
-                Share
-              </Button>
+              <ShareBtn talkingPoint={talkingPoint} />
             </div>
           </div>
         </div>
@@ -70,7 +75,7 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                strokeWidth={1.5}
+                strokeWidth={2}
                 className="h-6 w-6 stroke-purple drop-shadow-xl hover:shadow-purple"
               >
                 <path
@@ -87,7 +92,7 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
+            strokeWidth={2}
             className="h-6 w-6 stroke-purple"
           >
             <path
@@ -97,10 +102,9 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
             />
           </svg>
         </div>
-        {/* </Link> */}
       </div>
     );
   });
 
-  return <div className="space-y-2">{renderedPosts}</div>;
+  return <div className="space-y-6">{renderedPosts}</div>;
 }
