@@ -96,3 +96,19 @@ export async function createTalkingPoint(
 //     `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`,
 //   );
 // }
+export async function editTalkingPoint(
+  talkingPoint: any,
+  title: string,
+  desc: string,
+) {
+  const talkingPointQ = await db.talkingPoint.update({
+    where: { id: talkingPoint.id },
+    data: {
+      title,
+      desc,
+    },
+  });
+  redirect(
+    `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`,
+  );
+}
