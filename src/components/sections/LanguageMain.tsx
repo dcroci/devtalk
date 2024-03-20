@@ -65,9 +65,8 @@ function LanguageMain({ language }: any) {
       <section id="resources" className="flex flex-col gap-4">
         <h2 className="text-[36px] font-bold text-almostWhite">Resources</h2>
         <p className="text-medGray">
-          Dive into coding with Dev Talk, where every line of code connects you
-          to a world of resources, expert insights, and a vibrant developer
-          community.
+          Find the most useful resources here to help you along your learning
+          journey.
         </p>
         <section
           id="contentCreators"
@@ -88,7 +87,7 @@ function LanguageMain({ language }: any) {
               <img
                 src={language.creator1Image}
                 alt=""
-                className=" mx-auto rounded-full md:col-start-1 md:col-end-1"
+                className=" mx-auto rounded-full border-2 border-purple md:col-start-1 md:col-end-1"
               />
               <div className="md:col-start-2 md:col-end-5">
                 <h3 className="text-[18px] font-semibold text-almostWhite">
@@ -114,7 +113,7 @@ function LanguageMain({ language }: any) {
               <img
                 src={language.creator2Image}
                 alt=""
-                className=" mx-auto rounded-full md:col-start-1 md:col-end-1"
+                className=" mx-auto rounded-full border-2 border-purple md:col-start-1 md:col-end-1"
               />
               <div className="md:col-start-2 md:col-end-5">
                 <h3 className="text-[18px] font-semibold text-almostWhite">
@@ -165,7 +164,7 @@ function LanguageMain({ language }: any) {
 
         <section
           id="courses"
-          className="grid grid-cols-2 gap-4 border-b-1 border-darkGray pb-4"
+          className="grid grid-cols-1 gap-4 border-b-1 border-darkGray pb-4 sm:grid-cols-2"
         >
           <section className="col-span-full">
             <h2 className="text-[24px] font-semibold text-almostWhite">
@@ -179,7 +178,7 @@ function LanguageMain({ language }: any) {
           </section>
           {language.course1Name && (
             <section className="grid grid-cols-1 gap-4">
-              <img src={language.course1Image} alt="" />
+              <img src={language.course1Image} alt="" className="w-full" />
               <div>
                 <h3 className="text-[18px] font-semibold text-almostWhite">
                   {language.course1Name}
@@ -198,7 +197,7 @@ function LanguageMain({ language }: any) {
             </section>
           )}
           {language.course2Name && (
-            <section className="grid grid-cols-1">
+            <section className="grid grid-cols-1 gap-2">
               <img src={language.course2Image} alt="" className="w-full" />
               <div>
                 <h3 className="text-[18px] font-semibold text-almostWhite">
@@ -220,7 +219,7 @@ function LanguageMain({ language }: any) {
         </section>
         <section
           id="books"
-          className="grid grid-cols-2 gap-4 border-b-1 border-darkGray pb-4"
+          className="grid grid-cols-1 gap-4 border-b-1 border-darkGray pb-4 sm:grid-cols-2"
         >
           <section className="col-span-full">
             <h2 className="text-[24px] font-semibold text-almostWhite">
