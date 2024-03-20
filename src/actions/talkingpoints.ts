@@ -101,7 +101,7 @@ export async function editTalkingPoint(
   title: string,
   desc: string,
 ) {
-  const talkingPointQ = await db.talkingPoint.update({
+  await db.talkingPoint.update({
     where: { id: talkingPoint.id },
     data: {
       title,
@@ -110,5 +110,14 @@ export async function editTalkingPoint(
   });
   redirect(
     `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`,
+  );
+}
+export async function deleteTalkingPoint(talkingPoint: any) {
+  await db.talkingPoint.delete({
+    where: { id: talkingPoint.id },
+  });
+
+  redirect(
+    `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`,
   );
 }

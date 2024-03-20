@@ -9,6 +9,7 @@ import {
   PopoverTrigger,
 } from "@nextui-org/react";
 import { notFound } from "next/navigation";
+import { deleteTalkingPoint } from "@/actions/talkingpoints";
 async function ShowTalkingPoint({ talkingPointId }: any) {
   const talkingPoint = await db.talkingPoint.findFirst({
     where: { id: talkingPointId },
@@ -17,6 +18,7 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
   if (!talkingPoint) {
     notFound();
   }
+  const deleteTalkingPointAction = deleteTalkingPoint.bind(null, talkingPoint);
   const currentUser = await auth();
   return (
     <>
@@ -99,9 +101,7 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
                       </Link>
                     </li>
                     <li>
-                      <form
-                      // action={deleteProjectAction}
-                      >
+                      <form action={deleteTalkingPointAction}>
                         <button
                           type="submit"
                           className="flex items-center justify-between gap-2 p-2 text-danger"
