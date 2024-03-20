@@ -25,10 +25,10 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
   );
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    if (formState.errors.title) {
+    if (formState.errors) {
       setIsLoading(false);
     }
-  }, [formState.errors.title]);
+  }, [formState.errors]);
   return (
     <Popover placement="left">
       <PopoverTrigger>
