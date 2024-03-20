@@ -57,7 +57,7 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
                 {<TimeAgo date={new Date(talkingPoint.createdAt)} />}
               </p>
             </div>
-            <p className="text-white">Dominik Croci</p>
+            <p className="text-white">{talkingPoint.user.name}</p>
           </div>
           <Popover>
             <PopoverTrigger>
@@ -79,8 +79,9 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
                 {currentUser?.user &&
                 currentUser?.user.id === talkingPoint?.user.id ? (
                   <>
-                    <li className="flex items-center justify-between gap-2 p-2">
+                    <li className="= p-2">
                       <Link
+                        className="flex items-center justify-between gap-2 text-sm text-almostWhite"
                         href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}/edit`}
                       >
                         Edit{" "}
@@ -104,7 +105,7 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
                       <form action={deleteTalkingPointAction}>
                         <button
                           type="submit"
-                          className="flex items-center justify-between gap-2 p-2 text-danger"
+                          className="flex items-center justify-between gap-2 p-2 text-sm text-danger"
                         >
                           Delete{" "}
                           <svg
