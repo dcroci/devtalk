@@ -110,3 +110,23 @@ export async function deleteProject(id: string, language: string) {
   revalidatePath(`/${language.toLowerCase()}/showcase`);
   redirect(`/${language.toLowerCase()}/showcase`);
 }
+export async function editProject(
+  project: any,
+  title: string,
+  desc: string,
+  imgUrl: string,
+  githubLink: string,
+  liveSiteLink: string,
+) {
+  const proj = await db.project.update({
+    where: { id: project.id },
+    data: {
+      title,
+      desc,
+      imgUrl,
+      githubLink,
+      liveSiteLink,
+    },
+  });
+  redirect(`/${project.language.name.toLowerCase()}/showcase/${project.id}`);
+}
