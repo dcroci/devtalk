@@ -10,6 +10,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@nextui-org/react";
+import { useEffect, useState } from "react";
 
 interface CreateTalkingPointFormProps {
   languageId: string;
@@ -22,6 +23,12 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
       errors: {},
     },
   );
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    if (formState.errors.title) {
+      setIsLoading(false);
+    }
+  }, [formState.errors.title]);
   return (
     <Popover placement="left">
       <PopoverTrigger>
@@ -30,7 +37,7 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="border-2 border-almostBlack bg-almostBlack text-almostBlack shadow-sm shadow-medGray">
-        <form action={action}>
+        <form action={action} onSubmit={() => setIsLoading(true)}>
           <div className="flex w-80 flex-col gap-4 p-4">
             <h3 className="text-lg font-semibold text-almostWhite">
               Create a Talking Point
@@ -60,6 +67,7 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
             <Button
               type="submit"
               className="bg-purple  font-bold text-almostWhite"
+              isLoading={isLoading}
             >
               Create
             </Button>
