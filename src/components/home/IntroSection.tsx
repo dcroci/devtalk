@@ -12,7 +12,7 @@ function IntroSection() {
         community.
       </p>
       <div className="col-span-full grid grid-cols-1 place-items-center gap-4 lg:grid-cols-2 2xl:grid-cols-3">
-        <section className="flex  h-full min-h-[380px] w-[500px]  flex-col justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple">
+        <section className="flex  h-full min-h-[380px] w-[400px]  flex-col justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple">
           <Image
             src="/assets/tp.png"
             alt="image of a talking point"
@@ -31,7 +31,7 @@ function IntroSection() {
             </p>
           </div>
         </section>
-        <section className="flex  h-full min-h-[380px] w-[500px]  flex-col justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple">
+        <section className="flex  h-full min-h-[380px] w-[400px]  flex-col justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple">
           <Image
             src="/assets/snippet.png"
             alt="image of a code snippet"
@@ -49,7 +49,7 @@ function IntroSection() {
             </p>
           </div>
         </section>
-        <section className="flex  h-full min-h-[380px] w-[500px]  flex-col justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple">
+        <section className="flex  h-full min-h-[380px] w-[400px]  flex-col justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple">
           <Image
             src="/assets/project.png"
             alt="image of a code snippet"
