@@ -127,7 +127,7 @@ export default function MobileNav({ language, languages, closeMenu }: any) {
                   Popular
                 </Link>
               </li>
-              <li>New</li>
+              {/* <li>New</li> */}
             </ul>
           </AccordionItem>
 

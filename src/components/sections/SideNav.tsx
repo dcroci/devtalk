@@ -81,7 +81,7 @@ export default function SideNav({ language }: any) {
           <Link href={`/${language.name.toLowerCase()}/talkingpoints/popular`}>
             Popular
           </Link>
-          <li>Create</li>
+          {/* <li>Create</li> */}
         </ul>
       </AccordionItem>
       <AccordionItem key="3" aria-label="Accordion 3" title="Snippets">
@@ -96,7 +96,7 @@ export default function SideNav({ language }: any) {
               Popular
             </Link>
           </li>
-          <li>New</li>
+          {/* <li>New</li> */}
         </ul>
       </AccordionItem>
 
