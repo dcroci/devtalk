@@ -35,7 +35,7 @@ export default function LanguageDropdown({ languages }: any) {
           <DropdownItem className="p-0 hover:bg-darkGray" key={language.id}>
             <Link
               href={`/${language.name.split(" ").join("").toLowerCase()}`}
-              className="flex gap-2 p-2"
+              className="flex items-center gap-2 p-2"
             >
               <img src={language.logoUrl} alt="" className="h-6 w-6" />
               {language.name}

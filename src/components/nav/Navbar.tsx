@@ -34,7 +34,7 @@ async function Navbar() {
         <li className="text-[16px] font-bold text-almostWhite">
           <Link href="/">DevTalk</Link>
         </li>
-        <ul className="flex items-center gap-2 text-[14px] font-normal text-medGray">
+        <ul className=" hidden items-center gap-2 text-[14px] font-normal text-medGray md:flex">
           <li className="cursor-pointer">
             <LanguageDropdown languages={languages} />
           </li>
