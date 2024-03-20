@@ -8,23 +8,18 @@ function SnippetEditForm({ snippet, language }: any) {
   function handleEditorChange(value: string = "") {
     setCode(value);
   }
-  const editSnippetAction = editSnippet.bind(
-    null,
-    snippet[0].id,
-    code,
-    language,
-  );
+  const editSnippetAction = editSnippet.bind(null, snippet.id, code, language);
   return (
     <div className="col-span-3">
       <h1 className="col-span-full h-fit text-[36px] font-bold text-almostWhite">
-        {`Edit ${snippet[0].title} `}
+        {`Edit ${snippet.title} `}
       </h1>
-      <h1>{snippet[0].title}</h1>
+      <h1>{snippet.title}</h1>
       <Editor
         height="40vh"
         theme="vs-dark"
         language="javascript"
-        defaultValue={snippet[0].code}
+        defaultValue={snippet.code}
         options={{ minimap: { enabled: false } }}
         onChange={handleEditorChange}
       />
