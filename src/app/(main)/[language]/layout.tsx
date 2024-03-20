@@ -53,7 +53,7 @@ export default async function RootLayout({
     <html lang="en" className={`${geistFont.className} bg-almostBlack`}>
       <body className="px-2 dark xl:container">
         <Providers>
-          <Navbar />
+          <Navbar language={language} />
           <SideNav language={language} />
           {children}
           <div className="col-start-5 hidden gap-4 md:flex md:flex-col">

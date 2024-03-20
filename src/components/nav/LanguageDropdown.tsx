@@ -10,9 +10,9 @@ import Link from "next/link";
 
 export default function LanguageDropdown({ languages }: any) {
   return (
-    <Dropdown className="bg-almostBlack text-medGray">
+    <Dropdown className="bg-almostBlack text-medGray ">
       <DropdownTrigger className="cursor-pointer">
-        <p className="flex items-center">
+        <p className="flex cursor-pointer  items-center gap-2 text-[14px] font-normal text-medGray">
           Languages
           <svg
             xmlns="http://www.w3.org/2000/svg"

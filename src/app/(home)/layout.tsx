@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistFont.className} bg-almostBlack`}>
-      <body className="px-2 xl:container">
+      <body className="px-2 dark xl:container">
         <Providers>
           <Navbar />
           {children}
