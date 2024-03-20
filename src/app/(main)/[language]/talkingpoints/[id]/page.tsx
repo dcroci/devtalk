@@ -18,7 +18,7 @@ async function ShowTalkingPointPage({ params }: any) {
   // }
   return (
     <>
-      <main className="col-start-1 col-end-6 md:col-start-2 md:col-end-5">
+      <main className="col-start-1 col-end-6 lg:col-start-2 lg:col-end-5">
         <ShowTalkingPoint talkingPointId={params.id} />
         <CommentCreateForm talkingPointId={params.id} startOpen />
         <CommentList fetchData={() => fetchCommentsByPostId(params.id)} />

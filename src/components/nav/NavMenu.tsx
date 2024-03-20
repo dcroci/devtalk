@@ -38,7 +38,7 @@ export default function NavMenu({ languages, language, session }: any) {
       <NavbarContent className="flex">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="stroke-white md:hidden"
+          className="stroke-white lg:hidden"
           icon={
             isMenuOpen ? (
               <svg
@@ -78,7 +78,7 @@ export default function NavMenu({ languages, language, session }: any) {
             DevTalk
           </Link>
         </NavbarItem>
-        <NavbarContent className=" hidden items-center gap-4 md:flex">
+        <NavbarContent className=" hidden items-center gap-4 lg:flex">
           <LanguageDropdown languages={languages} />
           <NavbarItem>
             <Link href="/" className="text-[14px] font-normal text-medGray">

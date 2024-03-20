@@ -40,7 +40,7 @@ async function ShowSnippetPage({ params }: any) {
   const { title, code } = snippet;
   return (
     <>
-      <div className="col-span-3">
+      <div className="col-span-5 lg:col-span-3">
         <div className=" flex items-center justify-between">
           <h1 className="flex h-14 items-center text-[36px] font-bold text-almostWhite">
             {title}

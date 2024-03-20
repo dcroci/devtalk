@@ -10,7 +10,7 @@ function SnippetEditForm({ snippet, language }: any) {
   }
   const editSnippetAction = editSnippet.bind(null, snippet.id, code, language);
   return (
-    <div className="col-span-3">
+    <div className="col-span-5 lg:col-span-5">
       <h1 className="col-span-full h-fit text-[36px] font-bold text-almostWhite">
         {`Edit ${snippet.title} `}
       </h1>

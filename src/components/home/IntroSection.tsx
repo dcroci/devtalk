@@ -1,7 +1,7 @@
 import Image from "next/image";
 function IntroSection() {
   return (
-    <section className="col-span-full mt-[80px] grid grid-cols-5">
+    <section className="col-span-full mt-[40px] grid grid-cols-5 lg:mt-[80px]">
       <h1 className="col-span-full p-6 text-center text-[60px] font-bold text-almostWhite">
         Where Code Meets{" "}
         <span className="text-shadow text-purple shadow-md">Community</span>

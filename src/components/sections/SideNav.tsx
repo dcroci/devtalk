@@ -17,7 +17,7 @@ export default function SideNav({ language }: any) {
       defaultExpandedKeys={["1", "2", "3", "4", "5"]}
       itemClasses={itemClasses}
       selectionMode="multiple"
-      className="hidden  md:flex md:flex-col"
+      className="hidden  lg:flex lg:flex-col"
     >
       <AccordionItem
         key="1"

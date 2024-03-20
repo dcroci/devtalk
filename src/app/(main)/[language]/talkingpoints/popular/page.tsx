@@ -27,7 +27,7 @@ async function TopicShowPage({ params }: TopicShowPageProps) {
 
   return (
     <>
-      <div className="col-start-1 col-end-6 gap-4 p-4  md:col-start-2 md:col-end-5">
+      <div className="col-start-1 col-end-6 gap-4 p-4  lg:col-start-2 lg:col-end-5">
         <p className="text-small text-medGray">
           <Link href="/">Home</Link> /{" "}
           <Link href={`/${language.name.toLowerCase()}`}>{language.name}</Link>{" "}
