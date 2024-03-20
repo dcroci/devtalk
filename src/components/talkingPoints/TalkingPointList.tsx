@@ -24,7 +24,7 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
     return (
       <div
         key={talkingPoint.id}
-        className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-100 hover:border-l-8"
+        className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-100 lg:hover:border-l-8"
       >
         <div className="flex min-h-[120px] flex-row items-center gap-8 px-6 py-2  ">
           <div className="flex h-full flex-col justify-between">
@@ -41,18 +41,19 @@ export default async function TalkingPointList({ fetchData }: PostListProps) {
                   <TimeAgo date={new Date(talkingPoint.createdAt)} />
                 </span>
               </div>
-              <div>
-                <Link
-                  href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
-                >
+              <Link
+                href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
+              >
+                <div>
                   <h3 className="mb-2 flex flex-col text-xl font-semibold text-white">
                     {talkingPoint.title}{" "}
                   </h3>
-                </Link>
-                <p className=" z-40  bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
-                  {fixWordLength(talkingPoint.desc, 600)}
-                </p>
-              </div>
+
+                  <p className=" z-40  bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
+                    {fixWordLength(talkingPoint.desc, 600)}
+                  </p>
+                </div>
+              </Link>
             </div>
             <div className="mt-2 flex items-center gap-4">
               <Button

@@ -37,7 +37,7 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
       </p>
 
       <main className="relative my-4 rounded">
-        <div className="mb-2 flex flex-row-reverse items-center justify-between gap-2 border-b-2 border-darkGray">
+        <div className="mb-2 flex flex-col-reverse justify-between gap-2 border-b-2 border-darkGray">
           <div className=" flex  gap-2">
             <Avatar
               src={talkingPoint?.user?.image || ""}
@@ -47,30 +47,30 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
             <div className="flex flex-col items-start">
               <div className=" flex items-center gap-2">
                 <p className="text-gray-400">
+                  <p className="text-white">{talkingPoint.user.name}</p>
                   {<TimeAgo date={new Date(talkingPoint.createdAt)} />}
                 </p>
               </div>
-              <p className="text-white">{talkingPoint.user.name}</p>
             </div>
-            <Popover>
-              <PopoverTrigger>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  className="h-6 w-6 cursor-pointer stroke-almostWhite"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-                  />
-                </svg>
-              </PopoverTrigger>
-              <PopoverContent>
-                <ul className="text-almostWhite">
-                  {currentUser?.user &&
-                  currentUser?.user.id === talkingPoint?.user.id ? (
+            {currentUser?.user &&
+            currentUser?.user.id === talkingPoint?.user.id ? (
+              <Popover>
+                <PopoverTrigger>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    className="h-6 w-6 cursor-pointer stroke-almostWhite"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                    />
+                  </svg>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <ul className="text-almostWhite">
                     <>
                       <li className="= p-2">
                         <Link
@@ -119,14 +119,12 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
                         </form>
                       </li>
                     </>
-                  ) : (
-                    ""
-                  )}
-                </ul>
-              </PopoverContent>
-            </Popover>
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            ) : null}
           </div>
-          <h1 className="mb-2  py-2  text-2xl text-[36px] font-bold leading-10 text-almostWhite ">
+          <h1 className=" py-2  text-2xl text-[36px] font-bold leading-10 text-almostWhite ">
             {talkingPoint.title}
           </h1>
         </div>

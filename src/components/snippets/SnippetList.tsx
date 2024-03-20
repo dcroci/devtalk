@@ -6,7 +6,7 @@ interface SnippetList {
 }
 function SnippetList({ snippets, language }: SnippetList) {
   return (
-    <div className="grid w-full grid-cols-2 gap-4">
+    <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
       {snippets.map((snippet: any) => (
         <SnippetCard
           snippet={snippet}
