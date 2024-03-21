@@ -129,7 +129,10 @@ export default function NavMenu({ languages, language, session }: any) {
                 action={actions.signOut}
                 className="text-almostWhite hover:cursor-pointer"
               >
-                <button type="submit" className="flex items-center gap-2">
+                <button
+                  type="submit"
+                  className="flex w-full items-center justify-between gap-2 text-sm"
+                >
                   Sign Out{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -144,6 +147,24 @@ export default function NavMenu({ languages, language, session }: any) {
                     />
                   </svg>
                 </button>
+                <Link
+                  href={`/profile/${session.user.id}`}
+                  className="flex w-full items-center justify-between gap-2 text-sm text-almostWhite hover:cursor-pointer"
+                >
+                  View Profile
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    className="h-6 w-6 stroke-almostWhite"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                    />
+                  </svg>
+                </Link>
               </form>
             </PopoverContent>
           </Popover>
