@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+
 import "../../globals.css";
 import { Providers } from "../../providers";
 import Navbar from "@/components/nav/Navbar";
@@ -9,11 +9,6 @@ import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
 import { db } from "../../db";
 import { notFound } from "next/navigation";
 import SnippetsAside from "@/components/sections/SnippetsAside";
-
-// const geistFont = localFont({
-//   src: "../../fonts/GeistVariableVF.ttf",
-//   display: "swap",
-// });
 
 export const metadata: Metadata = {
   title: "DevTalk",

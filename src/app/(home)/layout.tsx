@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+
 import "../globals.css";
 import { Providers } from "../providers";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/sections/Footer";
-
-const geistFont = localFont({
-  src: "../fonts/GeistVariableVF.ttf",
-  display: "fallback",
-});
 
 export const metadata: Metadata = {
   title: "DevTalk",
@@ -21,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistFont.className} bg-almostBlack`}>
+    <html lang="en" className={` bg-almostBlack`}>
       <body className="dark xl:container">
         <Providers>
           <Navbar />
