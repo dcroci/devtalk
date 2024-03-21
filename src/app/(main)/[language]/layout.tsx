@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "../globals.css";
-import { Providers } from "../providers";
+import "../../globals.css";
+import { Providers } from "../../providers";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/sections/Footer";
 import SideNav from "@/components/sections/SideNav";
 import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
-import { db } from "../db";
+import { db } from "../../db";
 import { notFound } from "next/navigation";
 import SnippetsAside from "@/components/sections/SnippetsAside";
 
 const geistFont = localFont({
-  src: "../fonts/GeistVariableVF.ttf",
+  src: "../../fonts/GeistVariableVF.ttf",
   display: "swap",
 });
 
@@ -48,12 +48,13 @@ export default async function RootLayout({
   if (!language) {
     notFound();
   }
+  // console.log(language);
 
   return (
     <html lang="en" className={`${geistFont.className} bg-almostBlack`}>
       <body className="dark xl:container">
         <Providers>
-          <Navbar language={language} />
+          <Navbar language={language} params={params} />
           <SideNav language={language} />
           {children}
           <div className="col-start-5 hidden gap-4 lg:flex lg:flex-col">

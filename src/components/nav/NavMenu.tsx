@@ -16,7 +16,6 @@ import {
 } from "@nextui-org/react";
 import LanguageDropdown from "./LanguageDropdown";
 import * as actions from "@/actions";
-import SideNav from "../sections/SideNav";
 import MobileNav from "../sections/MobileNav";
 import Image from "next/image";
 
