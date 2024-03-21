@@ -7,7 +7,7 @@ import Footer from "@/components/sections/Footer";
 
 const geistFont = localFont({
   src: "../fonts/GeistVariableVF.ttf",
-  display: "swap",
+  display: "fallback",
 });
 
 export const metadata: Metadata = {
