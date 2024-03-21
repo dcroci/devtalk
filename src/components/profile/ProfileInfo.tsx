@@ -1,6 +1,6 @@
 import { Avatar } from "@nextui-org/react";
 
-function ProfileInfo({ user }) {
+function ProfileInfo({ user }: any) {
   return (
     <div className="mb-2 border-b-2 border-darkGray">
       <div className="flex items-center gap-4">

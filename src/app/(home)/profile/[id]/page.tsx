@@ -7,7 +7,7 @@ import ProfileInfo from "@/components/profile/ProfileInfo";
 import getCurrentSession from "@/scripts/getCurrentSession";
 import { notFound } from "next/navigation";
 
-async function ShowAccountPage({ params }) {
+async function ShowAccountPage({ params }: any) {
   const { id } = params;
   const user = await db.user.findFirst({
     where: { id },
