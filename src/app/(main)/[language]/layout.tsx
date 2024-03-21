@@ -10,10 +10,10 @@ import { db } from "../../db";
 import { notFound } from "next/navigation";
 import SnippetsAside from "@/components/sections/SnippetsAside";
 
-const geistFont = localFont({
-  src: "../../fonts/GeistVariableVF.ttf",
-  display: "swap",
-});
+// const geistFont = localFont({
+//   src: "../../fonts/GeistVariableVF.ttf",
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: "DevTalk",
@@ -51,7 +51,7 @@ export default async function RootLayout({
   // console.log(language);
 
   return (
-    <html lang="en" className={`${geistFont.className} bg-almostBlack`}>
+    <html lang="en" className={`bg-almostBlack`}>
       <body className="dark xl:container">
         <Providers>
           <Navbar language={language} params={params} />
