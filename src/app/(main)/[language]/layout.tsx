@@ -51,7 +51,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${geistFont.className} bg-almostBlack`}>
-      <body className="px-2 dark xl:container">
+      <body className="dark xl:container">
         <Providers>
           <Navbar language={language} />
           <SideNav language={language} />

@@ -61,17 +61,17 @@ function Carousel() {
     return controls?.stop;
   }, [xTranslation, width, duration, rerender, mustFinish]);
   return (
-    <div className="col-span-full my-[80px] flex w-full flex-col gap-2 overflow-hidden py-8">
-      <h2 className="col-span-full  text-center text-[50px] font-bold text-almostWhite">
+    <div className="col-span-full my-[80px] flex  w-full flex-col gap-2 overflow-hidden py-8">
+      <h2 className="col-span-full p-6 text-center text-[30px] font-bold text-almostWhite sm:text-[60px]">
         A community for all developers
       </h2>
-      <p className="pb-4 text-center font-medium text-medGray">
+      <p className="col-start-1 col-end-6 mb-10 px-2 pb-4 text-center text-[16px] font-normal text-medGray sm:col-start-2 sm:col-end-5 sm:text-[20px] md:px-8">
         Dive into coding with Dev Talk, where every line of code connects you to
         a world of resources, expert insights, and a vibrant developer
         community.
       </p>
       <motion.div
-        className=" flex w-full gap-4"
+        className=" flex h-[400px] w-full gap-4"
         ref={ref}
         style={{ x: xTranslation }}
         onHoverStart={() => {
