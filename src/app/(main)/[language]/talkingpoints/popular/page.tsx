@@ -10,10 +10,14 @@ interface TopicShowPageProps {
   params: {
     language: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-async function TopicShowPage({ params }: TopicShowPageProps) {
-  const language = await db.language.findFirst({
+async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
+  const filter = String(searchParams.filter) || "new";
+  let language: any;
+
+  language = await db.language.findFirst({
     where: {
       name: {
         equals: params.language,
@@ -21,6 +25,7 @@ async function TopicShowPage({ params }: TopicShowPageProps) {
       },
     },
   });
+
   if (!language) {
     notFound();
   }
@@ -46,7 +51,7 @@ async function TopicShowPage({ params }: TopicShowPageProps) {
         </div>
         <div>
           <TalkingPointList
-            fetchData={() => fetchPostsByTopicSlug(language.name)}
+            fetchData={() => fetchPostsByTopicSlug(language.name, filter)}
           />
         </div>
       </div>

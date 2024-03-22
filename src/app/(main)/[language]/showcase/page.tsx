@@ -7,7 +7,8 @@ import Link from "next/link";
 import CreateProjectForm from "@/components/showcase/CreateProjectForm";
 import { notFound } from "next/navigation";
 
-async function ShowShowcasePage({ params }: any) {
+async function ShowShowcasePage({ params, searchParams }: any) {
+  const filter = searchParams.filter;
   const language = await db.language.findFirst({
     where: {
       name: {
@@ -25,10 +26,56 @@ async function ShowShowcasePage({ params }: any) {
   if (!language) {
     notFound();
   }
-  const projects = await db.project.findMany({
-    where: { languageId: language.id },
-  });
-
+  let projects: any;
+  if (filter === "new" || !filter) {
+    projects = await db.project.findMany({
+      where: { languageId: language.id },
+      orderBy: { createdAt: "desc" },
+    });
+  } else if (filter === "comments") {
+    projects = await db.project.findMany({
+      where: { languageId: language.id },
+      include: {
+        _count: { select: { comments: true } },
+      },
+      orderBy: {
+        comments: {
+          _count: "desc",
+        },
+      },
+    });
+  }
+  //REWRITE ONCE LIKES ARE LINKED TO TALKING POINTS
+  else if (filter == "likes") {
+    projects = await db.project.findMany({
+      where: { languageId: language.id },
+      include: {
+        _count: { select: { comments: true } },
+      },
+      orderBy: {
+        comments: {
+          _count: "asc",
+        },
+      },
+    });
+  } else if (filter == "oldest") {
+    projects = await db.project.findMany({
+      where: { languageId: language.id },
+      include: {
+        _count: { select: { comments: true } },
+      },
+      orderBy: {
+        createdAt: "asc",
+      },
+    });
+  } else {
+    projects = await db.project.findMany({
+      where: { languageId: language.id },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+  }
   return (
     <main className=" col-start-1 col-end-6 lg:col-start-2 lg:col-end-5">
       <p className="text-small text-medGray ">

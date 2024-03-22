@@ -8,12 +8,13 @@ import { Button } from "@nextui-org/react";
 import fixWordLength from "@/scripts/fixWordLength";
 import TimeAgo from "../common/TimeAgo";
 import ShareBtn from "../common/ShareBtn";
-interface PostListProps {
-  fetchData: () => Promise<PostWithData[]>;
-}
-export default async function TalkingPointList({ fetchData }: PostListProps) {
+// interface PostListProps {
+//   fetchData: any;
+//   filter: string;
+// }
+export default async function TalkingPointList({ fetchData }: any) {
   const talkingPoints = await fetchData();
-  const renderedPosts = talkingPoints.map((talkingPoint) => {
+  const renderedPosts = talkingPoints.map((talkingPoint: any) => {
     const topicSlug = talkingPoint.language.name;
 
     if (!topicSlug) {
