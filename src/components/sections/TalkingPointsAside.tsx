@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { db } from "@/app/db";
 import Link from "next/link";
 
@@ -14,7 +15,7 @@ async function TalkingPointsAside({ language }: SideNavProps) {
   return (
     <aside className="mb-2 flex h-fit w-full flex-col items-center rounded border-2 border-darkGray p-2">
       <div className="mb-2 flex w-full items-center gap-2">
-        <h2 className=" w-full border-b-2 border-purple text-center text-[16px] font-semibold text-almostWhite">
+        <h2 className=" w-full border-b-2 border-purple p-2 text-center text-[20px] font-semibold text-almostWhite">
           Talking Points
         </h2>
       </div>
@@ -26,19 +27,6 @@ async function TalkingPointsAside({ language }: SideNavProps) {
           >
             <div>
               <div className="mx-auto flex   items-center gap-4 rounded  p-2">
-                {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                className="h-[40px] w-[40px] stroke-purple"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                />
-              </svg> */}
                 <img
                   src={talkingPoint.user.image || ""}
                   alt=""
@@ -46,7 +34,7 @@ async function TalkingPointsAside({ language }: SideNavProps) {
                 />
                 <div>
                   <h3
-                    className=" text-[16px] text-almostWhite
+                    className=" mb-2 text-[16px] font-medium leading-relaxed text-almostWhite
           "
                   >
                     {talkingPoint.title}

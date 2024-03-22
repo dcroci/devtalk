@@ -135,6 +135,7 @@ export default function MobileNav({ language, languages, closeMenu }: any) {
             key="5"
             aria-label="Accordion 3"
             title="Project Showcase"
+            className="mb-10"
           >
             <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
               <li onClick={closeMenu}>

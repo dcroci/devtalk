@@ -10,7 +10,7 @@ async function SnippetsAside({ language }: any) {
   return (
     <aside className="col-start-5 flex h-fit w-full flex-col items-center rounded border-2 border-darkGray p-2">
       <div className="mb-2 flex w-full items-center gap-2 ">
-        <h2 className=" w-full border-b-2 border-purple text-center text-[16px] font-semibold text-almostWhite">
+        <h2 className=" w-full border-b-2 border-purple p-2 text-center text-[20px] font-semibold text-almostWhite">
           Snippets
         </h2>
       </div>
@@ -29,8 +29,8 @@ async function SnippetsAside({ language }: any) {
                 />
                 <div>
                   <h3
-                    className=" text-[16px] text-almostWhite
-        "
+                    className=" mb-2 text-[16px] font-medium leading-relaxed text-almostWhite
+                    "
                   >
                     {snippet.title}
                   </h3>

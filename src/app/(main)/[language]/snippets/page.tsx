@@ -21,7 +21,7 @@ async function ShowSnippetsPage({ params }: any) {
   }
   return (
     <>
-      <main className="col-start-1 col-end-6 flex flex-col gap-4 lg:col-start-2 lg:col-end-5">
+      <main className="col-start-1 col-end-6 flex flex-col gap-4 px-2 lg:col-start-2 lg:col-end-5">
         <p className="text-small text-medGray">
           <Link href="/">Home</Link> /{" "}
           <Link href={`/${language.name.toLowerCase()}`}>{language.name}</Link>{" "}

@@ -31,19 +31,19 @@ function LanguageMain({ language }: any) {
       </section>
       <section id="useCase" className="border-b-1 border-darkGray pb-4">
         {/* This is where the language use case will go dynamically */}
-        <h2 className="text-[24px] font-semibold text-almostWhite">
+        <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
           What is {language.name} used for?
         </h2>
         <p className="leading-relaxed text-medGray">{language.usedFor}</p>
       </section>
       <section id="history" className="border-b-1 border-darkGray pb-4">
-        <h2 className="text-[24px] font-semibold text-almostWhite">
+        <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
           The History of {language.name}
         </h2>
         <p className="leading-relaxed text-medGray">{language.history}</p>
       </section>
       <section id="documentation" className="border-b-1 border-darkGray pb-4">
-        <h2 className="text-[24px] font-semibold text-almostWhite">
+        <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
           Documentation
         </h2>
         <p className="text-medGray">
@@ -53,8 +53,11 @@ function LanguageMain({ language }: any) {
           </a>
         </p>
       </section>
-      <section id="latestRelease" className="border-b-1 border-darkGray pb-4">
-        <h2 className="text-[24px] font-semibold text-almostWhite">
+      <section
+        id="latestRelease"
+        className="mb-[60px] border-b-2 border-purple pb-[60px]"
+      >
+        <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
           Latest Release
         </h2>
         <p className="text-medGray">
@@ -73,10 +76,10 @@ function LanguageMain({ language }: any) {
           className="flex flex-col gap-4 border-b-1 border-darkGray pb-4"
         >
           <section>
-            <h2 className="text-[24px] font-semibold text-almostWhite">
+            <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
               Content Creators
             </h2>
-            <p className="text-medGray">
+            <p className="leading-relaxed text-medGray">
               Dive into coding with Dev Talk, where every line of code connects
               you to a world of resources, expert insights, and a vibrant
               developer community.
@@ -145,7 +148,7 @@ function LanguageMain({ language }: any) {
                 <h3 className="text-[18px] font-semibold text-almostWhite">
                   {language.creator3Name}
                 </h3>
-                <p className="leading-relaxed text-medGray">
+                <p className="mb-2 leading-relaxed text-medGray">
                   {language.creator3Desc}
                 </p>
                 <Link
@@ -167,29 +170,31 @@ function LanguageMain({ language }: any) {
           className="grid grid-cols-1 gap-4 border-b-1 border-darkGray pb-4 sm:grid-cols-2"
         >
           <section className="col-span-full">
-            <h2 className="text-[24px] font-semibold text-almostWhite">
+            <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
               Popular Courses
             </h2>
-            <p className="text-medGray">
+            <p className="leading-relaxed text-medGray">
               Dive into coding with Dev Talk, where every line of code connects
               you to a world of resources, expert insights, and a vibrant
               developer community.
             </p>
           </section>
           {language.course1Name && (
-            <section className="grid grid-cols-1 gap-4">
+            <section className="relative grid grid-cols-1 gap-4 pb-10">
               <img src={language.course1Image} alt="" className="w-full" />
               <div>
-                <h3 className="text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
                   {language.course1Name}
                 </h3>
-                <p className="text-medGray">{language.course1Desc}</p>
+                <p className="leading-relaxed text-medGray">
+                  {language.course1Desc}
+                </p>
                 <a
                   href={language.course1Link}
                   className=" ml-auto flex w-fit "
                   target="_blank"
                 >
-                  <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  <Button className="absolute bottom-0 right-0 rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
                     View Course
                   </Button>
                 </a>
@@ -197,19 +202,21 @@ function LanguageMain({ language }: any) {
             </section>
           )}
           {language.course2Name && (
-            <section className="grid grid-cols-1 gap-2">
+            <section className="relative grid grid-cols-1 gap-2 pb-10">
               <img src={language.course2Image} alt="" className="w-full" />
               <div>
-                <h3 className="text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
                   {language.course2Name}
                 </h3>
-                <p className="text-medGray">{language.course2Desc}</p>
+                <p className="mb-2 leading-relaxed text-medGray">
+                  {language.course2Desc}
+                </p>
                 <a
                   href={language.course2Link}
                   className=" ml-auto flex w-fit "
                   target="_blank"
                 >
-                  <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  <Button className="absolute bottom-0 right-0 rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
                     View Course
                   </Button>
                 </a>
@@ -222,29 +229,31 @@ function LanguageMain({ language }: any) {
           className="grid grid-cols-1 gap-4 border-b-1 border-darkGray pb-4 sm:grid-cols-2"
         >
           <section className="col-span-full">
-            <h2 className="text-[24px] font-semibold text-almostWhite">
+            <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
               Popular Books
             </h2>
-            <p className="text-medGray">
+            <p className="leading-relaxed text-medGray">
               Dive into coding with Dev Talk, where every line of code connects
               you to a world of resources, expert insights, and a vibrant
               developer community.
             </p>
           </section>
           {language.book1Name && (
-            <section className="flex flex-col">
-              <img src={language.book1Image} alt="" />
+            <section className="relative flex flex-col pb-10">
+              <img src={language.book1Image} alt="" className="mb-2 w-80" />
               <div>
-                <h3 className="text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
                   {language.book1Name}
                 </h3>
-                <p className="text-medGray">{language.book1Desc}</p>
+                <p className="mb-2 leading-relaxed text-medGray">
+                  {language.book1Desc}
+                </p>
                 <a
                   href={language.book1Link}
                   className=" ml-auto flex w-fit "
                   target="_blank"
                 >
-                  <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  <Button className="absolute bottom-0 right-0 rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
                     View Book
                   </Button>
                 </a>
@@ -252,19 +261,21 @@ function LanguageMain({ language }: any) {
             </section>
           )}
           {language.book2Name && (
-            <section className="flex flex-col">
-              <img src={language.book2Image} alt="" className="w-full" />
+            <section className="relative flex flex-col">
+              <img src={language.book2Image} alt="" className="mb-2 w-80" />
               <div>
-                <h3 className="text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
                   {language.book2Name}
                 </h3>
-                <p className="text-medGray">{language.book2Desc}</p>
+                <p className="mb-2 leading-relaxed text-medGray">
+                  {language.book2Desc}
+                </p>
                 <a
                   href={language.book2Link}
                   className=" ml-auto flex w-fit "
                   target="_blank"
                 >
-                  <Button className="rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
+                  <Button className="absolute bottom-0 right-0 rounded bg-purple px-4 py-2 font-semibold text-almostWhite">
                     View Book
                   </Button>
                 </a>

@@ -6,6 +6,7 @@ import { db } from "@/app/db";
 import Link from "next/link";
 import CreateProjectForm from "@/components/showcase/CreateProjectForm";
 import { notFound } from "next/navigation";
+import { Project } from "@prisma/client";
 
 async function ShowShowcasePage({ params, searchParams }: any) {
   const filter = searchParams.filter;
@@ -77,21 +78,21 @@ async function ShowShowcasePage({ params, searchParams }: any) {
     });
   }
   return (
-    <main className=" col-start-1 col-end-6 lg:col-start-2 lg:col-end-5">
+    <main className=" col-start-1 col-end-6 px-2 lg:col-start-2 lg:col-end-5">
       <p className="text-small text-medGray ">
         <Link href="/">Home</Link> /{" "}
         <Link href={`/${""}`}>{language.name}</Link> /{" "}
         <span className="text-almostWhite">Showcase</span>
       </p>
       <Filter />
-      <div className="flex w-full items-center justify-between">
+      <div className="mb-2 flex w-full items-center justify-between">
         <h1 className=" text-[36px] font-bold text-almostWhite">
           {language.name} Showcase
         </h1>
         <CreateProjectForm languageId={language.id} languages={languages} />
       </div>
-      <div className="grid grid-cols-1 gap-4  lg:grid-cols-2">
-        {projects.map((project) => (
+      <div className="grid grid-cols-1 gap-4  sm:grid-cols-2">
+        {projects.map((project: Project) => (
           <Card
             className="rounded-none border-l-2 border-purple bg-transparent py-4 "
             key={project.id}
@@ -115,7 +116,7 @@ async function ShowShowcasePage({ params, searchParams }: any) {
                 src={project.imgUrl}
               />
               <ul className="flex w-full flex-wrap items-center gap-2">
-                {project.technologies.map((language, key) => (
+                {project.technologies.map((language: string, key: number) => (
                   <Link href={`/${language.toLowerCase()}`} key={key}>
                     <li className="w-fit cursor-pointer rounded px-1 py-1 text-tiny font-bold text-medGray">
                       <Button

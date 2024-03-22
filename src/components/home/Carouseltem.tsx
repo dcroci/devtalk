@@ -32,7 +32,7 @@ function CarouselItem({ image, language }: any) {
           </motion.div>
         )}
       </AnimatePresence>
-      <img src={image} alt={image} className="h-min w-fit" />
+      <img src={image} alt={image} className="h-min w-full" />
     </motion.div>
   );
 }

@@ -130,7 +130,7 @@ export default function NavMenu({ languages, language, session }: any) {
               >
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-between gap-2 text-sm"
+                  className="flex w-full items-center justify-between gap-2 border-b-2 border-darkGray px-1 py-3 text-sm"
                 >
                   Sign Out{" "}
                   <svg
@@ -148,7 +148,7 @@ export default function NavMenu({ languages, language, session }: any) {
                 </button>
                 <Link
                   href={`/profile/${session.user.id}`}
-                  className="flex w-full items-center justify-between gap-2 text-sm text-almostWhite hover:cursor-pointer"
+                  className="flex w-full items-center justify-between gap-2 px-1 py-3 text-sm text-almostWhite hover:cursor-pointer"
                 >
                   View Profile
                   <svg
