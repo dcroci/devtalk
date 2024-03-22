@@ -239,13 +239,17 @@ function LanguageMain({ language }: any) {
             </p>
           </section>
           {language.book1Name && (
-            <section className="relative flex flex-col pb-10">
-              <img src={language.book1Image} alt="" className="mb-2 w-80" />
-              <div>
-                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
+            <section className="relative flex flex-col">
+              <img
+                src={language.book1Image}
+                alt=""
+                className="mx-auto mb-2 w-80 sm:ml-0 sm:mr-auto"
+              />
+              <div className="pb-10">
+                <h3 className="mb-2 text-[18px] font-semibold leading-relaxed text-almostWhite">
                   {language.book1Name}
                 </h3>
-                <p className="mb-2 leading-relaxed text-medGray">
+                <p className="mb-2 leading-relaxed text-medGray ">
                   {language.book1Desc}
                 </p>
                 <a
@@ -262,9 +266,13 @@ function LanguageMain({ language }: any) {
           )}
           {language.book2Name && (
             <section className="relative flex flex-col">
-              <img src={language.book2Image} alt="" className="mb-2 w-80" />
-              <div>
-                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
+              <img
+                src={language.book2Image}
+                alt=""
+                className="mx-auto mb-2 w-80 sm:ml-0 sm:mr-auto"
+              />
+              <div className="pb-10">
+                <h3 className="mb-2 text-[18px] font-semibold leading-relaxed text-almostWhite">
                   {language.book2Name}
                 </h3>
                 <p className="mb-2 leading-relaxed text-medGray">
