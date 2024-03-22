@@ -4,6 +4,7 @@ import "../globals.css";
 import { Providers } from "../providers";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/sections/Footer";
+import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
   title: "DevTalk",
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={` bg-almostBlack`}>
+    <html lang="en" className={` ${GeistSans.className} bg-almostBlack`}>
       <body className="dark xl:container">
         <Providers>
           <Navbar />

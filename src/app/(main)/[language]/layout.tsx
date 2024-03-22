@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
 
 import "../../globals.css";
 import { Providers } from "../../providers";
@@ -46,7 +47,7 @@ export default async function RootLayout({
   // console.log(language);
 
   return (
-    <html lang="en" className={`bg-almostBlack`}>
+    <html lang="en" className={`${GeistSans.className} bg-almostBlack`}>
       <body className="dark xl:container">
         <Providers>
           <Navbar language={language} params={params} />
