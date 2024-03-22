@@ -38,7 +38,9 @@ export default function ShowComment({ commentId, comments }: ShowCommentProps) {
           <p className="text-sm font-medium  text-almostWhite">
             {comment.user.name}
           </p>
-          <p className=" text-[14px] text-almostWhite">{comment.content}</p>
+          <p className=" text-[14px] leading-relaxed text-almostWhite">
+            {comment.content}
+          </p>
 
           <CommentCreateForm
             talkingPointId={comment.talkingPointId}

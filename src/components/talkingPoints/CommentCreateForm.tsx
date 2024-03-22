@@ -28,7 +28,10 @@ export default function CommentCreateForm({
     if (formState.errors.content) {
       setIsLoading(false);
     }
-  }, [formState.errors.content]);
+    if (formState.success) {
+      setIsLoading(false);
+    }
+  }, [formState]);
 
   useEffect(() => {
     if (formState.success) {
