@@ -1,9 +1,10 @@
 "use server";
 
 import { z } from "zod";
-import { auth } from "@/auth";
+
 import { db } from "@/app/db";
 import { revalidatePath } from "next/cache";
+import getCurrentSession from "@/scripts/getCurrentSession";
 
 //CREATE COMMENT
 const createCommentSchema = z.object({
@@ -31,7 +32,7 @@ export async function createComment(
     };
   }
 
-  const session = await auth();
+  const session = await getCurrentSession();
   if (!session || !session.user) {
     return {
       errors: {
