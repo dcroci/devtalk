@@ -93,7 +93,7 @@ function LanguageMain({ language }: any) {
                 className=" mx-auto rounded-full border-2 border-purple md:col-start-1 md:col-end-1"
               />
               <div className="md:col-start-2 md:col-end-5">
-                <h3 className="text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
                   {language.creator1Name}
                 </h3>
                 <p className="leading-relaxed text-medGray">
@@ -119,7 +119,7 @@ function LanguageMain({ language }: any) {
                 className=" mx-auto rounded-full border-2 border-purple md:col-start-1 md:col-end-1"
               />
               <div className="md:col-start-2 md:col-end-5">
-                <h3 className="text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
                   {language.creator2Name}
                 </h3>
                 <p className="leading-relaxed text-medGray">
@@ -142,10 +142,10 @@ function LanguageMain({ language }: any) {
               <img
                 src={language.creator3Image}
                 alt=""
-                className=" mx-auto rounded-full md:col-start-1 md:col-end-1"
+                className=" mx-auto rounded-full border-2 border-purple md:col-start-1 md:col-end-1"
               />
               <div className="md:col-start-2 md:col-end-5">
-                <h3 className="text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
                   {language.creator3Name}
                 </h3>
                 <p className="mb-2 leading-relaxed text-medGray">
@@ -183,7 +183,7 @@ function LanguageMain({ language }: any) {
             <section className="relative grid grid-cols-1 gap-4 pb-10">
               <img src={language.course1Image} alt="" className="w-full" />
               <div>
-                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold leading-relaxed text-almostWhite">
                   {language.course1Name}
                 </h3>
                 <p className="leading-relaxed text-medGray">
@@ -205,7 +205,7 @@ function LanguageMain({ language }: any) {
             <section className="relative grid grid-cols-1 gap-2 pb-10">
               <img src={language.course2Image} alt="" className="w-full" />
               <div>
-                <h3 className="mb-2 text-[18px] font-semibold text-almostWhite">
+                <h3 className="mb-2 text-[18px] font-semibold leading-relaxed text-almostWhite">
                   {language.course2Name}
                 </h3>
                 <p className="mb-2 leading-relaxed text-medGray">
