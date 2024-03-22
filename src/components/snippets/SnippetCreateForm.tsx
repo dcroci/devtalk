@@ -2,19 +2,29 @@
 import { createSnippet } from "@/actions/snippets";
 import { useFormState } from "react-dom";
 import { Editor } from "@monaco-editor/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Input } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 function SnippetCreateForm({ language }: any) {
   const [formState, action] = useFormState(createSnippet, { message: "" });
   const [code, setCode] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    if (formState.message) {
+      setIsLoading(false);
+    }
+  }, [formState]);
   function handleEditorChange(value: string = "") {
     setCode(value);
   }
 
   return (
-    <form action={action} className="col-span-3 ">
-      <p className="text-small text-medGray">
+    <form
+      action={action}
+      className="col-span-full px-2 md:col-span-3"
+      onSubmit={() => setIsLoading(true)}
+    >
+      <p className="mb-2 text-small text-medGray">
         <Link href="/">Home</Link> /{" "}
         <Link href={`/${language.name.toLowerCase()}`}>{language.name}</Link> /{" "}
         <span>Snippets</span> /{" "}
@@ -25,7 +35,7 @@ function SnippetCreateForm({ language }: any) {
           Create
         </Link>{" "}
       </p>
-      <h3 className="flex  items-center text-[36px] font-bold text-almostWhite">
+      <h3 className="mb-2  flex items-center text-[36px] font-bold text-almostWhite">
         Create a {language.name} Snippet
       </h3>
       <div className="flex flex-col gap-4">
@@ -35,80 +45,6 @@ function SnippetCreateForm({ language }: any) {
             radius="lg"
             name="title"
             id="title"
-            classNames={{
-              input: [
-                "shadow-xl",
-                "bg-darkGray",
-                "dark:bg-darkGray/60",
-                "backdrop-blur-xl",
-                "backdrop-saturate-200",
-                "focus:bg-darkGray",
-                "group-data-[focused=true]:bg-darkGray-200/50",
-                "dark:group-data-[focused=true]:bg-darkGray/60",
-                "!cursor-text",
-                "data-[hover:true]:bg-darkGray",
-              ],
-              base: [
-                "shadow-xl",
-                "bg-darkGray",
-                "dark:bg-darkGray/60",
-                "backdrop-blur-xl",
-                "backdrop-saturate-200",
-                "focus:bg-darkGray",
-                "group-data-[focused=true]:bg-darkGray-200/50",
-                "dark:group-data-[focused=true]:bg-darkGray/60",
-                "!cursor-text",
-                "data-[hover:true]:bg-darkGray",
-              ],
-              label: [
-                "shadow-xl",
-                "bg-darkGray",
-                "dark:bg-darkGray/60",
-                "backdrop-blur-xl",
-                "backdrop-saturate-200",
-                "focus:bg-darkGray",
-                "group-data-[focused=true]:bg-darkGray-200/50",
-                "dark:group-data-[focused=true]:bg-darkGray/60",
-                "!cursor-text",
-                "data-[hover:true]:bg-darkGray",
-              ],
-              mainWrapper: [
-                "shadow-xl",
-                "bg-darkGray",
-                "dark:bg-darkGray/60",
-                "backdrop-blur-xl",
-                "backdrop-saturate-200",
-                "focus:bg-darkGray",
-                "group-data-[focused=true]:bg-darkGray-200/50",
-                "dark:group-data-[focused=true]:bg-darkGray/60",
-                "!cursor-text",
-                "data-[hover:true]:bg-darkGray",
-              ],
-              inputWrapper: [
-                "shadow-xl",
-                "bg-darkGray",
-                "dark:bg-darkGray/60",
-                "backdrop-blur-xl",
-                "backdrop-saturate-200",
-                "focus:bg-darkGray",
-                "group-data-[focused=true]:bg-darkGray-200/50",
-                "dark:group-data-[focused=true]:bg-darkGray/60",
-                "!cursor-text",
-                "data-[hover:true]:bg-darkGray",
-              ],
-              innerWrapper: [
-                "shadow-xl",
-                "bg-darkGray",
-                "dark:bg-darkGray/60",
-                "backdrop-blur-xl",
-                "backdrop-saturate-200",
-                "focus:bg-darkGray",
-                "group-data-[focused=true]:bg-darkGray-200/50",
-                "dark:group-data-[focused=true]:bg-darkGray/60",
-                "!cursor-text",
-                "data-[hover:true]:bg-darkGray",
-              ],
-            }}
             placeholder="What does this Snippet do?"
           />
         </div>
@@ -143,12 +79,13 @@ function SnippetCreateForm({ language }: any) {
             {formState.message}
           </div>
         ) : null}
-        <button
+        <Button
           className="rounded bg-purple p-2 px-4 py-2 font-semibold text-almostWhite"
           type="submit"
+          isLoading={isLoading}
         >
           Create
-        </button>
+        </Button>
       </div>
     </form>
   );
