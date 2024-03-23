@@ -11,7 +11,20 @@ async function ShowAccountPage({ params }: any) {
   const { id } = params;
   const user = await db.user.findFirst({
     where: { id },
-    include: { TalkingPoint: true, Snippet: true, projects: true },
+    include: {
+      TalkingPoint: {
+        include: { language: true },
+        orderBy: { createdAt: "desc" },
+      },
+      Snippet: {
+        include: { language: true },
+        orderBy: { createdAt: "desc" },
+      },
+      projects: {
+        include: { language: true },
+        orderBy: { createdAt: "desc" },
+      },
+    },
   });
   const currentSession = await getCurrentSession();
 
@@ -20,14 +33,15 @@ async function ShowAccountPage({ params }: any) {
   }
   return (
     <main className="col-span-full px-4">
-      <h1 className="mb-2  flex items-center text-[36px] font-bold text-almostWhite">
+      <h1 className="mb-10  flex items-center text-[36px] font-bold text-almostWhite">
         Profile
       </h1>
       <ProfileInfo user={user} />
-      <LikedContent />
+
       <CreatedTalkingPoints talkingPoints={user?.TalkingPoint} />
       <CreatedSnippets snippets={user?.Snippet} />
       <CreatedProjects projects={user.projects} />
+      <LikedContent />
     </main>
   );
 }
