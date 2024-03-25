@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
 import Link from "next/link";
-
 import { Button } from "@nextui-org/react";
 import fixWordLength from "@/scripts/fixWordLength";
 import TimeAgo from "../common/TimeAgo";
@@ -10,7 +8,7 @@ import {
   createTalkingPointLike,
   deleteTalkingPointLike,
 } from "@/actions/likes";
-import { db } from "@/app/db";
+
 import LikeBox from "./LikeBox";
 // interface PostListProps {
 //   fetchData: any;

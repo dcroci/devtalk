@@ -19,6 +19,7 @@ export function fetchPostsByTopicSlug(name: string, filter: string): any {
       orderBy: {
         createdAt: "desc",
       },
+      take: 5,
     });
   } else if (filter == "comments") {
     return db.talkingPoint.findMany({
@@ -60,18 +61,6 @@ export function fetchPostsByTopicSlug(name: string, filter: string): any {
       },
       orderBy: {
         createdAt: "asc",
-      },
-    });
-  } else {
-    return db.talkingPoint.findMany({
-      where: { language: { name } },
-      include: {
-        language: { select: { name: true } },
-        user: { select: { name: true, image: true } },
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        createdAt: "desc",
       },
     });
   }
