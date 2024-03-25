@@ -1,13 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import type { TalkingPoint, User, Language } from "@prisma/client";
+
 import Link from "next/link";
 
-import type { PostWithData } from "@/app/db/queries/posts";
-// import { likeTalkingPoint } from "@/actions/talkingpoints";
 import { Button } from "@nextui-org/react";
 import fixWordLength from "@/scripts/fixWordLength";
 import TimeAgo from "../common/TimeAgo";
 import ShareBtn from "../common/ShareBtn";
+import {
+  createTalkingPointLike,
+  deleteTalkingPointLike,
+} from "@/actions/likes";
+import { db } from "@/app/db";
+import LikeBox from "./LikeBox";
 // interface PostListProps {
 //   fetchData: any;
 //   filter: string;
@@ -15,12 +19,21 @@ import ShareBtn from "../common/ShareBtn";
 export default async function TalkingPointList({ fetchData }: any) {
   const talkingPoints = await fetchData();
   const renderedPosts = talkingPoints.map((talkingPoint: any) => {
-    const topicSlug = talkingPoint.language.name;
+    const langName = talkingPoint.language.name;
 
-    if (!topicSlug) {
+    if (!langName) {
       throw new Error("Need a slug to link to a post");
     }
-    // const like = likeTalkingPoint.bind(null, talkingPoint.id);
+    const createLikeAction = createTalkingPointLike.bind(
+      null,
+      talkingPoint.id,
+      langName,
+    );
+    const deleteLikeAction = deleteTalkingPointLike.bind(
+      null,
+      talkingPoint.id,
+      langName,
+    );
 
     return (
       <div
@@ -72,9 +85,7 @@ export default async function TalkingPointList({ fetchData }: any) {
           </div>
         </div>
         <div className="absolute bottom-0 right-2 top-0 flex flex-col justify-center gap-2">
-          <form
-          // action={like}
-          >
+          <form action={createLikeAction}>
             <button type="submit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,21 +101,24 @@ export default async function TalkingPointList({ fetchData }: any) {
               </svg>
             </button>
           </form>
-          <p className="mb-10 text-center text-small font-bold text-almostWhite">
-            {talkingPoint.likes}
-          </p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            className="h-6 w-6 stroke-purple"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-            />
-          </svg>
+
+          <LikeBox talkingPointId={talkingPoint.id} />
+          <form action={deleteLikeAction}>
+            <button type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                className="h-6 w-6 stroke-purple"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
     );

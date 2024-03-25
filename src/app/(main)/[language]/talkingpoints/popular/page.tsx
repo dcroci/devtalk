@@ -5,6 +5,7 @@ import { db } from "@/app/db";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Filter from "@/components/common/Filter";
+import { createTalkingPointLike } from "@/actions/likes";
 
 interface TopicShowPageProps {
   params: {
