@@ -63,7 +63,5 @@ export async function fetchPostsByTopicSlug(name: string, filter: string) {
         createdAt: "asc",
       },
     });
-  } else {
-    return [];
   }
 }

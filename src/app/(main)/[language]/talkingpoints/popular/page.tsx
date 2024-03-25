@@ -51,9 +51,7 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
           </div>
         </div>
         <div>
-          <TalkingPointList
-            fetchData={() => fetchPostsByTopicSlug(language.name, filter)}
-          />
+          <TalkingPointList name={language.name} filter={filter} />
         </div>
       </div>
     </>
