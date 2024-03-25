@@ -87,3 +87,16 @@ export async function createComment(
     success: true,
   };
 }
+export async function deleteComment(comment: any, languageName: string) {
+  try {
+    await db.comment.delete({
+      where: { id: comment.id },
+    });
+    console.log("deleted");
+    revalidatePath(
+      `/${languageName.toLowerCase()}/talkingpoints/${comment.talkingPointId}`,
+    );
+  } catch (err) {
+    console.error(err);
+  }
+}

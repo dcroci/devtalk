@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Project } from "@prisma/client";
 import TimeAgo from "../common/TimeAgo";
 import Link from "next/link";
