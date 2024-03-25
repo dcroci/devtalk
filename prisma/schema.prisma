@@ -22,6 +22,7 @@ model Snippet {
   language   Language @relation(fields: [languageId], references: [id])
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  likes     SnippetLike[]
 }
 
 model Language {
@@ -96,13 +97,13 @@ model TalkingPoint {
   title      String
   desc       String
   userId     String
-  likes      Int       @default(0)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   language   Language  @relation(fields: [languageId], references: [id])
   comments   Comment[]
   languageId String
+  likes     TalkingPointLike[]
 }
 
 model Project {
@@ -111,7 +112,6 @@ model Project {
   desc         String
   userId       String
   imgUrl       String    @default("https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg")
-  likes        Int
   githubLink String?
   liveSiteLink String?
   technologies String[]
@@ -121,6 +121,7 @@ model Project {
   language     Language  @relation(fields: [languageId], references: [id])
   comments     Comment[]
   user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+   likes     ProjectLike[]
 }
 
 model Comment {
@@ -178,6 +179,9 @@ model User {
   Comment       Comment[]
   projects      Project[]
   Snippet       Snippet[]
+  projectLikes     ProjectLike[]
+  snippetLikes     SnippetLike[]
+  talkingPointLikes TalkingPointLike[]
 }
 
 model VerificationToken {
@@ -186,4 +190,36 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+model ProjectLike {
+  id        String   @id @default(cuid())
+  userId    String
+  projectId String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  project   Project  @relation(fields: [projectId], references: [id])
+
+  @@unique([userId, projectId])
+}
+
+model SnippetLike {
+  id        String   @id @default(cuid())
+  userId    String
+  snippetId Int
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  snippet   Snippet  @relation(fields: [snippetId], references: [id])
+
+  @@unique([userId, snippetId])
+}
+
+model TalkingPointLike {
+  id             String   @id @default(cuid())
+  userId         String
+  talkingPointId String
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id])
+  talkingPoint   TalkingPoint @relation(fields: [talkingPointId], references: [id])
+
+  @@unique([userId, talkingPointId])
 }
