@@ -79,7 +79,7 @@ export async function createProject(
         imgUrl: result.data.imgUrl,
         userId: session.user.id,
         languageId: language.id,
-        likes: 0,
+
         githubLink: result.data.githubLink,
         liveSiteLink: result.data.liveSiteLink,
         // technologies: result.data.languages,
