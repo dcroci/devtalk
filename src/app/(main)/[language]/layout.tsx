@@ -32,7 +32,6 @@ export default async function RootLayout({
     language: string;
   };
 }) {
-  console.log("PARAMS:", params);
   const language = await db.language.findFirst({
     where: {
       name: {

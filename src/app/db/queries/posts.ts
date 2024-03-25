@@ -7,9 +7,9 @@ export type PostWithData = TalkingPoint & {
   _count: { comments: number };
 };
 
-export function fetchPostsByTopicSlug(name: string, filter: string): any {
+export async function fetchPostsByTopicSlug(name: string, filter: string) {
   if (filter == "new" || !filter) {
-    return db.talkingPoint.findMany({
+    return await db.talkingPoint.findMany({
       where: { language: { name } },
       include: {
         language: { select: { name: true } },
@@ -22,7 +22,7 @@ export function fetchPostsByTopicSlug(name: string, filter: string): any {
       take: 5,
     });
   } else if (filter == "comments") {
-    return db.talkingPoint.findMany({
+    return await db.talkingPoint.findMany({
       where: { language: { name } },
       include: {
         language: { select: { name: true } },
@@ -38,7 +38,7 @@ export function fetchPostsByTopicSlug(name: string, filter: string): any {
   }
   //REWRITE ONCE LIKES ARE LINKED TO TALKING POINTS
   else if (filter == "likes") {
-    return db.talkingPoint.findMany({
+    return await db.talkingPoint.findMany({
       where: { language: { name } },
       include: {
         language: { select: { name: true } },
@@ -52,7 +52,7 @@ export function fetchPostsByTopicSlug(name: string, filter: string): any {
       },
     });
   } else if (filter == "oldest") {
-    return db.talkingPoint.findMany({
+    return await db.talkingPoint.findMany({
       where: { language: { name } },
       include: {
         language: { select: { name: true } },
@@ -63,5 +63,7 @@ export function fetchPostsByTopicSlug(name: string, filter: string): any {
         createdAt: "asc",
       },
     });
+  } else {
+    return [];
   }
 }
