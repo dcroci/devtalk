@@ -41,8 +41,7 @@ async function TalkingPointsAside({ language }: SideNavProps) {
                   </h3>
                   <div>
                     <p className="text-[14px] text-medGray">
-                      {talkingPoint.comments.length} Comments ·{" "}
-                      {talkingPoint.likes} Likes
+                      {talkingPoint.comments.length} Comments · {0} Likes
                     </p>
                   </div>
                 </div>
