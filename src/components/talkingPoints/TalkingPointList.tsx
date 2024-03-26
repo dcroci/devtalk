@@ -15,7 +15,7 @@ import { db } from "@/app/db";
 //   fetchData: any;
 //   filter: string;
 // }
-export default async function TalkingPointList({ name, filter }: any) {
+export default async function TalkingPointList({ name, filter, page }: any) {
   async function getTalkingPoints() {
     if (filter == "new" || !filter) {
       return await db.talkingPoint.findMany({
@@ -28,7 +28,8 @@ export default async function TalkingPointList({ name, filter }: any) {
         orderBy: {
           createdAt: "desc",
         },
-        take: 5,
+        skip: (page - 1) * 10,
+        take: page * 10,
       });
     } else if (filter == "comments") {
       return await db.talkingPoint.findMany({
@@ -43,11 +44,10 @@ export default async function TalkingPointList({ name, filter }: any) {
             _count: "desc",
           },
         },
-        take: 5,
+        skip: (page - 1) * 10,
+        take: page * 10,
       });
-    }
-    //REWRITE ONCE LIKES ARE LINKED TO TALKING POINTS
-    else if (filter == "likes") {
+    } else if (filter == "likes") {
       return await db.talkingPoint.findMany({
         where: { language: { name } },
         include: {
@@ -56,11 +56,12 @@ export default async function TalkingPointList({ name, filter }: any) {
           _count: { select: { comments: true } },
         },
         orderBy: {
-          comments: {
-            _count: "asc",
+          likes: {
+            _count: "desc",
           },
         },
-        take: 5,
+        skip: (page - 1) * 10,
+        take: page * 10,
       });
     } else if (filter == "oldest") {
       return await db.talkingPoint.findMany({
@@ -73,7 +74,8 @@ export default async function TalkingPointList({ name, filter }: any) {
         orderBy: {
           createdAt: "asc",
         },
-        take: 5,
+        skip: (page - 1) * 10,
+        take: page * 10,
       });
     } else {
       return await db.talkingPoint.findMany({
@@ -86,7 +88,8 @@ export default async function TalkingPointList({ name, filter }: any) {
         orderBy: {
           createdAt: "desc",
         },
-        take: 5,
+        skip: (page - 1) * 10,
+        take: page * 10,
       });
     }
   }
@@ -200,5 +203,28 @@ export default async function TalkingPointList({ name, filter }: any) {
     });
   }
 
-  return <div className="space-y-6">{renderedPosts}</div>;
+  return (
+    <main className="space-y-6">
+      {renderedPosts}
+      <div>
+        <ul className=" flex w-full justify-center gap-4">
+          <li
+            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white ${page == 1 ? "bg-purple" : ""}`}
+          >
+            <Link href={`?page=1`}>1</Link>
+          </li>
+          <li
+            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white ${page == 2 ? "bg-purple" : ""}`}
+          >
+            <Link href={`?page=2`}>2</Link>
+          </li>
+          <li
+            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white ${page == 3 ? "bg-purple" : ""}`}
+          >
+            <Link href={`?page=3`}>3</Link>
+          </li>
+        </ul>
+      </div>
+    </main>
+  );
 }

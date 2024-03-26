@@ -1,11 +1,10 @@
 import CreateTalkingPointForm from "@/components/talkingPoints/CreateTalkingPointForm";
 import TalkingPointList from "@/components/talkingPoints/TalkingPointList";
-import { fetchPostsByTopicSlug } from "@/app/db/queries/posts";
+
 import { db } from "@/app/db";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Filter from "@/components/common/Filter";
-import { createTalkingPointLike } from "@/actions/likes";
 
 interface TopicShowPageProps {
   params: {
@@ -16,6 +15,8 @@ interface TopicShowPageProps {
 
 async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
   const filter = String(searchParams.filter) || "new";
+  const page = searchParams.page ?? "1";
+
   let language: any;
 
   language = await db.language.findFirst({
@@ -50,8 +51,8 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
             </div>
           </div>
         </div>
-        <div>
-          <TalkingPointList name={language.name} filter={filter} />
+        <div className="mb-4">
+          <TalkingPointList name={language.name} filter={filter} page={page} />
         </div>
       </div>
     </>
