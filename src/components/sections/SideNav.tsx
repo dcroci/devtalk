@@ -59,9 +59,9 @@ export default function SideNav({ language }: any) {
           <li>
             <Link href={`/${language.name.toLowerCase()}/#books`}>Books</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href={`/${language.name.toLowerCase()}/#videos`}>Videos</Link>
-          </li>
+          </li> */}
           <li className="flex w-fit items-center gap-2 ">
             Interview Prep
             <p className=" rounded border-2 border-purple bg-purple/25 px-1 text-[10px]">
@@ -78,7 +78,9 @@ export default function SideNav({ language }: any) {
       </AccordionItem>
       <AccordionItem key="4" aria-label="Talking Points" title="Talking Points">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <Link href={`/${language.name.toLowerCase()}/talkingpoints/popular`}>
+          <Link
+            href={`/${language.name.toLowerCase()}/talkingpoints/popular?page=1`}
+          >
             Popular
           </Link>
           {/* <li>Create</li> */}
