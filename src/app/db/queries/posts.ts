@@ -12,79 +12,92 @@ export async function fetchPostsByTopicSlug(
   filter: string,
   page: number,
 ) {
-  if (filter == "new" || !filter) {
-    return await db.talkingPoint.findMany({
-      where: { language: { name } },
-      include: {
-        language: { select: { name: true } },
-        user: { select: { name: true, image: true } },
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-      skip: (page - 1) * 10,
-      take: page * 10,
-    });
-  } else if (filter == "comments") {
-    return await db.talkingPoint.findMany({
-      where: { language: { name } },
-      include: {
-        language: { select: { name: true } },
-        user: { select: { name: true, image: true } },
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        comments: {
-          _count: "desc",
-        },
-      },
-      skip: (page - 1) * 10,
-      take: page * 10,
-    });
-  } else if (filter == "likes") {
-    return await db.talkingPoint.findMany({
-      where: { language: { name } },
-      include: {
-        language: { select: { name: true } },
-        user: { select: { name: true, image: true } },
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        likes: {
-          _count: "desc",
-        },
-      },
-      skip: (page - 1) * 10,
-      take: page * 10,
-    });
-  } else if (filter == "oldest") {
-    return await db.talkingPoint.findMany({
-      where: { language: { name } },
-      include: {
-        language: { select: { name: true } },
-        user: { select: { name: true, image: true } },
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        createdAt: "asc",
-      },
-      skip: (page - 1) * 10,
-      take: page * 10,
-    });
-  } else {
-    return await db.talkingPoint.findMany({
-      where: { language: { name } },
-      include: {
-        language: { select: { name: true } },
-        user: { select: { name: true, image: true } },
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-      skip: (page - 1) * 10,
-      take: page * 10,
-    });
-  }
+  return await db.talkingPoint.findMany({
+    where: { language: { name } },
+    include: {
+      language: { select: { name: true } },
+      user: { select: { name: true, image: true } },
+      _count: { select: { comments: true } },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    skip: (page - 1) * 10,
+    take: page * 10,
+  });
+  // if (filter == "new" || !filter) {
+  //   return await db.talkingPoint.findMany({
+  //     where: { language: { name } },
+  //     include: {
+  //       language: { select: { name: true } },
+  //       user: { select: { name: true, image: true } },
+  //       _count: { select: { comments: true } },
+  //     },
+  //     orderBy: {
+  //       createdAt: "desc",
+  //     },
+  //     skip: (page - 1) * 10,
+  //     take: page * 10,
+  //   });
+  // } else if (filter == "comments") {
+  //   return await db.talkingPoint.findMany({
+  //     where: { language: { name } },
+  //     include: {
+  //       language: { select: { name: true } },
+  //       user: { select: { name: true, image: true } },
+  //       _count: { select: { comments: true } },
+  //     },
+  //     orderBy: {
+  //       comments: {
+  //         _count: "desc",
+  //       },
+  //     },
+  //     skip: (page - 1) * 10,
+  //     take: page * 10,
+  //   });
+  // } else if (filter == "likes") {
+  //   return await db.talkingPoint.findMany({
+  //     where: { language: { name } },
+  //     include: {
+  //       language: { select: { name: true } },
+  //       user: { select: { name: true, image: true } },
+  //       _count: { select: { comments: true } },
+  //     },
+  //     orderBy: {
+  //       likes: {
+  //         _count: "desc",
+  //       },
+  //     },
+  //     skip: (page - 1) * 10,
+  //     take: page * 10,
+  //   });
+  // } else if (filter == "oldest") {
+  //   return await db.talkingPoint.findMany({
+  //     where: { language: { name } },
+  //     include: {
+  //       language: { select: { name: true } },
+  //       user: { select: { name: true, image: true } },
+  //       _count: { select: { comments: true } },
+  //     },
+  //     orderBy: {
+  //       createdAt: "asc",
+  //     },
+  //     skip: (page - 1) * 10,
+  //     take: page * 10,
+  //   });
+  // } else {
+  //   return await db.talkingPoint.findMany({
+  //     where: { language: { name } },
+  //     include: {
+  //       language: { select: { name: true } },
+  //       user: { select: { name: true, image: true } },
+  //       _count: { select: { comments: true } },
+  //     },
+  //     orderBy: {
+  //       createdAt: "desc",
+  //     },
+  //     skip: (page - 1) * 10,
+  //     take: page * 10,
+  //   });
+  // }
 }

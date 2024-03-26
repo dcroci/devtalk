@@ -16,7 +16,9 @@ async function ShowLanguagePage({ params }: ShowLanguageProps) {
         mode: "insensitive",
       },
     },
+    include: { Snippet: false, TalkingPoint: false, Project: false },
   });
+
   if (!language) {
     notFound();
   }
