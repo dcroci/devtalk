@@ -11,6 +11,7 @@ import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
 import { db } from "../../db";
 import { notFound } from "next/navigation";
 import SnippetsAside from "@/components/sections/SnippetsAside";
+export const maxDuration = 30;
 
 export const metadata: Metadata = {
   title: "DevTalk",
