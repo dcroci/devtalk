@@ -42,7 +42,7 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
           / <span className="text-almostWhite">Talking Points</span>
         </p>
         <div className="col-span-3 flex-col ">
-          <Filter />
+          {/* <Filter /> */}
           <div className="flex items-center justify-between">
             <h1 className=" text-[36px] font-bold text-almostWhite">
               {language.name} Talking Points
