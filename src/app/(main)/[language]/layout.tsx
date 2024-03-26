@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import { Analytics } from "@vercel/analytics/react";
 
 import "../../globals.css";
 import { Providers } from "../../providers";
@@ -62,6 +63,7 @@ export default async function RootLayout({
             <SnippetsAside language={language} />
           </div>
           <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
