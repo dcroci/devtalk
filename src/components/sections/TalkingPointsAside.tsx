@@ -9,7 +9,8 @@ interface SideNavProps {
 async function TalkingPointsAside({ language }: SideNavProps) {
   const talkingPoints = await db.talkingPoint.findMany({
     where: { languageId: language.id },
-    include: { user: true, language: true, comments: true },
+    include: { user: true, language: true, comments: true, likes: true },
+    take: 8,
   });
 
   return (
@@ -41,7 +42,16 @@ async function TalkingPointsAside({ language }: SideNavProps) {
                   </h3>
                   <div>
                     <p className="text-[14px] text-medGray">
-                      {talkingPoint.comments.length} Comments · {0} Likes
+                      {talkingPoint.comments.length}{" "}
+                      {talkingPoint.comments.length > 1 ||
+                      talkingPoint.comments.length == 0
+                        ? "Comments"
+                        : "Comment"}{" "}
+                      · {talkingPoint.likes.length}{" "}
+                      {talkingPoint.likes.length > 1 ||
+                      talkingPoint.likes.length == 0
+                        ? "Likes"
+                        : "Like"}
                     </p>
                   </div>
                 </div>
