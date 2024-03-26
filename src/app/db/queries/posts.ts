@@ -7,7 +7,11 @@ export type PostWithData = TalkingPoint & {
   _count: { comments: number };
 };
 
-export async function fetchPostsByTopicSlug(name: string, filter: string) {
+export async function fetchPostsByTopicSlug(
+  name: string,
+  filter: string,
+  page: number,
+) {
   if (filter == "new" || !filter) {
     return await db.talkingPoint.findMany({
       where: { language: { name } },
@@ -19,7 +23,8 @@ export async function fetchPostsByTopicSlug(name: string, filter: string) {
       orderBy: {
         createdAt: "desc",
       },
-      take: 5,
+      skip: (page - 1) * 10,
+      take: page * 10,
     });
   } else if (filter == "comments") {
     return await db.talkingPoint.findMany({
@@ -34,10 +39,10 @@ export async function fetchPostsByTopicSlug(name: string, filter: string) {
           _count: "desc",
         },
       },
+      skip: (page - 1) * 10,
+      take: page * 10,
     });
-  }
-  //REWRITE ONCE LIKES ARE LINKED TO TALKING POINTS
-  else if (filter == "likes") {
+  } else if (filter == "likes") {
     return await db.talkingPoint.findMany({
       where: { language: { name } },
       include: {
@@ -46,10 +51,12 @@ export async function fetchPostsByTopicSlug(name: string, filter: string) {
         _count: { select: { comments: true } },
       },
       orderBy: {
-        comments: {
-          _count: "asc",
+        likes: {
+          _count: "desc",
         },
       },
+      skip: (page - 1) * 10,
+      take: page * 10,
     });
   } else if (filter == "oldest") {
     return await db.talkingPoint.findMany({
@@ -62,6 +69,22 @@ export async function fetchPostsByTopicSlug(name: string, filter: string) {
       orderBy: {
         createdAt: "asc",
       },
+      skip: (page - 1) * 10,
+      take: page * 10,
+    });
+  } else {
+    return await db.talkingPoint.findMany({
+      where: { language: { name } },
+      include: {
+        language: { select: { name: true } },
+        user: { select: { name: true, image: true } },
+        _count: { select: { comments: true } },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      skip: (page - 1) * 10,
+      take: page * 10,
     });
   }
 }

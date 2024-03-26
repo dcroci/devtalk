@@ -11,89 +11,13 @@ import {
 
 import LikeBox from "./LikeBox";
 import { db } from "@/app/db";
+import { fetchPostsByTopicSlug } from "@/app/db/queries/posts";
 // interface PostListProps {
 //   fetchData: any;
 //   filter: string;
 // }
 export default async function TalkingPointList({ name, filter, page }: any) {
-  async function getTalkingPoints() {
-    if (filter == "new" || !filter) {
-      return await db.talkingPoint.findMany({
-        where: { language: { name } },
-        include: {
-          language: { select: { name: true } },
-          user: { select: { name: true, image: true } },
-          _count: { select: { comments: true } },
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-        skip: (page - 1) * 10,
-        take: page * 10,
-      });
-    } else if (filter == "comments") {
-      return await db.talkingPoint.findMany({
-        where: { language: { name } },
-        include: {
-          language: { select: { name: true } },
-          user: { select: { name: true, image: true } },
-          _count: { select: { comments: true } },
-        },
-        orderBy: {
-          comments: {
-            _count: "desc",
-          },
-        },
-        skip: (page - 1) * 10,
-        take: page * 10,
-      });
-    } else if (filter == "likes") {
-      return await db.talkingPoint.findMany({
-        where: { language: { name } },
-        include: {
-          language: { select: { name: true } },
-          user: { select: { name: true, image: true } },
-          _count: { select: { comments: true } },
-        },
-        orderBy: {
-          likes: {
-            _count: "desc",
-          },
-        },
-        skip: (page - 1) * 10,
-        take: page * 10,
-      });
-    } else if (filter == "oldest") {
-      return await db.talkingPoint.findMany({
-        where: { language: { name } },
-        include: {
-          language: { select: { name: true } },
-          user: { select: { name: true, image: true } },
-          _count: { select: { comments: true } },
-        },
-        orderBy: {
-          createdAt: "asc",
-        },
-        skip: (page - 1) * 10,
-        take: page * 10,
-      });
-    } else {
-      return await db.talkingPoint.findMany({
-        where: { language: { name } },
-        include: {
-          language: { select: { name: true } },
-          user: { select: { name: true, image: true } },
-          _count: { select: { comments: true } },
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-        skip: (page - 1) * 10,
-        take: page * 10,
-      });
-    }
-  }
-  const talkingPoints = await getTalkingPoints();
+  const talkingPoints = await fetchPostsByTopicSlug(name, filter, page);
   let renderedPosts: any[] = [];
   if (talkingPoints) {
     renderedPosts = talkingPoints.map((talkingPoint: any) => {

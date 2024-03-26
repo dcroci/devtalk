@@ -1,3 +1,4 @@
+export const maxDuration = 5;
 import CreateTalkingPointForm from "@/components/talkingPoints/CreateTalkingPointForm";
 import TalkingPointList from "@/components/talkingPoints/TalkingPointList";
 
