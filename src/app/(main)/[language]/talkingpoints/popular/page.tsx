@@ -15,8 +15,8 @@ interface TopicShowPageProps {
 }
 
 async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
-  const filter = String(searchParams.filter) || "new";
-  const page = searchParams.page ?? "1";
+  // const filter = String(searchParams.filter) || "new";
+  const page = searchParams.page ?? 1;
 
   let language = await db.language.findFirst({
     where: {
@@ -52,7 +52,7 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
           </div>
         </div>
         <div className="mb-4">
-          <TalkingPointList name={language.name} filter={filter} page={page} />
+          <TalkingPointList name={language.name} page={page} />
         </div>
       </div>
     </>

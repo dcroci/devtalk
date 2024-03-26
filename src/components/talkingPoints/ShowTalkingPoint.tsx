@@ -13,7 +13,10 @@ import { deleteTalkingPoint } from "@/actions/talkingpoints";
 async function ShowTalkingPoint({ talkingPointId }: any) {
   const talkingPoint = await db.talkingPoint.findFirst({
     where: { id: talkingPointId },
-    include: { user: true, language: { select: { name: true } } },
+    include: {
+      user: { select: { id: true, image: true, name: true } },
+      language: { select: { name: true } },
+    },
   });
   if (!talkingPoint) {
     notFound();

@@ -7,11 +7,7 @@ export type PostWithData = TalkingPoint & {
   _count: { comments: number };
 };
 
-export async function fetchPostsByTopicSlug(
-  name: string,
-  filter: string,
-  page: number,
-) {
+export async function fetchPostsByTopicSlug(name: string, page: number) {
   return await db.talkingPoint.findMany({
     where: { language: { name } },
     include: {
@@ -22,8 +18,8 @@ export async function fetchPostsByTopicSlug(
     orderBy: {
       createdAt: "desc",
     },
-    skip: (page - 1) * 10,
-    take: page * 10,
+    skip: (page - 1) * 8,
+    take: page * 8,
   });
   // if (filter == "new" || !filter) {
   //   return await db.talkingPoint.findMany({

@@ -1,15 +1,10 @@
-import { db } from "@/app/db";
-
 interface LikeBoxProps {
-  talkingPointId: string;
+  likes: string;
 }
-async function LikeBox({ talkingPointId }: LikeBoxProps) {
-  const likes = await db.talkingPointLike.findMany({
-    where: { talkingPointId: talkingPointId },
-  });
+async function LikeBox({ likes }: LikeBoxProps) {
   return (
     <p className="mb-10 text-center text-small font-bold text-almostWhite">
-      {likes.length}
+      {likes}
     </p>
   );
 }

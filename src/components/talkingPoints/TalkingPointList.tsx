@@ -16,25 +16,20 @@ import { fetchPostsByTopicSlug } from "@/app/db/queries/posts";
 //   fetchData: any;
 //   filter: string;
 // }
-export default async function TalkingPointList({ name, filter, page }: any) {
-  const talkingPoints = await fetchPostsByTopicSlug(name, filter, page);
+export default async function TalkingPointList({ name, page }: any) {
+  const talkingPoints = await fetchPostsByTopicSlug(name, page);
   let renderedPosts: any[] = [];
   if (talkingPoints) {
     renderedPosts = talkingPoints.map((talkingPoint: any) => {
-      const langName = talkingPoint.language.name;
-
-      if (!langName) {
-        throw new Error("Need a slug to link to a post");
-      }
       const createLikeAction = createTalkingPointLike.bind(
         null,
         talkingPoint.id,
-        langName,
+        talkingPoint.language.name,
       );
       const deleteLikeAction = deleteTalkingPointLike.bind(
         null,
         talkingPoint.id,
-        langName,
+        talkingPoint.language.name,
       );
 
       return (
@@ -104,7 +99,7 @@ export default async function TalkingPointList({ name, filter, page }: any) {
               </button>
             </form>
 
-            <LikeBox talkingPointId={talkingPoint.id} />
+            <LikeBox likes={talkingPoint.likes} />
             <form action={deleteLikeAction}>
               <button type="submit">
                 <svg
