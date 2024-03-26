@@ -14,7 +14,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import { notFound } from "next/navigation";
 import NavMenu from "./NavMenu";
 
-async function Navbar({ language }: any) {
+async function Navbar({ languageName }: any) {
   const languages = await db.language.findMany({
     orderBy: {
       name: "asc",
@@ -27,7 +27,11 @@ async function Navbar({ language }: any) {
   const session = await auth();
 
   return (
-    <NavMenu languages={languages} language={language} session={session} />
+    <NavMenu
+      languages={languages}
+      languageName={languageName}
+      session={session}
+    />
   );
 }
 

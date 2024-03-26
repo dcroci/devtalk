@@ -2,7 +2,7 @@
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";
 
-export default function SideNav({ language }: any) {
+export default function SideNav({ languageName }: any) {
   const itemClasses = {
     base: "py-0 w-full col-start-1 col-end-2",
     title: "font-normal text-[14px] text-almostWhite",
@@ -21,24 +21,24 @@ export default function SideNav({ language }: any) {
     >
       <AccordionItem
         key="1"
-        aria-label={`${language.name} Home`}
-        title={`${language.name} Home`}
+        aria-label={`${languageName} Home`}
+        title={`${languageName} Home`}
       >
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <li className="hover:underline">
-            <Link href={`/${language.name.toLowerCase()}/#useCase`}>
+            <Link href={`/${languageName.toLowerCase()}/#useCase`}>
               Use Case
             </Link>
           </li>
-          <Link href={`/${language.name.toLowerCase()}/#history`}>History</Link>
+          <Link href={`/${languageName.toLowerCase()}/#history`}>History</Link>
           <li>
-            <Link href={`/${language.name.toLowerCase()}/#documentation`}>
+            <Link href={`/${languageName.toLowerCase()}/#documentation`}>
               Documentation
             </Link>
           </li>
           <li>
             {" "}
-            <Link href={`/${language.name.toLowerCase()}/#latestRelease`}>
+            <Link href={`/${languageName.toLowerCase()}/#latestRelease`}>
               Latest Release
             </Link>
           </li>
@@ -47,20 +47,20 @@ export default function SideNav({ language }: any) {
       <AccordionItem key="2" aria-label="Resources" title="Resources">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <li>
-            <Link href={`/${language.name.toLowerCase()}/#contentCreators`}>
+            <Link href={`/${languageName.toLowerCase()}/#contentCreators`}>
               Content Creators
             </Link>
           </li>
           <li>
-            <Link href={`/${language.name.toLowerCase()}/#courses`}>
+            <Link href={`/${languageName.toLowerCase()}/#courses`}>
               Courses
             </Link>
           </li>
           <li>
-            <Link href={`/${language.name.toLowerCase()}/#books`}>Books</Link>
+            <Link href={`/${languageName.toLowerCase()}/#books`}>Books</Link>
           </li>
           {/* <li>
-            <Link href={`/${language.name.toLowerCase()}/#videos`}>Videos</Link>
+            <Link href={`/${languageName.toLowerCase()}/#videos`}>Videos</Link>
           </li> */}
           <li className="flex w-fit items-center gap-2 ">
             Interview Prep
@@ -79,7 +79,7 @@ export default function SideNav({ language }: any) {
       <AccordionItem key="4" aria-label="Talking Points" title="Talking Points">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <Link
-            href={`/${language.name.toLowerCase()}/talkingpoints/popular?page=1`}
+            href={`/${languageName.toLowerCase()}/talkingpoints/popular?page=1`}
           >
             Popular
           </Link>
@@ -89,12 +89,12 @@ export default function SideNav({ language }: any) {
       <AccordionItem key="3" aria-label="Accordion 3" title="Snippets">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <li>
-            <Link href={`/${language.name.toLowerCase()}/snippets/new`}>
+            <Link href={`/${languageName.toLowerCase()}/snippets/new`}>
               Create
             </Link>
           </li>
           <li>
-            <Link href={`/${language.name.toLowerCase()}/snippets`}>
+            <Link href={`/${languageName.toLowerCase()}/snippets`}>
               Popular
             </Link>
           </li>
@@ -106,12 +106,12 @@ export default function SideNav({ language }: any) {
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
           <li>
             {" "}
-            <Link href={`/${language.name.toLowerCase()}/showcase`}>
+            <Link href={`/${languageName.toLowerCase()}/showcase`}>
               View Projects
             </Link>
           </li>
           <li>
-            <Link href={`/${language.name.toLowerCase()}/showcase/new`}>
+            <Link href={`/${languageName.toLowerCase()}/showcase/new`}>
               Showcase Your Project
             </Link>
           </li>

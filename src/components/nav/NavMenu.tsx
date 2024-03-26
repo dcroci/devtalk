@@ -19,7 +19,7 @@ import * as actions from "@/actions";
 import MobileNav from "../sections/MobileNav";
 import Image from "next/image";
 
-export default function NavMenu({ languages, language, session }: any) {
+export default function NavMenu({ languages, languageName, session }: any) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   function closeMenu() {
     if (isMenuOpen) {
@@ -195,7 +195,7 @@ export default function NavMenu({ languages, language, session }: any) {
       <NavbarMenu>
         <NavbarMenuItem>
           <MobileNav
-            language={language}
+            languageName={languageName}
             languages={languages}
             closeMenu={closeMenu}
           />

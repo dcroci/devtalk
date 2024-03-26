@@ -1,6 +1,5 @@
 import LanguageMain from "@/components/sections/LanguageMain";
-import SideNav from "@/components/sections/SideNav";
-import TalkingPointsAside from "@/components/sections/TalkingPointsAside";
+
 import { db } from "../../db";
 import { notFound } from "next/navigation";
 interface ShowLanguageProps {

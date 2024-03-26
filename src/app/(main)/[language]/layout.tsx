@@ -40,6 +40,7 @@ export default async function RootLayout({
         mode: "insensitive",
       },
     },
+    select: { name: true, logoUrl: true, id: true },
   });
   if (!language) {
     notFound();
@@ -50,8 +51,8 @@ export default async function RootLayout({
     <html lang="en" className={`${GeistSans.className} bg-almostBlack`}>
       <body className="dark xl:container">
         <Providers>
-          <Navbar language={language} params={params} />
-          <SideNav language={language} />
+          <Navbar languageName={language.name} params={params} />
+          <SideNav languageName={language.name} />
           {children}
           <div className="col-start-5 hidden gap-4 lg:flex lg:flex-col">
             <img
@@ -59,8 +60,14 @@ export default async function RootLayout({
               alt=""
               className="mx-auto mb-2 w-40"
             />
-            <TalkingPointsAside language={language} />
-            <SnippetsAside language={language} />
+            <TalkingPointsAside
+              languageName={language.name}
+              languageId={language.id}
+            />
+            <SnippetsAside
+              languageName={language.name}
+              languageId={language.id}
+            />
           </div>
           <Footer />
           <Analytics />

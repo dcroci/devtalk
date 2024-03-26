@@ -3,7 +3,7 @@ import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";
 import LanguageDropdown from "../nav/LanguageDropdown";
 
-export default function MobileNav({ language, languages, closeMenu }: any) {
+export default function MobileNav({ languageName, languages, closeMenu }: any) {
   const itemClasses = {
     base: "py-0 w-full col-start-1 col-end-2",
     title: "font-normal text-[14px] text-almostWhite",
@@ -28,7 +28,7 @@ export default function MobileNav({ language, languages, closeMenu }: any) {
           </Link>
         </li>
       </ul>
-      {language && (
+      {languageName && (
         <Accordion
           defaultExpandedKeys={["1", "2", "3", "4", "5"]}
           itemClasses={itemClasses}
@@ -37,28 +37,28 @@ export default function MobileNav({ language, languages, closeMenu }: any) {
         >
           <AccordionItem
             key="1"
-            aria-label={`${language.name} Home`}
-            title={`${language.name} Home`}
+            aria-label={`${languageName} Home`}
+            title={`${languageName} Home`}
           >
             <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
               <li className="hover:underline" onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/#useCase`}>
+                <Link href={`/${languageName.toLowerCase()}/#useCase`}>
                   Use Case
                 </Link>
               </li>
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/#history`}>
+                <Link href={`/${languageName.toLowerCase()}/#history`}>
                   History
                 </Link>
               </li>
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/#documentation`}>
+                <Link href={`/${languageName.toLowerCase()}/#documentation`}>
                   Documentation
                 </Link>
               </li>
               <li onClick={closeMenu}>
                 {" "}
-                <Link href={`/${language.name.toLowerCase()}/#latestRelease`}>
+                <Link href={`/${languageName.toLowerCase()}/#latestRelease`}>
                   Latest Release
                 </Link>
               </li>
@@ -67,22 +67,22 @@ export default function MobileNav({ language, languages, closeMenu }: any) {
           <AccordionItem key="2" aria-label="Resources" title="Resources">
             <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/#contentCreators`}>
+                <Link href={`/${languageName.toLowerCase()}/#contentCreators`}>
                   Content Creators
                 </Link>
               </li>
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/#courses`}>
+                <Link href={`/${languageName.toLowerCase()}/#courses`}>
                   Courses
                 </Link>
               </li>
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/#books`}>
+                <Link href={`/${languageName.toLowerCase()}/#books`}>
                   Books
                 </Link>
               </li>
               {/* <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/#videos`}>
+                <Link href={`/${languageName.toLowerCase()}/#videos`}>
                   Videos
                 </Link>
               </li> */}
@@ -106,23 +106,25 @@ export default function MobileNav({ language, languages, closeMenu }: any) {
             title="Talking Points"
           >
             <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-              <Link
-                href={`/${language.name.toLowerCase()}/talkingpoints/popular?page=1`}
-              >
-                Popular
-              </Link>
+              <li onClick={closeMenu}>
+                <Link
+                  href={`/${languageName.toLowerCase()}/talkingpoints/popular?page=1`}
+                >
+                  Popular
+                </Link>
+              </li>
               {/* <li>Create</li> */}
             </ul>
           </AccordionItem>
           <AccordionItem key="3" aria-label="Accordion 3" title="Snippets">
             <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/snippets/new`}>
+                <Link href={`/${languageName.toLowerCase()}/snippets/new`}>
                   Create
                 </Link>
               </li>
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/snippets`}>
+                <Link href={`/${languageName.toLowerCase()}/snippets`}>
                   Popular
                 </Link>
               </li>
@@ -139,12 +141,12 @@ export default function MobileNav({ language, languages, closeMenu }: any) {
             <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
               <li onClick={closeMenu}>
                 {" "}
-                <Link href={`/${language.name.toLowerCase()}/showcase`}>
+                <Link href={`/${languageName.toLowerCase()}/showcase`}>
                   View Projects
                 </Link>
               </li>
               <li onClick={closeMenu}>
-                <Link href={`/${language.name.toLowerCase()}/showcase/new`}>
+                <Link href={`/${languageName.toLowerCase()}/showcase/new`}>
                   Showcase Your Project
                 </Link>
               </li>

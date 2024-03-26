@@ -3,13 +3,14 @@ import { db } from "@/app/db";
 import Link from "next/link";
 
 interface SideNavProps {
-  language: any;
+  languageName: string;
+  languageId: string;
 }
 
-async function TalkingPointsAside({ language }: SideNavProps) {
+async function TalkingPointsAside({ languageName, languageId }: SideNavProps) {
   const talkingPoints = await db.talkingPoint.findMany({
-    where: { languageId: language.id },
-    include: { user: true, language: true, comments: true, likes: true },
+    where: { languageId: languageId },
+    include: { user: true, comments: true, likes: true },
     take: 8,
   });
 
@@ -24,7 +25,7 @@ async function TalkingPointsAside({ language }: SideNavProps) {
         {talkingPoints.map((talkingPoint) => (
           <Link
             key={talkingPoint.id}
-            href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
+            href={`/${languageName.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
           >
             <div>
               <div className="mx-auto flex   items-center gap-4 rounded  p-2">

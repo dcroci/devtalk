@@ -1,10 +1,10 @@
 import { db } from "@/app/db";
 import Link from "next/link";
 
-async function SnippetsAside({ language }: any) {
+async function SnippetsAside({ languageName, languageId }: any) {
   const snippets = await db.snippet.findMany({
-    where: { languageId: language.id },
-    include: { user: true, language: true },
+    where: { languageId: languageId },
+    include: { user: true },
   });
 
   return (
@@ -18,7 +18,7 @@ async function SnippetsAside({ language }: any) {
         {snippets.map((snippet) => (
           <Link
             key={snippet.id}
-            href={`/${snippet.language.name.toLowerCase()}/snippets/${snippet.id}`}
+            href={`/${languageName}/snippets/${snippet.id}`}
           >
             <div>
               <div className="mr-auto flex   items-center gap-4 rounded  p-2">
