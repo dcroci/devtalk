@@ -38,7 +38,7 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
       </PopoverTrigger>
       <PopoverContent className="border-2 border-almostBlack bg-almostBlack text-almostBlack shadow-sm shadow-medGray">
         <form action={action}>
-          <div className="flex w-80 flex-col gap-4 p-4">
+          <div className="flex w-full flex-col gap-4 p-4">
             <h3 className="text-lg font-semibold text-almostWhite">
               Create a Project
             </h3>
