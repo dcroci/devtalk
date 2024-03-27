@@ -17,6 +17,28 @@ import { fetchPostsByTopicSlug } from "@/app/db/queries/posts";
 //   filter: string;
 // }
 export default async function TalkingPointList({ name, page }: any) {
+  const talkingPointLength = await db.talkingPoint.count({
+    where: { language: { name } },
+  });
+  const totalPages = Math.ceil(talkingPointLength / 8);
+  const links = [];
+  for (let i = 1; i <= totalPages; i++) {
+    links.push(
+      <li
+        key={i}
+        className={` rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == i ? "bg-purple" : ""}`}
+      >
+        <Link
+          href={`?page=${i}`}
+          className="flex h-8 w-8  items-center justify-center"
+        >
+          {i}
+        </Link>
+      </li>,
+    );
+  }
+
+  console.log(talkingPointLength);
   const talkingPoints = await fetchPostsByTopicSlug(name, page);
   let renderedPosts: any[] = [];
   if (talkingPoints) {
@@ -35,7 +57,7 @@ export default async function TalkingPointList({ name, page }: any) {
       return (
         <div
           key={talkingPoint.id}
-          className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-100 lg:hover:border-l-8"
+          className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8"
         >
           <div className="flex min-h-[120px] flex-row items-center gap-8 px-6 py-2  ">
             <div className="flex h-full flex-col justify-between">
@@ -57,11 +79,11 @@ export default async function TalkingPointList({ name, page }: any) {
                 >
                   <div>
                     <h3 className="mb-2 flex flex-col text-xl font-semibold text-white">
-                      {talkingPoint.title}{" "}
+                      {fixWordLength(talkingPoint.title, 60)}{" "}
                     </h3>
 
                     <p className=" z-40  bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
-                      {fixWordLength(talkingPoint.desc, 600)}
+                      {fixWordLength(talkingPoint.desc, 300)}
                     </p>
                   </div>
                 </Link>
@@ -126,23 +148,7 @@ export default async function TalkingPointList({ name, page }: any) {
     <main className="space-y-6">
       {renderedPosts}
       <div>
-        <ul className=" flex w-full justify-center gap-4">
-          <li
-            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == 1 ? "bg-purple" : ""}`}
-          >
-            <Link href={`?page=1`}>1</Link>
-          </li>
-          <li
-            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == 2 ? "bg-purple" : ""}`}
-          >
-            <Link href={`?page=2`}>2</Link>
-          </li>
-          <li
-            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == 3 ? "bg-purple" : ""}`}
-          >
-            <Link href={`?page=3`}>3</Link>
-          </li>
-        </ul>
+        <ul className=" flex w-full justify-center gap-4">{links}</ul>
       </div>
     </main>
   );
