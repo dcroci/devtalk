@@ -82,20 +82,8 @@ export async function createTalkingPoint(
     }
   }
   redirect(`/${language?.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`);
-
-  // revalidatePath(paths.topicShow(language));
 }
-//LIKE A TALKING POINT
-// export async function likeTalkingPoint(talkingPointId: string) {
-//   const talkingPoint = await db.talkingPoint.update({
-//     where: { id: talkingPointId },
-//     include: { language: true },
-//     data: { likes: { increment: 1 } },
-//   });
-//   revalidatePath(
-//     `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`,
-//   );
-// }
+
 export async function editTalkingPoint(
   talkingPoint: any,
   title: string,
