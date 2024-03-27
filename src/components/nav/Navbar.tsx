@@ -19,6 +19,7 @@ async function Navbar({ languageName }: any) {
     orderBy: {
       name: "asc",
     },
+    select: { id: true, name: true, logoUrl: true },
   });
   if (!languages) {
     notFound();

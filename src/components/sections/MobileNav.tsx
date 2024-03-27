@@ -15,7 +15,7 @@ export default function MobileNav({ languageName, languages, closeMenu }: any) {
 
   return (
     <>
-      <ul className="  flex w-full items-center justify-around gap-4 border-b-2 border-darkGray pb-2">
+      <ul className="  z-50 flex w-full items-center justify-around gap-4 border-b-2 border-darkGray pb-2">
         <LanguageDropdown languages={languages} />
         <li>
           <Link href="/" className="text-[14px] font-normal text-medGray">
