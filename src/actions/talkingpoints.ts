@@ -46,8 +46,9 @@ export async function createTalkingPoint(
     where: {
       id: languageId,
     },
+    select: { name: true, id: true },
   });
-  console.log(language);
+
   if (!language) {
     return {
       errors: {
@@ -56,7 +57,7 @@ export async function createTalkingPoint(
     };
   }
 
-  let talkingPoint: TalkingPoint;
+  let talkingPoint: any;
   try {
     talkingPoint = await db.talkingPoint.create({
       data: {
@@ -65,6 +66,7 @@ export async function createTalkingPoint(
         userId: session.user.id,
         languageId: language.id,
       },
+      select: { id: true },
     });
   } catch (err: unknown) {
     if (err instanceof Error) {
@@ -96,6 +98,10 @@ export async function editTalkingPoint(
       desc,
     },
   });
+
+  revalidatePath(
+    `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`,
+  );
   redirect(
     `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`,
   );
@@ -103,8 +109,11 @@ export async function editTalkingPoint(
 export async function deleteTalkingPoint(talkingPoint: any) {
   await db.talkingPoint.delete({
     where: { id: talkingPoint.id },
+    select: { language: { select: { name: true } } },
   });
-
+  revalidatePath(
+    `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`,
+  );
   redirect(
     `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`,
   );
