@@ -25,7 +25,7 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
   const currentUser = await auth();
   return (
     <>
-      <p className="text-small text-medGray">
+      <p className="px-2 text-small text-medGray">
         <Link className="text-small text-medGray" href="/">
           Home
         </Link>{" "}
@@ -36,12 +36,21 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
         >
           {talkingPoint.language.name}
         </Link>{" "}
-        / <span className="text-almostWhite">Talkings Points</span>
+        /{" "}
+        <Link
+          className="text-small text-medGray"
+          href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`}
+        >
+          <span className="text-almostWhite">Talking Points</span>
+        </Link>
       </p>
 
       <main className="relative my-4 rounded">
-        <div className="mb-2 flex flex-col-reverse justify-between gap-2 border-b-2 border-darkGray">
-          <div className=" flex  gap-2">
+        <div className="mb-2 flex-col justify-between gap-2 border-b-2 border-darkGray px-2 md:flex-row">
+          <h1 className=" py-2  text-2xl text-[24px] font-semibold   text-almostWhite ">
+            {talkingPoint.title}
+          </h1>
+          <div className=" mb-2  flex items-center gap-2">
             <Avatar
               src={talkingPoint?.user?.image || ""}
               className="min-h-[36px] min-w-[36px] border-2 border-purple"
@@ -49,8 +58,10 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
             />
             <div className="flex flex-col items-start">
               <div className=" flex items-center gap-2">
-                <p className="text-gray-400">
-                  <p className="text-white">{talkingPoint.user.name}</p>
+                <p className="flex flex-col gap-1 text-gray-400">
+                  <p className="font-medium text-white">
+                    {talkingPoint.user.name}
+                  </p>
                   {<TimeAgo date={new Date(talkingPoint.createdAt)} />}
                 </p>
               </div>
@@ -127,12 +138,9 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
               </Popover>
             ) : null}
           </div>
-          <h1 className=" py-2  text-2xl text-[36px] font-bold leading-10 text-almostWhite ">
-            {talkingPoint.title}
-          </h1>
         </div>
 
-        <p className=" rounded border-l-4 border-purple p-4 leading-relaxed text-medGray ">
+        <p className=" rounded border-l-4 border-purple p-4 font-medium leading-relaxed text-medGray">
           {talkingPoint.desc}
         </p>
       </main>

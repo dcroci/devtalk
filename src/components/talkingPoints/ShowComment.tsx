@@ -44,12 +44,12 @@ export default async function ShowComment({
           alt="user image"
           width={40}
           height={40}
-          className="h-10 w-10 rounded-full"
+          className="h-10 w-10 rounded-full border-2 border-purple"
         />
 
         <div className="flex-1 space-y-3 ">
           <div className="flex items-center gap-2">
-            <p className="text-sm font-medium  text-almostWhite">
+            <p className="text-[16px] font-semibold  text-almostWhite">
               {comment.user.name}
             </p>
             <Popover>
@@ -121,7 +121,7 @@ export default async function ShowComment({
               </PopoverContent>
             </Popover>
           </div>
-          <p className=" text-[14px] leading-relaxed text-almostWhite">
+          <p className=" text-[14px] font-medium leading-relaxed text-almostWhite">
             {comment.content}
           </p>
 

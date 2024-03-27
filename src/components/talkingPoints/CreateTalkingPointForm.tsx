@@ -32,7 +32,7 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
   return (
     <Popover placement="left">
       <PopoverTrigger>
-        <Button className=" bg-purple  text-2xl font-semibold text-almostWhite">
+        <Button className=" bg-purple  text-2xl font-semibold text-almostWhite shadow-lg shadow-purple/50">
           +
         </Button>
       </PopoverTrigger>

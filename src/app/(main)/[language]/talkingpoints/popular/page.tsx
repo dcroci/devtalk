@@ -42,13 +42,13 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
         </p>
         <div className="col-span-3 mb-2 flex-col">
           {/* <Filter /> */}
-          <div className="flex items-center justify-between">
-            <h1 className=" text-[36px] font-bold text-almostWhite">
-              {language.name} Talking Points
-            </h1>
-            <div>
+          <div className=" flex flex-col justify-between md:flex-row md:items-center">
+            <div className="fixed bottom-2 right-2 z-40 ml-auto ">
               <CreateTalkingPointForm languageId={language.id} />
             </div>
+            <h1 className=" mb-2 border-b-2 border-darkGray pb-2 text-[30px] font-bold text-almostWhite">
+              {language.name} Talking Points
+            </h1>
           </div>
         </div>
         <div className="mb-4">

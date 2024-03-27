@@ -59,7 +59,7 @@ export default function CommentCreateForm({
     >
       <div className="space-y-2  px-1 text-almostWhite">
         <Textarea
-          className="border-purple  "
+          className="border-purple  text-[16px]"
           name="content"
           placeholder="Enter your comment"
           isInvalid={!!formState.errors.content}
@@ -88,10 +88,10 @@ export default function CommentCreateForm({
   return (
     <div>
       <div className="flex flex-col">
-        <div className="mb-2 flex items-center gap-2">
+        <div className="mb-2  gap-2">
           <Button
             size="sm"
-            className="w-min bg-transparent p-0 text-white"
+            className="mx-0 w-min justify-start bg-transparent px-0 text-white"
             onClick={() => setOpen(!open)}
           >
             {" "}
@@ -99,9 +99,9 @@ export default function CommentCreateForm({
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={2}
               stroke="currentColor"
-              className="h-6 w-6"
+              className="h-5 w-5"
             >
               <path
                 strokeLinecap="round"
@@ -111,7 +111,7 @@ export default function CommentCreateForm({
             </svg>
             {/* {7} Comments */}
           </Button>
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -125,7 +125,7 @@ export default function CommentCreateForm({
               />
             </svg>
 
-            {/* <p className="mr-4 text-small text-almostWhite">{7}</p> */}
+            <p className="mr-4 text-small text-almostWhite">{7}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -138,7 +138,7 @@ export default function CommentCreateForm({
                 d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
               />
             </svg>
-          </div>
+          </div> */}
         </div>
         {open && form}
       </div>

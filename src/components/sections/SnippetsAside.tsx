@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { db } from "@/app/db";
 import Link from "next/link";
 
