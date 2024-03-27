@@ -35,18 +35,22 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
   return (
     <>
       <div className="col-start-1 col-end-6 gap-4 px-2  lg:col-start-2 lg:col-end-5">
-        <p className="mb-2 text-small text-medGray">
-          <Link href="/">Home</Link> /{" "}
-          <Link href={`/${language.name.toLowerCase()}`}>{language.name}</Link>{" "}
-          / <span className="text-almostWhite">Talking Points</span>
-        </p>
-        <div className="col-span-3 mb-2 flex-col">
-          {/* <Filter /> */}
-          <div className=" flex flex-col justify-between md:flex-row md:items-center">
-            <div className="fixed bottom-2 right-2 z-40 ml-auto ">
-              <CreateTalkingPointForm languageId={language.id} />
+        <div className="flex flex-col justify-center">
+          <p className="mb-2 text-small text-medGray">
+            <Link href="/">Home</Link> /{" "}
+            <Link href={`/${language.name.toLowerCase()}`}>
+              {language.name}
+            </Link>{" "}
+            / <span className="text-almostWhite">Talking Points</span>
+          </p>
+          <div className="col-span-3 mb-2 flex flex-row-reverse items-center border-b-2 border-darkGray pb-2">
+            {/* <Filter /> */}
+            <div className=" flex flex-col justify-between md:flex-row-reverse md:items-center">
+              <div className="fixed bottom-6 right-6 z-40 md:static">
+                <CreateTalkingPointForm languageId={language.id} />
+              </div>
             </div>
-            <h1 className=" mb-2 border-b-2 border-darkGray pb-2 text-[30px] font-bold text-almostWhite">
+            <h1 className="  w-full  text-[30px] font-bold text-almostWhite">
               {language.name} Talking Points
             </h1>
           </div>
