@@ -46,10 +46,9 @@ function LanguageMain({ language }: any) {
         <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
           Documentation
         </h2>
-        <p className="text-medGray">
-          View popular {language.name} documentation{" "}
-          <a href={language.documentation} className="border-b-2 border-purple">
-            here
+        <p className="text-medGray hover:underline">
+          <a href={language.documentation}>
+            View popular {language.name} documentation here
           </a>
         </p>
       </section>
