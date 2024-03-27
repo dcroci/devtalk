@@ -1,14 +1,8 @@
 "use client";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Skeleton,
-} from "@nextui-org/react";
+import { Skeleton, Button } from "@nextui-org/react";
 import Link from "next/link";
 import { useState } from "react";
+import ShareBtn from "../common/ShareBtn";
 interface SnippetCardProps {
   languageName: string;
   snippet: any;
@@ -28,23 +22,31 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
         href={`/${languageName.toLowerCase()}/snippets/${snippet.id}`}
         className="h-fit"
       >
-        <Card className="max-w-[400px] bg-almostBlack">
-          <CardHeader className="flex gap-3 bg-[#18181b] text-white">
+        <div className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8">
+          <div className="flex gap-3  text-white">
             <img src={`${logoUrl}`} alt="" className="w-8" />
 
             <div className="flex flex-col">
-              <p className="font-medium">{snippet.title}</p>
+              <h2 className="mb-2 flex flex-col text-xl font-semibold text-white">
+                {snippet.title}
+              </h2>
             </div>
-          </CardHeader>
-          <Divider />
-          <CardBody className="bg-[#18181b] text-white">
-            <p>This is a function that does this one thing</p>
-          </CardBody>
-          <Divider />
-          <CardFooter className="bg-[#18181b] text-white">
-            <p>View Code Snippet</p>
-          </CardFooter>
-        </Card>
+          </div>
+
+          <p className=" z-40  mb-2 bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
+            This is a function that does this one thing
+          </p>
+
+          <div className="flex items-center gap-2">
+            <Button
+              size="sm"
+              className="flex items-center justify-center rounded border-2 border-purple bg-transparent text-small text-almostWhite"
+            >
+              <p>Comment</p>
+            </Button>
+            <ShareBtn talkingPoint={snippet} />
+          </div>
+        </div>
       </Link>
     </Skeleton>
   );

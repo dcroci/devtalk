@@ -12,6 +12,8 @@ import {
   PopoverTrigger,
 } from "@nextui-org/react";
 import Link from "next/link";
+import { Editor } from "@monaco-editor/react";
+import SnippetView from "@/components/snippets/SnippetView";
 
 async function ShowSnippetPage({ params }: any) {
   //get the user's current session
@@ -19,12 +21,12 @@ async function ShowSnippetPage({ params }: any) {
   //get the snippet that matches the id of the one passed into the url
   const snippet = await db.snippet.findFirst({
     where: { id: Number(params.id) },
-    include: { user: true, language: true },
+    include: {
+      user: { select: { id: true } },
+      language: { select: { name: true, logoUrl: true } },
+    },
   });
-  //get the user object of who created the snippet being shown
-  const snippetCreator = await db.account.findFirst({
-    where: { id: snippet?.accountId },
-  });
+
   //get the language associated with the snippet
 
   //if there is no snippet with that ID, return not found
@@ -45,20 +47,7 @@ async function ShowSnippetPage({ params }: any) {
           <h1 className="flex h-14 items-center text-[36px] font-bold text-almostWhite">
             {title}
           </h1>
-          {currentSession?.user?.id === snippetCreator?.userId ? (
-            // <div className="flex gap-4">
-            //   <Link
-            //     href={`/${language.name.toLowerCase()}/snippets/${params.id}/edit`}
-            //     className="rounded border p-2 text-[14px] font-bold text-white"
-            //   >
-            //     Edit
-            //   </Link>
-            //   <form action={deleteSnippetAction}>
-            //     <button className="rounded border p-2 text-[14px] font-bold text-white">
-            //       Delete
-            //     </button>
-            //   </form>
-            // </div>
+          {currentSession?.user?.id === snippet.user?.id ? (
             <Popover>
               <PopoverTrigger>
                 <svg
@@ -136,9 +125,7 @@ async function ShowSnippetPage({ params }: any) {
             ""
           )}
         </div>
-        <pre className="rounded border border-gray-200 bg-gray-200 p-3">
-          <code>{code}</code>
-        </pre>
+        <SnippetView code={code} />
       </div>
     </>
   );

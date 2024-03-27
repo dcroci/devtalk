@@ -21,7 +21,7 @@ function SnippetCreateForm({ language }: any) {
   return (
     <form
       action={action}
-      className="col-span-full px-2 md:col-span-3"
+      className="col-span-full px-2 lg:col-span-3"
       onSubmit={() => setIsLoading(true)}
     >
       <p className="mb-2 text-small text-medGray">

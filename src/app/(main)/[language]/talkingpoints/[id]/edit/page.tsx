@@ -10,15 +10,13 @@ async function EditTalkingPointPage({ params }: EditTalkingPointParams) {
   const { id } = params;
   const talkingPoint = await db.talkingPoint.findFirst({
     where: { id },
-    include: { language: true, user: true },
+    include: { language: { select: { name: true } }, user: true },
   });
   const session = await getCurrentSession();
-  if (!talkingPoint) {
+  if (!talkingPoint || !session) {
     notFound();
   }
-  if (!session) {
-    notFound();
-  }
+
   if (session.user) {
     if (
       session?.user.id !== talkingPoint.user.id ||
