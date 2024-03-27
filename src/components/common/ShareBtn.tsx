@@ -35,7 +35,7 @@ function ShareBtn({ talkingPoint }: any) {
             }}
           >
             <TwitterShareButton
-              url={`https://devtalkdc.vercel.app/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
+              url={`https://devtalk.tech/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
             >
               <XIcon size={40} />
             </TwitterShareButton>
@@ -50,7 +50,7 @@ function ShareBtn({ talkingPoint }: any) {
             }}
           >
             <EmailShareButton
-              url={`https://devtalkdc.vercel.app/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
+              url={`https://devtalk.tech/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
               subject={`Check out this DevTalk post by ${talkingPoint.user.name}: ${talkingPoint.title}`}
             >
               <EmailIcon size={40} />
@@ -66,7 +66,7 @@ function ShareBtn({ talkingPoint }: any) {
             }}
           >
             <FacebookShareButton
-              url={`https://devtalkdc.vercel.app/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
+              url={`https://devtalk.tech/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
             >
               <FacebookIcon size={40} />
             </FacebookShareButton>

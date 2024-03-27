@@ -97,7 +97,7 @@ export default function NavMenu({ languages, languageName, session }: any) {
 
       <NavbarContent justify="end">
         <NavbarItem className=" hidden text-almostWhite sm:flex">
-          <Link href="https://twitter.com/ " target="_blank">
+          <Link href="https://x.com/devtalktech?s=20 " target="_blank">
             <Image
               src="/assets/x-logo.webp"
               alt=""
