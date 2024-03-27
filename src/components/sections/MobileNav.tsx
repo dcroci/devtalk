@@ -23,7 +23,10 @@ export default function MobileNav({ languageName, languages, closeMenu }: any) {
           </Link>
         </li>
         <li>
-          <Link className="text-[14px] font-normal text-medGray" href="#">
+          <Link
+            className="text-[14px] font-normal text-medGray"
+            href="/contact"
+          >
             Contact
           </Link>
         </li>

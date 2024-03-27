@@ -85,7 +85,10 @@ export default function NavMenu({ languages, languageName, session }: any) {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link className="text-[14px] font-normal text-medGray" href="#">
+            <Link
+              className="text-[14px] font-normal text-medGray"
+              href="/contact"
+            >
               Contact
             </Link>
           </NavbarItem>
