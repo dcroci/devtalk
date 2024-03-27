@@ -13,7 +13,6 @@ function CreatedSnippets({ snippets }: any) {
             <Link
               href={`/${snippet.language.name.toLowerCase()}/snippets/${snippet.id}`}
               key={snippet.id}
-              target="_blank"
             >
               <section className="flex w-full gap-2 border-l-2 border-purple p-4 transition-all duration-1000 sm:hover:border-l-4">
                 <img src={snippet.language.logoUrl} alt="" className="w-20" />

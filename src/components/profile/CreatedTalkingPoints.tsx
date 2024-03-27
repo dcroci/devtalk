@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import TimeAgo from "../common/TimeAgo";
 import Link from "next/link";
 
@@ -14,13 +15,12 @@ function CreatedTalkingPoints({ talkingPoints }: any) {
             <Link
               href={`/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`}
               key={talkingPoint.id}
-              target="_blank"
             >
               <section className="flex w-full gap-2 border-l-2 border-purple p-4 transition-all duration-1000 sm:hover:border-l-4">
                 <img
                   src={talkingPoint.language.logoUrl}
                   alt=""
-                  className="w-20"
+                  className="h-20 w-20 "
                 />
                 <div className="flex flex-col gap-2">
                   <h3 className=" font-medium leading-relaxed text-almostWhite">

@@ -13,16 +13,30 @@ async function ShowAccountPage({ params }: any) {
     where: { id },
     include: {
       TalkingPoint: {
-        include: { language: true },
+        include: { language: { select: { name: true, logoUrl: true } } },
         orderBy: { createdAt: "desc" },
       },
       Snippet: {
-        include: { language: true },
+        include: { language: { select: { name: true, logoUrl: true } } },
         orderBy: { createdAt: "desc" },
       },
       projects: {
-        include: { language: true },
+        include: { language: { select: { name: true, logoUrl: true } } },
         orderBy: { createdAt: "desc" },
+      },
+      talkingPointLikes: {
+        include: {
+          talkingPoint: {
+            include: {
+              language: {
+                select: { name: true, logoUrl: true },
+              },
+            },
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
       },
     },
   });
@@ -31,6 +45,7 @@ async function ShowAccountPage({ params }: any) {
   if (currentSession?.user?.id !== user?.id || !user) {
     notFound();
   }
+  console.log(user.talkingPointLikes);
   return (
     <main className="col-span-full px-4">
       <h1 className="mb-10  flex items-center text-[36px] font-bold text-almostWhite">
@@ -41,7 +56,7 @@ async function ShowAccountPage({ params }: any) {
       <CreatedTalkingPoints talkingPoints={user?.TalkingPoint} />
       <CreatedSnippets snippets={user?.Snippet} />
       <CreatedProjects projects={user.projects} />
-      <LikedContent />
+      <LikedContent talkingPointLikes={user.talkingPointLikes} />
     </main>
   );
 }

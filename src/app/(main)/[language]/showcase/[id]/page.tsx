@@ -11,52 +11,63 @@ import TimeAgo from "@/components/common/TimeAgo";
 import { auth } from "@/auth";
 import { deleteProject } from "@/actions/projects";
 import { notFound } from "next/navigation";
-interface ShowProductPageParams {
+interface ShowProjectPageParams {
   params: {
     language: string;
     id: string;
   };
 }
 
-async function ShowProductPage({ params }: ShowProductPageParams) {
-  const product = await db.project.findFirst({
+async function ShowProjectPage({ params }: ShowProjectPageParams) {
+  const project = await db.project.findFirst({
     where: { id: params.id },
-    include: { user: true, language: true },
+    include: {
+      user: { select: { image: true, name: true, id: true } },
+      language: {
+        select: { name: true },
+      },
+    },
   });
   const currentUser = await auth();
-  if (!product) {
+  if (!project) {
     notFound();
   }
   const deleteProjectAction = deleteProject.bind(
     null,
-    product.id,
-    product.language.name,
+    project.id,
+    project.language.name,
   );
 
   return (
-    <div className="col-start-1 col-end-6 px-2 md:col-start-2 md:col-end-5">
+    <div className="col-start-1 col-end-6 px-2 lg:col-start-2 lg:col-end-5">
       <p className=" mb-2 text-small text-medGray">
-        <Link href="/">Home</Link> / <Link href={`/${""}`}>{"JavaScript"}</Link>{" "}
-        / <span className="text-almostWhite">Showcase</span>
+        <Link href="/">Home</Link> /{" "}
+        <Link href={`/${project.language.name.toLowerCase()}`}>
+          {project.language.name}
+        </Link>{" "}
+        /{" "}
+        <Link href={`/${project.language.name.toLowerCase()}/showcase`}>
+          <span className="text-almostWhite">Showcase</span>
+        </Link>
       </p>
       <main className="relative ">
         <section className="flex w-full flex-col ">
           <div className="mb-2 flex flex-col border-b-2 border-darkGray">
             <h1 className=" mb-2 text-[36px] font-bold text-almostWhite">
-              {product.title}
+              {project.title}
             </h1>
             <div className="mb-2 flex items-center gap-2">
               <Avatar
-                src={product?.user?.image || ""}
+                src={project?.user?.image || ""}
                 className="border-2 border-purple"
               />
               <div>
                 <div className=" flex items-center gap-2">
                   <p className="mb-1 text-gray-400">
-                    {<TimeAgo date={new Date(product.createdAt)} />}
+                    {<TimeAgo date={new Date(project.createdAt)} />}
                   </p>
                 </div>
-                <p className="text-white">Dominik Croci</p>
+                <p className="text-white">{project.user.name}</p>
               </div>
               <Popover>
                 <PopoverTrigger>
@@ -76,12 +87,12 @@ async function ShowProductPage({ params }: ShowProductPageParams) {
                 <PopoverContent>
                   <ul className="text-almostWhite">
                     {currentUser?.user &&
-                    currentUser?.user.id === product?.user.id ? (
+                    currentUser?.user.id === project?.user.id ? (
                       <>
                         <li className="flex items-center justify-between gap-2 p-2">
                           <Link
                             className="flex items-center justify-between gap-2"
-                            href={`/${product.language.name.toLowerCase()}/showcase/${product.id}/edit`}
+                            href={`/${project.language.name.toLowerCase()}/showcase/${project.id}/edit`}
                           >
                             Edit{" "}
                             <svg
@@ -134,21 +145,21 @@ async function ShowProductPage({ params }: ShowProductPageParams) {
             </div>
           </div>
 
-          <img src={product?.imgUrl} alt="" className="mb-2 rounded" />
+          <img src={project?.imgUrl} alt="" className="mb-2 rounded" />
           <section className="mt-2">
             <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
               Project Description
             </h2>
-            <p className="leading-relaxed text-medGray">{product.desc}</p>
+            <p className="leading-relaxed text-medGray">{project.desc}</p>
           </section>
           <section className="mt-2">
             <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
               View my Project
             </h2>
             <div className="flex items-center gap-2 ">
-              {product.githubLink && (
+              {project.githubLink && (
                 <a
-                  href={product.githubLink}
+                  href={project.githubLink}
                   className="h-30 w-30 flex flex-col items-center justify-center gap-2 border-b-2 border-purple p-2 text-medGray transition-all duration-1000 hover:shadow-md hover:shadow-purple"
                   target="_blank"
                 >
@@ -156,9 +167,9 @@ async function ShowProductPage({ params }: ShowProductPageParams) {
                   <small className="text-small">Source code on GitHub</small>
                 </a>
               )}
-              {product.liveSiteLink && (
+              {project.liveSiteLink && (
                 <a
-                  href={product.liveSiteLink}
+                  href={project.liveSiteLink}
                   className="flex h-24 w-24 flex-col items-center justify-center gap-2 border-b-2 border-purple p-2 text-medGray transition-all duration-1000 hover:shadow-md hover:shadow-purple"
                   target="_blank"
                 >
@@ -185,4 +196,4 @@ async function ShowProductPage({ params }: ShowProductPageParams) {
   );
 }
 
-export default ShowProductPage;
+export default ShowProjectPage;
