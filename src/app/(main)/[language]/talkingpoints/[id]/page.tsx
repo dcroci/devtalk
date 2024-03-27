@@ -4,10 +4,12 @@ import { fetchCommentsByPostId } from "@/app/db/queries/comments";
 import CommentList from "@/components/talkingPoints/CommentList";
 
 function ShowTalkingPointPage({ params }: any) {
+  console.log(params);
+  const { id } = params;
   return (
     <>
       <main className="col-start-1 col-end-6 px-2 lg:col-start-2 lg:col-end-5">
-        <ShowTalkingPoint talkingPointId={params.id} />
+        <ShowTalkingPoint talkingPointId={id} />
         <CommentCreateForm talkingPointId={params.id} startOpen />
         <CommentList
           fetchData={() => fetchCommentsByPostId(params.id)}

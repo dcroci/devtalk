@@ -103,7 +103,7 @@ model TalkingPoint {
   language   Language  @relation(fields: [languageId], references: [id])
   comments   Comment[]
   languageId String
-  likes     TalkingPointLike[]
+  likes     TalkingPointLike[] 
 }
 
 model Project {
@@ -216,10 +216,10 @@ model SnippetLike {
 model TalkingPointLike {
   id             String   @id @default(cuid())
   userId         String
-  talkingPointId String
+  talkingPointId String   
   createdAt      DateTime @default(now())
   user           User     @relation(fields: [userId], references: [id])
-  talkingPoint   TalkingPoint @relation(fields: [talkingPointId], references: [id])
+  talkingPoint   TalkingPoint @relation(fields: [talkingPointId], references: [id],onDelete: Cascade)
 
   @@unique([userId, talkingPointId])
 }

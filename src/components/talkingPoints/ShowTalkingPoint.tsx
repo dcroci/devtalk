@@ -10,7 +10,11 @@ import {
 } from "@nextui-org/react";
 import { notFound } from "next/navigation";
 import { deleteTalkingPoint } from "@/actions/talkingpoints";
-async function ShowTalkingPoint({ talkingPointId }: any) {
+interface ShowTalkingPointProps {
+  talkingPointId: string;
+}
+async function ShowTalkingPoint({ talkingPointId }: ShowTalkingPointProps) {
+  console.log("ID", talkingPointId);
   const talkingPoint = await db.talkingPoint.findFirst({
     where: { id: talkingPointId },
     include: {
@@ -21,7 +25,10 @@ async function ShowTalkingPoint({ talkingPointId }: any) {
   if (!talkingPoint) {
     notFound();
   }
-  const deleteTalkingPointAction = deleteTalkingPoint.bind(null, talkingPoint);
+  const deleteTalkingPointAction = deleteTalkingPoint.bind(
+    null,
+    String(talkingPoint.id),
+  );
   const currentUser = await auth();
   return (
     <>

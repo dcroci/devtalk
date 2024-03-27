@@ -106,15 +106,11 @@ export async function editTalkingPoint(
     `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/${talkingPoint.id}`,
   );
 }
-export async function deleteTalkingPoint(talkingPoint: any) {
-  await db.talkingPoint.delete({
-    where: { id: talkingPoint.id },
+export async function deleteTalkingPoint(talkingPointId: string) {
+  const tp = await db.talkingPoint.delete({
+    where: { id: talkingPointId },
     select: { language: { select: { name: true } } },
   });
-  revalidatePath(
-    `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`,
-  );
-  redirect(
-    `/${talkingPoint.language.name.toLowerCase()}/talkingpoints/popular`,
-  );
+  revalidatePath(`/${tp.language.name.toLowerCase()}/talkingpoints/popular`);
+  redirect(`/${tp.language.name.toLowerCase()}/talkingpoints/popular`);
 }
