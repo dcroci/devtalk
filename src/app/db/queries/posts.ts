@@ -13,7 +13,7 @@ export async function fetchPostsByTopicSlug(name: string, page: number) {
     include: {
       language: { select: { name: true } },
       user: { select: { name: true, image: true } },
-      _count: { select: { comments: true } },
+      _count: { select: { comments: true, likes: true } },
     },
     orderBy: {
       createdAt: "desc",

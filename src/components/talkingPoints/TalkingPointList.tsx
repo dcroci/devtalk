@@ -99,7 +99,7 @@ export default async function TalkingPointList({ name, page }: any) {
               </button>
             </form>
 
-            <LikeBox likes={talkingPoint.likes} />
+            <LikeBox likes={talkingPoint._count.likes} />
             <form action={deleteLikeAction}>
               <button type="submit">
                 <svg
@@ -128,17 +128,17 @@ export default async function TalkingPointList({ name, page }: any) {
       <div>
         <ul className=" flex w-full justify-center gap-4">
           <li
-            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white ${page == 1 ? "bg-purple" : ""}`}
+            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == 1 ? "bg-purple" : ""}`}
           >
             <Link href={`?page=1`}>1</Link>
           </li>
           <li
-            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white ${page == 2 ? "bg-purple" : ""}`}
+            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == 2 ? "bg-purple" : ""}`}
           >
             <Link href={`?page=2`}>2</Link>
           </li>
           <li
-            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white ${page == 3 ? "bg-purple" : ""}`}
+            className={`flex h-8 w-8 items-center justify-center rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == 3 ? "bg-purple" : ""}`}
           >
             <Link href={`?page=3`}>3</Link>
           </li>
