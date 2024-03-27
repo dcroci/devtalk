@@ -31,6 +31,7 @@ export async function createSnippet(
     where: {
       id: id,
     },
+    select: { id: true, name: true },
   });
   if (!languageQ) {
     return { message: "Language not found." };
