@@ -19,7 +19,7 @@ async function SnippetsAside({ languageName, languageId }: any) {
         {snippets.map((snippet) => (
           <Link
             key={snippet.id}
-            href={`/${languageName}/snippets/${snippet.id}`}
+            href={`/${languageName.toLowerCase()}/snippets/${snippet.id}`}
           >
             <div>
               <div className="mr-auto flex   items-center gap-4 rounded  p-2">
