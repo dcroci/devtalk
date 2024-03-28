@@ -1,7 +1,6 @@
 "use client";
 import { editProject } from "@/actions/projects";
 import { Input, Button, Textarea } from "@nextui-org/react";
-import { Project } from "@prisma/client";
 import { useState } from "react";
 function EditProjectForm({ project }: any) {
   const [formState, setFormState] = useState({
@@ -11,6 +10,7 @@ function EditProjectForm({ project }: any) {
     githubLink: project.githubLink,
     liveSiteLink: project.liveSiteLink,
   });
+  const [isLoading, setIsLoading] = useState(false);
   const EditProjectFormAction = editProject.bind(
     null,
     project,
@@ -24,7 +24,11 @@ function EditProjectForm({ project }: any) {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   }
   return (
-    <form action={EditProjectFormAction} className="w-full">
+    <form
+      action={EditProjectFormAction}
+      className="w-full"
+      onSubmit={() => setIsLoading(true)}
+    >
       <div className="flex w-full flex-col gap-4 p-4 ">
         <h3 className="text-lg font-semibold text-almostWhite">
           Edit a Project
@@ -84,7 +88,12 @@ function EditProjectForm({ project }: any) {
           //   isInvalid={!!formState.errors.liveSiteLink}
           //   errorMessage={formState.errors.liveSiteLink?.join(", ")}
         />
-        <Button type="submit" className="bg-purple  font-bold text-almostWhite">
+        <Button
+          type="submit"
+          className="bg-purple  font-bold text-almostWhite"
+          isLoading={isLoading}
+          spinnerPlacement="end"
+        >
           Save
         </Button>
       </div>
