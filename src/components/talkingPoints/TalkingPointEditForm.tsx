@@ -5,6 +5,7 @@ import { useState } from "react";
 function TalkingPointEditForm({ talkingPoint }: any) {
   const [title, setTitle] = useState(talkingPoint.title);
   const [desc, setDesc] = useState(talkingPoint.desc);
+  const [isLoading, setIsLoading] = useState(false);
   const EditTalkingPointAction = editTalkingPoint.bind(
     null,
     talkingPoint,
@@ -13,7 +14,11 @@ function TalkingPointEditForm({ talkingPoint }: any) {
   );
 
   return (
-    <form className="w-full" action={EditTalkingPointAction}>
+    <form
+      className="w-full"
+      action={EditTalkingPointAction}
+      onSubmit={() => setIsLoading(true)}
+    >
       <div className="flex w-full flex-col gap-4 p-4">
         <h1 className="text-lg font-semibold text-almostWhite">
           Edit a Talking Point
@@ -44,7 +49,12 @@ function TalkingPointEditForm({ talkingPoint }: any) {
             </div>
           ) : null} */}
 
-        <Button type="submit" className="bg-purple  font-bold text-almostWhite">
+        <Button
+          type="submit"
+          className="bg-purple  font-bold text-almostWhite"
+          isLoading={isLoading}
+          spinnerPlacement="end"
+        >
           Save
         </Button>
       </div>
