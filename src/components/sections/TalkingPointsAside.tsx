@@ -10,8 +10,17 @@ interface SideNavProps {
 async function TalkingPointsAside({ languageName, languageId }: SideNavProps) {
   const talkingPoints = await db.talkingPoint.findMany({
     where: { languageId: languageId },
-    include: { user: true, comments: true, likes: true },
-    take: 8,
+    include: {
+      user: true,
+      comments: true,
+      likes: true,
+    },
+    orderBy: {
+      likes: {
+        _count: "desc",
+      },
+    },
+    take: 6,
   });
 
   return (

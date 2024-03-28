@@ -60,7 +60,7 @@ export default async function TalkingPointList({ name, page }: any) {
           className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8"
         >
           <div className="flex min-h-[120px] flex-row items-center gap-8 px-6 py-2  ">
-            <div className="flex h-full flex-col justify-between">
+            <div className="flex h-full w-full flex-col justify-between">
               <div>
                 <div className="mb-2 flex items-center gap-3">
                   <img
@@ -82,7 +82,7 @@ export default async function TalkingPointList({ name, page }: any) {
                       {fixWordLength(talkingPoint.title, 60)}{" "}
                     </h3>
 
-                    <p className=" z-40  bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
+                    <p className="  w-full break-words bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
                       {fixWordLength(talkingPoint.desc, 300)}
                     </p>
                   </div>

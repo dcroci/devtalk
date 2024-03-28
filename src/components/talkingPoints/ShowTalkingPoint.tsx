@@ -147,7 +147,7 @@ async function ShowTalkingPoint({ talkingPointId }: ShowTalkingPointProps) {
           </div>
         </div>
 
-        <p className=" rounded border-l-4 border-purple p-4 font-medium leading-relaxed text-medGray">
+        <p className=" break-words rounded border-l-4 border-purple p-4 font-medium leading-relaxed text-medGray">
           {talkingPoint.desc}
         </p>
       </main>
