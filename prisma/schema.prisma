@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Snippet {
-  id         Int      @id @default(autoincrement())
+  id         String      @id @default(cuid())
   title      String
   code       String
   desc       String?
@@ -205,7 +205,7 @@ model ProjectLike {
 model SnippetLike {
   id        String   @id @default(cuid())
   userId    String
-  snippetId Int
+  snippetId String
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
   snippet   Snippet  @relation(fields: [snippetId], references: [id])

@@ -20,7 +20,7 @@ async function ShowSnippetPage({ params }: any) {
   const currentSession = await getCurrentSession();
   //get the snippet that matches the id of the one passed into the url
   const snippet = await db.snippet.findFirst({
-    where: { id: Number(params.id) },
+    where: { id: params.id },
     include: {
       user: { select: { id: true } },
       language: { select: { name: true, logoUrl: true } },

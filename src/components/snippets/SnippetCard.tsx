@@ -1,8 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { Skeleton, Button } from "@nextui-org/react";
 import Link from "next/link";
 import { useState } from "react";
 import ShareBtn from "../common/ShareBtn";
+import { createSnippetLike, deleteSnippetLike } from "@/actions/likes";
+import LikeBox from "../talkingPoints/LikeBox";
+
 interface SnippetCardProps {
   languageName: string;
   snippet: any;
@@ -16,11 +20,23 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
       return false;
     }
   });
+
+  const LikeSnippetAction = createSnippetLike.bind(
+    null,
+    snippet.id,
+    languageName,
+  );
+  const DeleteLikeSnippetAction = deleteSnippetLike.bind(
+    null,
+    snippet.id,
+    languageName,
+  );
+
   return (
     <Skeleton isLoaded={isLoaded} className="rounded">
       <Link
         href={`/${languageName.toLowerCase()}/snippets/${snippet.id}`}
-        className="h-fit"
+        className="h-fit p-2"
       >
         <div className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8">
           <div className="flex gap-3  text-white">
@@ -48,6 +64,41 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
           </div>
         </div>
       </Link>
+      <div className="absolute bottom-0 right-2 top-0 flex flex-col justify-center gap-2">
+        <form action={LikeSnippetAction}>
+          <button type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              className="h-6 w-6 stroke-purple drop-shadow-xl hover:shadow-purple"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+              />
+            </svg>
+          </button>
+        </form>
+        <LikeBox likes={snippet.likes.length} />
+        <form action={DeleteLikeSnippetAction}>
+          <button type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              className="h-6 w-6 stroke-purple"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
     </Skeleton>
   );
 }

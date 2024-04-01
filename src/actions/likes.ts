@@ -54,3 +54,49 @@ export async function deleteTalkingPointLike(
     console.error(err);
   }
 }
+
+export async function createSnippetLike(snippetId: string, langname: string) {
+  try {
+    const currentSession = await getCurrentSession();
+
+    if (currentSession?.user?.id) {
+      await db.snippetLike.create({
+        data: {
+          userId: currentSession?.user?.id,
+          snippetId,
+        },
+      });
+      revalidatePath(`/${langname.toLowerCase()}/snippets`);
+    } else {
+      throw new Error("Must be signed in to like");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+export async function deleteSnippetLike(snippetId: string, langname: string) {
+  try {
+    const currentSession = await getCurrentSession();
+    if (currentSession?.user?.id) {
+      const likeId = await db.snippetLike.findFirst({
+        where: {
+          userId: currentSession?.user.id,
+          snippetId: snippetId,
+        },
+        select: { id: true },
+      });
+      if (likeId) {
+        await db.snippetLike.delete({
+          where: { id: likeId.id },
+        });
+        revalidatePath(`/${langname.toLowerCase()}/snippets`);
+      } else {
+        throw new Error("Could not find like to delete");
+      }
+    } else {
+      throw new Error("Must be signed in to like");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}

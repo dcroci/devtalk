@@ -12,7 +12,15 @@ async function ShowSnippetsPage({ params }: any) {
         mode: "insensitive",
       },
     },
-    select: { name: true, logoUrl: true, id: true, Snippet: true },
+
+    select: {
+      name: true,
+      logoUrl: true,
+      id: true,
+      Snippet: {
+        include: { likes: true },
+      },
+    },
   });
 
   if (!language) {

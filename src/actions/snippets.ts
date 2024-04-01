@@ -67,7 +67,7 @@ export async function createSnippet(
   redirect(`/${languageQ.name.toLowerCase()}/snippets`);
 }
 //EDIT SNIPPET
-export async function editSnippet(id: number, code: string, language: string) {
+export async function editSnippet(id: string, code: string, language: string) {
   await db.snippet.update({
     where: { id },
     data: { code },
@@ -77,7 +77,7 @@ export async function editSnippet(id: number, code: string, language: string) {
   redirect(`/${language}/snippets/${id}`);
 }
 //DELETE A SNIPPET
-export async function deleteSnippet(id: number, language: string) {
+export async function deleteSnippet(id: string, language: string) {
   await db.snippet.delete({
     where: { id },
   });
