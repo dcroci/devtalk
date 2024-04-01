@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 // import { editSnippet } from "@/actions";
 
 async function SnippetEditPage({ params }: any) {
-  const id = Number(params.id);
+  const id = params.id;
   const language = params.language;
   console.log(params);
   const snippet = await db.snippet.findFirst({
