@@ -3,7 +3,7 @@ interface LikeBoxProps {
 }
 async function LikeBox({ likes }: LikeBoxProps) {
   return (
-    <p className="mb-10 text-center text-small font-bold text-almostWhite">
+    <p className="mb-8 text-center text-small font-bold text-almostWhite">
       {likes}
     </p>
   );
