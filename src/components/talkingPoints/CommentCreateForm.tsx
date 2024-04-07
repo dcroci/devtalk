@@ -77,6 +77,7 @@ export default function CommentCreateForm({
         <Button
           type="submit"
           className="jus ml-auto flex w-min bg-purple font-bold text-white"
+          spinnerPlacement="end"
           isLoading={isLoading}
         >
           Create Comment

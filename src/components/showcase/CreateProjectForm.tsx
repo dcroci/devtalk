@@ -14,6 +14,7 @@ import {
 } from "@nextui-org/react";
 
 import { Language } from "@prisma/client";
+import { useEffect, useState } from "react";
 
 interface CreateProjectFormProps {
   languageId: string;
@@ -27,6 +28,13 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
       errors: {},
     },
   );
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    if (formState.errors) {
+      setIsLoading(false);
+    }
+  }, [formState]);
+
   return (
     <Popover placement="left">
       <PopoverTrigger>
@@ -35,7 +43,7 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="border-2 border-almostBlack bg-almostBlack text-almostBlack shadow-sm shadow-medGray">
-        <form action={action}>
+        <form action={action} onSubmit={() => setIsLoading(true)}>
           <div className="flex w-full flex-col gap-4 p-4">
             <h3 className="text-lg font-semibold text-almostWhite">
               Create a Project
@@ -88,6 +96,8 @@ function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
             <Button
               type="submit"
               className="bg-purple  font-bold text-almostWhite"
+              isLoading={isLoading}
+              spinnerPlacement="end"
             >
               Create
             </Button>
