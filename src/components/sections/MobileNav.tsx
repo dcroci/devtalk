@@ -15,7 +15,7 @@ export default function MobileNav({ languageName, languages, closeMenu }: any) {
 
   return (
     <>
-      <ul className="  z-50 flex w-full items-center justify-around gap-4 border-b-2 border-darkGray pb-2">
+      <ul className="  z-50 flex w-full items-center justify-around gap-4 border-b-2 border-darkGray ">
         <LanguageDropdown languages={languages} />
         <li>
           <Link href="/" className="text-[14px] font-normal text-medGray">
@@ -148,7 +148,7 @@ export default function MobileNav({ languageName, languages, closeMenu }: any) {
                   View Projects
                 </Link>
               </li>
-              <li onClick={closeMenu}>
+              <li onClick={closeMenu} className="mb-[100px]">
                 <Link href={`/${languageName.toLowerCase()}/showcase/new`}>
                   Showcase Your Project
                 </Link>
