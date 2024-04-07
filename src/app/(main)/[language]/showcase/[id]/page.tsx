@@ -47,7 +47,11 @@ async function ShowProjectPage({ params }: ShowProjectPageParams) {
         </Link>{" "}
         /{" "}
         <Link href={`/${project.language.name.toLowerCase()}/showcase`}>
-          <span className="text-almostWhite">Showcase</span>
+          <span>Showcase</span>
+        </Link>{" "}
+        /{" "}
+        <Link href={`/${project.language.name.toLowerCase()}/showcase`}>
+          <span className="text-almostWhite">{project.title}</span>
         </Link>
       </p>
       <main className="relative ">

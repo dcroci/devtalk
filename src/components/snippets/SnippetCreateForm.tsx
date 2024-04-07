@@ -27,7 +27,9 @@ function SnippetCreateForm({ language }: any) {
       <p className="mb-2 text-small text-medGray">
         <Link href="/">Home</Link> /{" "}
         <Link href={`/${language.name.toLowerCase()}`}>{language.name}</Link> /{" "}
-        <span>Snippets</span> /{" "}
+        <Link href={`/${language.name.toLowerCase()}/snippets`}>
+          <span>Snippets</span> /{" "}
+        </Link>
         <Link
           href={`/${language.name.toLowerCase()}/snippets/new`}
           className="text-almostWhite"

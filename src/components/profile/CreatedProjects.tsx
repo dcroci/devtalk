@@ -3,7 +3,11 @@ import { Project } from "@prisma/client";
 import TimeAgo from "../common/TimeAgo";
 import Link from "next/link";
 
-function CreatedProjects({ projects }: any) {
+interface CreatedProjectsProps {
+  projects: Project[];
+}
+
+function CreatedProjects({ projects }: CreatedProjectsProps) {
   return (
     <div className="mb-2 border-b-2 border-darkGray">
       <h2 className="mb-2 text-3xl font-semibold text-almostWhite">

@@ -10,8 +10,11 @@ async function SnippetEditPage({ params }: any) {
   const language = params.language;
   console.log(params);
   const snippet = await db.snippet.findFirst({
-    where: { id },
-    include: { user: true },
+    where: { id: params.id },
+    include: {
+      user: { select: { id: true } },
+      language: { select: { name: true, logoUrl: true } },
+    },
   });
   if (!snippet) {
     notFound();

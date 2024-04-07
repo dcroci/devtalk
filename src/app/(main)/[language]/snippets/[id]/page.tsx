@@ -43,6 +43,17 @@ async function ShowSnippetPage({ params }: any) {
   return (
     <>
       <div className="col-span-5 px-2 lg:col-span-3">
+        <p className="mb-2 text-small text-medGray">
+          <Link href="/">Home</Link> /{" "}
+          <Link href={`/${snippet.language.name.toLowerCase()}`}>
+            {snippet.language.name}
+          </Link>{" "}
+          /{" "}
+          <Link href={`/${snippet.language.name.toLowerCase()}/snippets`}>
+            <span>Snippets</span>
+          </Link>{" "}
+          / <span className="text-almostWhite">{snippet.title}</span>
+        </p>
         <div className=" flex items-center justify-between">
           <h1 className="flex h-14 items-center text-[36px] font-bold text-almostWhite">
             {title}

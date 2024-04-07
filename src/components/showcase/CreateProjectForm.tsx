@@ -9,17 +9,15 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-  Select,
-  SelectSection,
-  SelectItem,
   CheckboxGroup,
   Checkbox,
 } from "@nextui-org/react";
-import Link from "next/link";
+
+import { Language } from "@prisma/client";
 
 interface CreateProjectFormProps {
   languageId: string;
-  languages: any;
+  languages: Language[];
 }
 
 function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
