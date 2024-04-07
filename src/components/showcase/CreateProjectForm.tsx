@@ -18,7 +18,10 @@ import { useEffect, useState } from "react";
 
 interface CreateProjectFormProps {
   languageId: string;
-  languages: Language[];
+  languages: Array<{
+    name: string;
+    logoUrl: string;
+  }>;
 }
 
 function CreateProjectForm({ languageId, languages }: CreateProjectFormProps) {
