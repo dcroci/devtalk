@@ -30,7 +30,7 @@ async function SnippetsAside({ languageName, languageId }: any) {
                 />
                 <div>
                   <h3
-                    className=" mb-2 text-[16px] font-medium leading-relaxed text-almostWhite
+                    className=" mb-2 text-[16px] font-medium leading-relaxed text-almostWhite hover:underline
                     "
                   >
                     {snippet.title}

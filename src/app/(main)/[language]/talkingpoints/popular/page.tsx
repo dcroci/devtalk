@@ -1,11 +1,10 @@
-export const maxDuration = 5;
 import CreateTalkingPointForm from "@/components/talkingPoints/CreateTalkingPointForm";
 import TalkingPointList from "@/components/talkingPoints/TalkingPointList";
-
 import { db } from "@/app/db";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Filter from "@/components/common/Filter";
+import { Suspense } from "react";
+import LoadingSuspense from "@/components/common/LoadingSuspense";
 
 interface TopicShowPageProps {
   params: {
@@ -56,7 +55,9 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
           </div>
         </div>
         <div className="mb-4">
-          <TalkingPointList name={language.name} page={page} />
+          <Suspense fallback={<LoadingSuspense />}>
+            <TalkingPointList name={language.name} page={page} />
+          </Suspense>
         </div>
       </div>
     </>

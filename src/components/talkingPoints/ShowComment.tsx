@@ -52,25 +52,24 @@ export default async function ShowComment({
             <p className="text-[16px] font-semibold  text-almostWhite">
               {comment.user.name}
             </p>
-            <Popover>
-              <PopoverTrigger>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  className="h-6 w-6 cursor-pointer stroke-almostWhite"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-                  />
-                </svg>
-              </PopoverTrigger>
-              <PopoverContent>
-                <ul className="text-almostWhite">
-                  {currentUser?.user &&
-                  currentUser?.user.id === comment?.userId ? (
+            {currentUser?.user && currentUser?.user.id === comment?.userId ? (
+              <Popover>
+                <PopoverTrigger>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    className="h-6 w-6 cursor-pointer stroke-almostWhite"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                    />
+                  </svg>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <ul className="text-almostWhite">
                     <>
                       {/* <li className="flex items-center justify-between gap-2 p-2">
                         Edit{" "}
@@ -114,12 +113,12 @@ export default async function ShowComment({
                         </form>
                       </li>
                     </>
-                  ) : (
-                    ""
-                  )}
-                </ul>
-              </PopoverContent>
-            </Popover>
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            ) : (
+              ""
+            )}
           </div>
           <p className=" text-[14px] font-medium leading-relaxed text-almostWhite">
             {comment.content}

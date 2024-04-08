@@ -17,7 +17,7 @@ export default function SideNav({ languageName }: any) {
       defaultExpandedKeys={["1", "2", "3", "4", "5"]}
       itemClasses={itemClasses}
       selectionMode="multiple"
-      className="hidden  lg:flex lg:flex-col"
+      className="hidden  px-2 lg:flex lg:flex-col"
     >
       <AccordionItem
         key="1"
@@ -30,13 +30,17 @@ export default function SideNav({ languageName }: any) {
               Use Case
             </Link>
           </li>
-          <Link href={`/${languageName.toLowerCase()}/#history`}>History</Link>
-          <li>
+          <li className="hover:underline">
+            <Link href={`/${languageName.toLowerCase()}/#history`}>
+              History
+            </Link>
+          </li>
+          <li className="hover:underline">
             <Link href={`/${languageName.toLowerCase()}/#documentation`}>
               Documentation
             </Link>
           </li>
-          <li>
+          <li className="hover:underline">
             {" "}
             <Link href={`/${languageName.toLowerCase()}/#latestRelease`}>
               Latest Release
@@ -46,22 +50,20 @@ export default function SideNav({ languageName }: any) {
       </AccordionItem>
       <AccordionItem key="2" aria-label="Resources" title="Resources">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <li>
+          <li className="hover:underline">
             <Link href={`/${languageName.toLowerCase()}/#contentCreators`}>
               Content Creators
             </Link>
           </li>
-          <li>
+          <li className="hover:underline">
             <Link href={`/${languageName.toLowerCase()}/#courses`}>
               Courses
             </Link>
           </li>
-          <li>
+          <li className="hover:underline">
             <Link href={`/${languageName.toLowerCase()}/#books`}>Books</Link>
           </li>
-          {/* <li>
-            <Link href={`/${languageName.toLowerCase()}/#videos`}>Videos</Link>
-          </li> */}
+
           <li className="flex w-fit items-center gap-2 ">
             Interview Prep
             <p className=" rounded border-2 border-purple bg-purple/25 px-1 text-[10px]">
@@ -78,41 +80,80 @@ export default function SideNav({ languageName }: any) {
       </AccordionItem>
       <AccordionItem key="4" aria-label="Talking Points" title="Talking Points">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <Link
-            href={`/${languageName.toLowerCase()}/talkingpoints/popular?page=1`}
-          >
-            Popular
-          </Link>
-          {/* <li>Create</li> */}
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/talkingpoints/popular?page=1`}
+            >
+              Popular
+            </Link>
+          </li>
+          {/* <li className="hover:underline">Create</li> */}
         </ul>
       </AccordionItem>
       <AccordionItem key="3" aria-label="Accordion 3" title="Snippets">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <li>
+          <li className="hover:underline">
             <Link href={`/${languageName.toLowerCase()}/snippets/new`}>
-              Create
+              Create a Snippet
             </Link>
           </li>
-          <li>
-            <Link href={`/${languageName.toLowerCase()}/snippets`}>
-              Popular
+          <li className="hover:underline">
+            <Link href={`/${languageName.toLowerCase()}/snippets/?filter=new`}>
+              Newest
             </Link>
           </li>
-          {/* <li>New</li> */}
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/snippets/?filter=likes`}
+            >
+              Most Liked
+            </Link>
+          </li>
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/snippets/?filter=comments`}
+            >
+              Most Commented
+            </Link>
+          </li>
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/snippets/?filter=oldest`}
+            >
+              Oldest
+            </Link>
+          </li>
+          {/* <li className="hover:underline">New</li> */}
         </ul>
       </AccordionItem>
 
       <AccordionItem key="5" aria-label="Accordion 3" title="Project Showcase">
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <li>
+          <li className="hover:underline">
             {" "}
-            <Link href={`/${languageName.toLowerCase()}/showcase`}>
+            <Link href={`/${languageName.toLowerCase()}/showcase/?filter=new`}>
               View Projects
             </Link>
           </li>
-          <li>
-            <Link href={`/${languageName.toLowerCase()}/showcase/new`}>
-              Showcase Your Project
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/showcase/?filter=likes`}
+            >
+              Most Liked
+            </Link>
+          </li>
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/showcase/?filter=comments`}
+            >
+              Most Commented
+            </Link>
+          </li>
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/showcase/?filter=oldest`}
+            >
+              Oldest
             </Link>
           </li>
         </ul>
