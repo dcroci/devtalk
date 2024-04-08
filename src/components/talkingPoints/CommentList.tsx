@@ -26,7 +26,7 @@ export default async function CommentList({
   });
 
   return (
-    <div className="space-y-3 px-2">
+    <div className="space-y-3">
       <h1 className="text-lg font-bold text-almostWhite">
         {comments.length > 0
           ? `All ${comments.length} comments`
