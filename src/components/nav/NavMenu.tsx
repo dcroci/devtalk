@@ -31,7 +31,7 @@ export default function NavMenu({ languages, languageName, session }: any) {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       isMenuOpen={isMenuOpen}
-      className="col-span-full border-b-2 border-darkGray bg-almostBlack/80"
+      className="z-50 col-span-full border-b-2 border-darkGray bg-almostBlack/80"
       maxWidth="full"
     >
       <NavbarContent className="flex">

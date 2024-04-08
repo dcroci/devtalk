@@ -35,7 +35,7 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
   return (
     <>
       <Button
-        className=" w-full bg-purple  text-2xl font-semibold text-almostWhite shadow-lg shadow-purple/50"
+        className=" z-20 w-full  bg-purple text-2xl font-semibold text-almostWhite shadow-lg shadow-purple/50"
         onPress={onOpen}
       >
         +
