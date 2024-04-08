@@ -45,7 +45,7 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
           </p>
           <div className="col-span-3 mb-2 flex flex-row-reverse items-center border-b-2 border-darkGray pb-2">
             <div className=" flex flex-col justify-between md:flex-row-reverse md:items-center">
-              <div className="fixed bottom-6 right-6 z-40 md:static">
+              <div className="fixed bottom-6 right-6 z-10 md:static">
                 <CreateTalkingPointForm languageId={language.id} />
               </div>
             </div>
