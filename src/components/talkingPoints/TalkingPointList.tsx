@@ -12,11 +12,16 @@ import {
 import LikeBox from "./LikeBox";
 import { db } from "@/app/db";
 import { fetchPostsByTopicSlug } from "@/app/db/queries/posts";
-// interface PostListProps {
-//   fetchData: any;
-//   filter: string;
-// }
-export default async function TalkingPointList({ name, page }: any) {
+interface TalkingPointList {
+  name: string;
+  page: number;
+  filter: string;
+}
+export default async function TalkingPointList({
+  name,
+  page,
+  filter,
+}: TalkingPointList) {
   const talkingPointLength = await db.talkingPoint.count({
     where: { language: { name } },
   });
@@ -29,7 +34,7 @@ export default async function TalkingPointList({ name, page }: any) {
         className={` rounded border-2 border-purple bg-darkGray font-bold text-white hover:bg-purple/70 ${page == i ? "bg-purple" : ""}`}
       >
         <Link
-          href={`?page=${i}`}
+          href={`?filter=${filter}&page=${i}`}
           className="flex h-8 w-8  items-center justify-center"
         >
           {i}
@@ -38,8 +43,7 @@ export default async function TalkingPointList({ name, page }: any) {
     );
   }
 
-  console.log(talkingPointLength);
-  const talkingPoints = await fetchPostsByTopicSlug(name, page);
+  const talkingPoints = await fetchPostsByTopicSlug(name, page, filter);
   let renderedPosts: any[] = [];
   if (talkingPoints) {
     renderedPosts = talkingPoints.map((talkingPoint: any) => {

@@ -13,7 +13,7 @@ function Filter() {
       <ul className="grid w-full grid-cols-4 place-items-center  text-medium text-almostWhite">
         {filters.map((filter, i) => (
           <li
-            className={`block h-full w-full ${filter == selectedFilter ? "border-b-2 border-purple" : ""} text-center text-[14px]`}
+            className={`block h-full w-full ${filter == selectedFilter ? "border-b-2 border-purple" : ""} border-purple text-center text-[14px] transition-all duration-500 hover:border-b-2`}
             key={i}
           >
             <Link href={`?filter=${filter}`}>
