@@ -5,7 +5,7 @@ import Link from "next/link";
 async function SnippetsAside({ languageName, languageId }: any) {
   const snippets = await db.snippet.findMany({
     where: { languageId: languageId },
-    include: { user: true },
+    include: { user: true, likes: true },
   });
 
   return (
@@ -35,11 +35,14 @@ async function SnippetsAside({ languageName, languageId }: any) {
                   >
                     {snippet.title}
                   </h3>
-                  {/* <div>
+                  <div>
                     <p className="text-[14px] text-medGray">
-                      {snippet.comments.length} Comments · {snippet.likes} Likes
+                      {snippet.likes.length}{" "}
+                      {snippet.likes.length > 1 || snippet.likes.length == 0
+                        ? "Likes"
+                        : "Like"}{" "}
                     </p>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
