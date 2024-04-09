@@ -59,7 +59,7 @@ export default function CommentCreateForm({
     >
       <div className="space-y-2  px-1 text-almostWhite">
         <Textarea
-          className="border-purple  text-[16px]"
+          className="border-purple"
           name="content"
           placeholder="Enter your comment"
           isInvalid={!!formState.errors.content}

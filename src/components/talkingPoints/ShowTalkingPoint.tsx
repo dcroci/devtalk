@@ -83,24 +83,8 @@ async function ShowTalkingPoint({ talkingPointId }: ShowTalkingPointProps) {
               </svg>
             </button>
           </form>
-          {/* <form action={deleteLikeAction}>
-            <button type="submit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                className="h-6 w-6 stroke-purple"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-                />
-              </svg>
-            </button>
-          </form> */}
         </div>
-        <p className="mr-4 px-2 text-small text-medGray">
+        <p className="mr-4 text-small text-medGray">
           <Link className="text-small text-medGray" href="/">
             Home
           </Link>{" "}
@@ -121,7 +105,7 @@ async function ShowTalkingPoint({ talkingPointId }: ShowTalkingPointProps) {
         </p>
 
         <div className="relative my-4 rounded">
-          <div className=" mb-2 flex-col justify-between gap-2 border-b-2 border-darkGray px-2 md:flex-row">
+          <div className=" mb-2 flex-col justify-between gap-2 border-b-2 border-darkGray md:flex-row">
             <h1 className=" mr-4  py-2 text-2xl text-[24px]   font-semibold text-almostWhite">
               {talkingPoint.title}
             </h1>

@@ -65,7 +65,7 @@ async function ShowcaseSection({
     });
   }
   return (
-    <div className="grid grid-cols-1 gap-4  sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4  ">
       {projects.map((project: Project) => (
         <Card
           className="rounded-none border-l-2 border-purple bg-transparent py-4 "
@@ -83,10 +83,10 @@ async function ShowcaseSection({
               {fixWordLength(project.desc, 300)}
             </p>
           </CardHeader>
-          <CardBody className="mx-auto flex items-center justify-center overflow-visible py-2">
+          <CardBody className="mx-auto flex overflow-visible py-2">
             <img
               alt="Card background"
-              className="  mb-2 h-52 w-full  rounded-xl object-cover shadow-md shadow-purple"
+              className="  mb-2  w-2/4  rounded-xl object-cover shadow-md shadow-purple"
               src={project.imgUrl}
             />
             <ul className="flex w-full flex-wrap items-center gap-2">
