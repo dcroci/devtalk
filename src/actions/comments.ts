@@ -93,10 +93,10 @@ export async function deleteComment(comment: any, languageName: string) {
       where: { id: comment.id },
     });
     console.log("deleted");
-    revalidatePath(
-      `/${languageName.toLowerCase()}/talkingpoints/${comment.talkingPointId}`,
-    );
   } catch (err) {
     console.error(err);
   }
+  revalidatePath(
+    `/${languageName.toLowerCase()}/talkingpoints/${comment.talkingPointId}`,
+  );
 }

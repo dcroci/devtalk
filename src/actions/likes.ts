@@ -17,13 +17,13 @@ export async function createTalkingPointLike(
           talkingPointId,
         },
       });
-      revalidatePath(`/${langname.toLowerCase()}/talkingpoints/popular`);
     } else {
       throw new Error("Must be signed in to like");
     }
   } catch (err) {
     console.error(err);
   }
+  revalidatePath(`/${langname.toLowerCase()}/talkingpoints/popular`);
 }
 export async function deleteTalkingPointLike(
   talkingPointId: string,
@@ -49,10 +49,10 @@ export async function deleteTalkingPointLike(
     } else {
       throw new Error("Could not find current session");
     }
-    revalidatePath(`/${langname.toLowerCase()}/talkingpoints/popular`);
   } catch (err) {
     console.error(err);
   }
+  revalidatePath(`/${langname.toLowerCase()}/talkingpoints/popular`);
 }
 
 export async function createSnippetLike(snippetId: string, langname: string) {
@@ -66,13 +66,13 @@ export async function createSnippetLike(snippetId: string, langname: string) {
           snippetId,
         },
       });
-      revalidatePath(`/${langname.toLowerCase()}/snippets`);
     } else {
       throw new Error("Must be signed in to like");
     }
   } catch (err) {
     console.error(err);
   }
+  revalidatePath(`/${langname.toLowerCase()}/snippets`);
 }
 export async function deleteSnippetLike(snippetId: string, langname: string) {
   try {
@@ -89,7 +89,6 @@ export async function deleteSnippetLike(snippetId: string, langname: string) {
         await db.snippetLike.delete({
           where: { id: likeId.id },
         });
-        revalidatePath(`/${langname.toLowerCase()}/snippets`);
       } else {
         throw new Error("Could not find like to delete");
       }
@@ -99,4 +98,5 @@ export async function deleteSnippetLike(snippetId: string, langname: string) {
   } catch (err) {
     console.error(err);
   }
+  revalidatePath(`/${langname.toLowerCase()}/snippets`);
 }
