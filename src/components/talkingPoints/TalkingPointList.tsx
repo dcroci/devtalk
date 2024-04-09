@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { Button } from "@nextui-org/react";
+import { Button, Card } from "@nextui-org/react";
 import fixWordLength from "@/scripts/fixWordLength";
 import TimeAgo from "../common/TimeAgo";
 import ShareBtn from "../common/ShareBtn";
@@ -59,9 +59,9 @@ export default async function TalkingPointList({
       );
 
       return (
-        <div
+        <Card
           key={talkingPoint.id}
-          className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8"
+          className="relative  rounded border-l-4  border-purple bg-almostBlack p-4 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8"
         >
           <div className="flex min-h-[120px] flex-row items-center gap-8 px-6 py-2  ">
             <div className="flex h-full w-full flex-col justify-between">
@@ -143,7 +143,7 @@ export default async function TalkingPointList({
               </button>
             </form>
           </div>
-        </div>
+        </Card>
       );
     });
   }

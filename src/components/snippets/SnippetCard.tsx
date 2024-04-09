@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Skeleton, Button } from "@nextui-org/react";
+import { Skeleton, Button, Card } from "@nextui-org/react";
 import Link from "next/link";
 import { useState } from "react";
 import ShareBtn from "../common/ShareBtn";
 import { createSnippetLike, deleteSnippetLike } from "@/actions/likes";
 import LikeBox from "../talkingPoints/LikeBox";
+import { motion } from "framer-motion";
 
 interface SnippetCardProps {
   languageName: string;
@@ -38,7 +39,7 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
         href={`/${languageName.toLowerCase()}/snippets/${snippet.id}`}
         className="h-fit p-2"
       >
-        <div className="relative  rounded border-l-4  border-purple bg-almostBlack p-2 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8">
+        <Card className="relative  rounded border-l-4  border-purple bg-almostBlack p-4 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8">
           <div className="flex gap-3  text-white">
             <img src={`${logoUrl}`} alt="" className="w-8" />
 
@@ -62,7 +63,7 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
             </Button>
             <ShareBtn talkingPoint={snippet} />
           </div>
-        </div>
+        </Card>
       </Link>
       <div className="absolute bottom-0 right-2 top-0 flex flex-col justify-center gap-2">
         <form action={LikeSnippetAction}>
@@ -82,8 +83,15 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
           </button>
         </form>
         <LikeBox likes={snippet.likes.length} />
-        <form action={DeleteLikeSnippetAction}>
-          <button type="submit">
+        <motion.form action={DeleteLikeSnippetAction}>
+          <motion.button
+            type="submit"
+            whileHover={{
+              scale: 1.8,
+              filter: "drop-shadow(20px 20px 20px #8900F2)",
+              transition: { duration: 0.5 },
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -96,8 +104,8 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
                 d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
               />
             </svg>
-          </button>
-        </form>
+          </motion.button>
+        </motion.form>
       </div>
     </Skeleton>
   );
