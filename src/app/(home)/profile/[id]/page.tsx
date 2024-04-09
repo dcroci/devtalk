@@ -1,62 +1,18 @@
-import { db } from "@/app/db";
-import CreatedProjects from "@/components/profile/CreatedProjects";
-import CreatedSnippets from "@/components/profile/CreatedSnippets";
-import CreatedTalkingPoints from "@/components/profile/CreatedTalkingPoints";
-import LikedContent from "@/components/profile/LikedContent";
-import ProfileInfo from "@/components/profile/ProfileInfo";
-import getCurrentSession from "@/scripts/getCurrentSession";
-import { notFound } from "next/navigation";
+import LoadingSuspense from "@/components/common/LoadingSuspense";
+import UserInteractions from "@/components/profile/UserInteractions";
+import { Suspense } from "react";
 
-async function ShowAccountPage({ params }: any) {
+function ShowAccountPage({ params }: any) {
   const { id } = params;
-  const user = await db.user.findFirst({
-    where: { id },
-    include: {
-      TalkingPoint: {
-        include: { language: { select: { name: true, logoUrl: true } } },
-        orderBy: { createdAt: "desc" },
-      },
-      Snippet: {
-        include: { language: { select: { name: true, logoUrl: true } } },
-        orderBy: { createdAt: "desc" },
-      },
-      projects: {
-        include: { language: { select: { name: true, logoUrl: true } } },
-        orderBy: { createdAt: "desc" },
-      },
-      talkingPointLikes: {
-        include: {
-          talkingPoint: {
-            include: {
-              language: {
-                select: { name: true, logoUrl: true },
-              },
-            },
-          },
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      },
-    },
-  });
-  const currentSession = await getCurrentSession();
 
-  if (currentSession?.user?.id !== user?.id || !user) {
-    notFound();
-  }
-  console.log(user.talkingPointLikes);
   return (
     <main className="col-span-full px-4">
       <h1 className="mb-10  flex items-center text-[36px] font-bold text-almostWhite">
         Profile
       </h1>
-      <ProfileInfo user={user} />
-
-      <CreatedTalkingPoints talkingPoints={user?.TalkingPoint} />
-      <CreatedSnippets snippets={user?.Snippet} />
-      <CreatedProjects projects={user.projects} />
-      <LikedContent talkingPointLikes={user.talkingPointLikes} />
+      <Suspense fallback={<LoadingSuspense />}>
+        <UserInteractions id={id} />
+      </Suspense>
     </main>
   );
 }
