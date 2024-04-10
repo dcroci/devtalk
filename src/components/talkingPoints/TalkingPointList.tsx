@@ -152,7 +152,9 @@ export default async function TalkingPointList({
     <main className="space-y-6">
       {renderedPosts}
       <div>
-        <ul className=" flex w-full justify-center gap-4">{links}</ul>
+        <ul className=" absolute bottom-0 flex w-full justify-center gap-4">
+          {links}
+        </ul>
       </div>
     </main>
   );

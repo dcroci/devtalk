@@ -34,7 +34,7 @@ async function TopicShowPage({ params, searchParams }: TopicShowPageProps) {
 
   return (
     <>
-      <div className="col-start-1 col-end-6 gap-4 px-2  lg:col-start-2 lg:col-end-5">
+      <div className="relative col-start-1 col-end-6 gap-4  px-2 pb-10 lg:col-start-2 lg:col-end-5">
         <div className="flex flex-col justify-center">
           <p className="mb-2 text-small text-medGray">
             <Link href="/">Home</Link> /{" "}
