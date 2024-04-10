@@ -239,7 +239,7 @@ function LanguageMain({ language }: any) {
           {language.book1Name && (
             <section
               id="books"
-              className="grid grid-cols-1 gap-4 border-b-1 border-darkGray pb-4 sm:grid-cols-2"
+              className="grid grid-cols-1 gap-4  pb-4 sm:grid-cols-2"
             >
               <section className="col-span-full">
                 <h2 className="mb-2 text-[24px] font-semibold text-almostWhite">
