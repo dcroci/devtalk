@@ -18,6 +18,7 @@ export default function SideNav({ languageName }: any) {
       itemClasses={itemClasses}
       selectionMode="multiple"
       className="hidden  px-2 lg:flex lg:flex-col"
+      id="sideNav"
     >
       <AccordionItem
         key="1"
@@ -25,8 +26,11 @@ export default function SideNav({ languageName }: any) {
         title={`${languageName} Home`}
       >
         <ul className="ml-4 flex flex-col gap-2 font-normal text-medGray">
-          <li className="hover:underline">
-            <Link href={`/${languageName.toLowerCase()}/#useCase`}>
+          <li className=" hover:underline ">
+            <Link
+              href={`/${languageName.toLowerCase()}/#useCase`}
+              className="focus:border-2 focus:border-purple"
+            >
               Use Case
             </Link>
           </li>
@@ -99,6 +103,13 @@ export default function SideNav({ languageName }: any) {
               href={`/${languageName.toLowerCase()}/talkingpoints/popular/?filter=comments`}
             >
               Most Commented
+            </Link>
+          </li>
+          <li className="hover:underline">
+            <Link
+              href={`/${languageName.toLowerCase()}/talkingpoints/popular/?filter=oldest`}
+            >
+              Oldest
             </Link>
           </li>
         </ul>
