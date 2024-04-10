@@ -81,6 +81,7 @@ function CreateTalkingPointForm({ languageId }: CreateTalkingPointFormProps) {
                   type="submit"
                   className="bg-purple  font-bold text-almostWhite"
                   isLoading={isLoading}
+                  spinnerPlacement="end"
                 >
                   Create
                 </Button>
