@@ -41,19 +41,22 @@ function SnippetCreateForm({ language }: any) {
         Create a {language.name} Snippet
       </h3>
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4">
-          <Input
-            label="Title"
-            radius="lg"
-            name="title"
-            id="title"
-            placeholder="What does this Snippet do?"
-          />
-        </div>
+        <Input
+          label="Snippet Title"
+          radius="lg"
+          name="title"
+          id="title"
+          placeholder="Give this Snippet a title"
+        />
+        <Input
+          label="Description"
+          radius="lg"
+          name="desc"
+          id="desc"
+          placeholder="What does this Snippet do?"
+        />
+
         <div className="flex flex-col gap-4">
-          <label className="w-12 text-almostWhite" htmlFor="code">
-            Code
-          </label>
           <Editor
             height="40vh"
             theme="vs-dark"

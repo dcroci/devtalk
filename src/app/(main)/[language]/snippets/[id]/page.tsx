@@ -54,8 +54,8 @@ async function ShowSnippetPage({ params }: any) {
           </Link>{" "}
           / <span className="text-almostWhite">{snippet.title}</span>
         </p>
-        <div className=" flex items-center justify-between">
-          <h1 className="flex h-14 items-center text-[36px] font-bold text-almostWhite">
+        <div className=" flex items-center justify-between py-2">
+          <h1 className=" w-full  text-[30px] font-bold text-almostWhite">
             {title}
           </h1>
           {currentSession?.user?.id === snippet.user?.id ? (
@@ -136,6 +136,7 @@ async function ShowSnippetPage({ params }: any) {
             ""
           )}
         </div>
+        <p className="pb-4 text-medGray">{snippet.desc}</p>
         <SnippetView code={code} />
       </div>
     </>

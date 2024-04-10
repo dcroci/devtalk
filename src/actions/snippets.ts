@@ -25,7 +25,7 @@ export async function createSnippet(
   const title = formData.get("title") as string;
   const code = formData.get("code") as string;
   const id = formData.get("id") as string;
-  const desc = "Test desc";
+  const desc = formData.get("desc") as string;
 
   const languageQ = await db.language.findFirst({
     where: {
@@ -43,34 +43,45 @@ export async function createSnippet(
   if (typeof code !== "string" || code.length < 10) {
     return { message: "Code must be longer." };
   }
+  if (typeof code !== "string" || code.length < 5) {
+    return { message: "Description must be longer." };
+  }
   const existingAccount = await db.account.findFirst({
     where: {
       userId: user.id,
     },
+    select: { id: true, userId: true },
   });
-  await db.snippet.create({
+  const snippet = await db.snippet.create({
     data: {
       title,
       code,
+      desc,
       account: {
-        connect: { id: existingAccount?.id }, // Connect the snippet to the user's account
+        connect: { id: existingAccount?.id },
       },
       user: {
         connect: { id: existingAccount?.userId },
       },
       language: {
-        connect: { id: languageQ.id }, // Connect the snippet to the selected language
+        connect: { id: languageQ.id },
       },
     },
   });
 
-  redirect(`/${languageQ.name.toLowerCase()}/snippets`);
+  redirect(`/${languageQ.name.toLowerCase()}/snippets/${snippet.id}`);
 }
 //EDIT SNIPPET
-export async function editSnippet(id: string, code: string, language: string) {
+export async function editSnippet(
+  id: string,
+  title: string,
+  desc: string,
+  code: string,
+  language: string,
+) {
   await db.snippet.update({
     where: { id },
-    data: { code },
+    data: { code, desc, title },
   });
 
   revalidatePath(`/${language}/snippets/${id}`);
