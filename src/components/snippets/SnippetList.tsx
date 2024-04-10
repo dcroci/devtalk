@@ -2,6 +2,7 @@ import { Snippet } from "@prisma/client";
 import SnippetCard from "./SnippetCard";
 import { db } from "@/app/db";
 import { notFound } from "next/navigation";
+
 interface SnippetList {
   languageName: string;
   filter: string;
@@ -114,12 +115,13 @@ async function SnippetList({ languageName, filter }: SnippetList) {
 
   return (
     <div className="grid w-full grid-cols-1 gap-4 ">
-      {language.Snippet.map((snippet: Snippet) => (
+      {language.Snippet.map((snippet: Snippet, i: number) => (
         <SnippetCard
           snippet={snippet}
           languageName={language.name}
           logoUrl={language.logoUrl}
           key={snippet.id}
+          i={Number(i)}
         />
       ))}
     </div>

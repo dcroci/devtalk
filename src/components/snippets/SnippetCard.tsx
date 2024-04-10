@@ -1,27 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Skeleton, Button, Card } from "@nextui-org/react";
+import { Button, Card } from "@nextui-org/react";
 import Link from "next/link";
-import { useState } from "react";
 import ShareBtn from "../common/ShareBtn";
 import { createSnippetLike, deleteSnippetLike } from "@/actions/likes";
 import LikeBox from "../talkingPoints/LikeBox";
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 
 interface SnippetCardProps {
   languageName: string;
   snippet: any;
   logoUrl: string;
+  i: number;
 }
-function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
-  const [isLoaded, setIsLoaded] = useState(() => {
-    if (snippet) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-
+function SnippetCard({ snippet, languageName, logoUrl, i }: SnippetCardProps) {
   const LikeSnippetAction = createSnippetLike.bind(
     null,
     snippet.id,
@@ -34,24 +26,37 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
   );
 
   return (
-    <Skeleton isLoaded={isLoaded} className="rounded">
+    <motion.div
+      className="relative  rounded "
+      key={snippet.id}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        ease: "linear",
+        duration: 0.5,
+        delay: 0.1 + i * 0.15,
+      }}
+    >
       <Link
         href={`/${languageName.toLowerCase()}/snippets/${snippet.id}`}
         className="h-fit p-2"
       >
-        <Card className="relative  rounded border-l-4  border-purple bg-almostBlack p-4 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8">
-          <div className="flex gap-3  text-white">
-            <img src={`${logoUrl}`} alt="" className="w-8" />
-
-            <div className="flex flex-col">
-              <h2 className="mb-2 flex flex-col text-xl font-semibold text-white">
-                {snippet.title}
-              </h2>
-            </div>
+        <Card className="relative min-h-[120px] rounded border-l-4 border-purple  bg-almostBlack px-6  py-6 transition-all duration-200 lg:hover:scale-[1.01] lg:hover:border-l-8 ">
+          <div className="flex gap-3   text-white">
+            <img
+              src={`${logoUrl}`}
+              alt=""
+              className="aspect-square h-10 w-10"
+            />
+          </div>
+          <div className="mt-2 flex flex-col pr-10">
+            <h2 className="mb-2 flex flex-col text-xl font-semibold text-white">
+              {snippet.title}
+            </h2>
           </div>
 
-          <p className=" z-40  mb-2 bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text font-normal leading-relaxed text-transparent">
-            This is a function that does this one thing
+          <p className=" z-40  mb-2 bg-gradient-to-b from-medGray from-55% to-transparent bg-clip-text pr-10 font-normal leading-relaxed text-transparent">
+            {snippet.desc}
           </p>
 
           <div className="flex items-center gap-2">
@@ -67,31 +72,26 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
       </Link>
       <div className="absolute bottom-0 right-2 top-0 flex flex-col justify-center gap-2">
         <form action={LikeSnippetAction}>
-          <button type="submit">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              className="h-6 w-6 stroke-purple drop-shadow-xl hover:shadow-purple"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
-              />
-            </svg>
-          </button>
+          <div>
+            <Button type="submit" className="w-fit bg-transparent" size="sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                className="h-6 w-6 stroke-purple drop-shadow-xl hover:shadow-purple"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+                />
+              </svg>
+            </Button>
+          </div>
         </form>
         <LikeBox likes={snippet.likes.length} />
-        <motion.form action={DeleteLikeSnippetAction}>
-          <motion.button
-            type="submit"
-            whileHover={{
-              scale: 1.8,
-              filter: "drop-shadow(20px 20px 20px #8900F2)",
-              transition: { duration: 0.5 },
-            }}
-          >
+        <form action={DeleteLikeSnippetAction}>
+          <Button type="submit" className="w-fit bg-transparent" size="sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -104,10 +104,10 @@ function SnippetCard({ snippet, languageName, logoUrl }: SnippetCardProps) {
                 d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
               />
             </svg>
-          </motion.button>
-        </motion.form>
+          </Button>
+        </form>
       </div>
-    </Skeleton>
+    </motion.div>
   );
 }
 
