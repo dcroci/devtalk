@@ -10,7 +10,7 @@ function CarouselItem({ image, language }: any) {
     <motion.div
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
-      className="relative flex h-full w-full  min-w-[200px] items-center justify-center overflow-hidden rounded-xl"
+      className="relative flex h-full w-full  items-center justify-center overflow-hidden rounded-xl"
     >
       <AnimatePresence>
         {showOverlay && (
@@ -20,7 +20,7 @@ function CarouselItem({ image, language }: any) {
             exit={{ opacity: 0 }}
             className="absolute inset-0 z-10 flex items-center justify-center"
           >
-            <div className="pointer-events-none absolute h-full w-full bg-black opacity-50" />
+            <div className="pointer-events-none absolute h-full w-full  opacity-50" />
             <motion.h2
               initial={{ y: 10 }}
               animate={{ y: 0 }}
@@ -32,7 +32,7 @@ function CarouselItem({ image, language }: any) {
           </motion.div>
         )}
       </AnimatePresence>
-      <img src={image} alt={image} className="h-min w-full" />
+      <img src={image} alt={image} className=" w-[1000px]" />
     </motion.div>
   );
 }

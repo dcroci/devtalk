@@ -71,7 +71,7 @@ function Carousel() {
         community.
       </p>
       <motion.div
-        className=" flex h-[400px] w-full gap-4"
+        className=" flex h-[400px] w-[300%] gap-4"
         ref={ref}
         style={{ x: xTranslation }}
         onHoverStart={() => {
