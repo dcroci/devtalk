@@ -133,13 +133,7 @@ export default function SideNav({ languageName }: any) {
               Most Liked
             </Link>
           </li>
-          <li className="hover:underline">
-            <Link
-              href={`/${languageName.toLowerCase()}/snippets/?filter=comments`}
-            >
-              Most Commented
-            </Link>
-          </li>
+
           <li className="hover:underline">
             <Link
               href={`/${languageName.toLowerCase()}/snippets/?filter=oldest`}
@@ -161,27 +155,6 @@ export default function SideNav({ languageName }: any) {
             {" "}
             <Link href={`/${languageName.toLowerCase()}/showcase/?filter=new`}>
               View Projects
-            </Link>
-          </li>
-          <li className="hover:underline">
-            <Link
-              href={`/${languageName.toLowerCase()}/showcase/?filter=likes`}
-            >
-              Most Liked
-            </Link>
-          </li>
-          <li className="hover:underline">
-            <Link
-              href={`/${languageName.toLowerCase()}/showcase/?filter=comments`}
-            >
-              Most Commented
-            </Link>
-          </li>
-          <li className="hover:underline">
-            <Link
-              href={`/${languageName.toLowerCase()}/showcase/?filter=oldest`}
-            >
-              Oldest
             </Link>
           </li>
         </ul>
