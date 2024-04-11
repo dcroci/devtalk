@@ -1,5 +1,6 @@
 interface LikeBoxProps {
-  likes: string;
+  //fix this type later
+  likes: string | number;
 }
 async function LikeBox({ likes }: LikeBoxProps) {
   return (

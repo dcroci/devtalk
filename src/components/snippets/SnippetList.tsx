@@ -2,128 +2,74 @@ import { Snippet } from "@prisma/client";
 import SnippetCard from "./SnippetCard";
 import { db } from "@/app/db";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import getSnippetsWithPagination from "@/app/db/queries/snippets";
 
 interface SnippetList {
   languageName: string;
   filter: string;
+  page: number;
 }
-async function SnippetList({ languageName, filter }: SnippetList) {
-  let language: any;
-  if (filter === "new" || !filter) {
-    language = await db.language.findFirst({
-      where: {
-        name: {
-          equals: languageName,
-          mode: "insensitive",
-        },
-      },
+async function SnippetList({ languageName, filter, page }: SnippetList) {
+  console.log(page);
+  console.log(languageName);
 
-      select: {
-        name: true,
-        logoUrl: true,
-        id: true,
-        Snippet: {
-          include: { likes: true },
-          orderBy: { createdAt: "desc" },
-        },
-      },
-    });
-  } else if (filter === "comments") {
-    language = await db.language.findFirst({
-      where: {
+  const snippetsLength = await db.snippet.count({
+    where: {
+      language: {
         name: {
           equals: languageName,
           mode: "insensitive",
         },
       },
-
-      select: {
-        name: true,
-        logoUrl: true,
-        id: true,
-        Snippet: {
-          include: { likes: true },
-          orderBy: {
-            //change to comments once snippets have comments
-            likes: {
-              _count: "desc",
-            },
-          },
-        },
-      },
-    });
-  } else if (filter == "likes") {
-    language = await db.language.findFirst({
-      where: {
-        name: {
-          equals: languageName,
-          mode: "insensitive",
-        },
-      },
-
-      select: {
-        name: true,
-        logoUrl: true,
-        id: true,
-        Snippet: {
-          include: { likes: true },
-          orderBy: {
-            likes: {
-              _count: "desc",
-            },
-          },
-        },
-      },
-    });
-  } else if (filter == "oldest") {
-    language = await db.language.findFirst({
-      where: {
-        name: {
-          equals: languageName,
-          mode: "insensitive",
-        },
-      },
-
-      select: {
-        name: true,
-        logoUrl: true,
-        id: true,
-        Snippet: {
-          include: { likes: true },
-          orderBy: {
-            createdAt: "asc",
-          },
-        },
-      },
-    });
-  } else {
-    language = await db.language.findMany({
-      where: {
-        name: {
-          equals: languageName,
-          mode: "insensitive",
-        },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+    },
+  });
+  console.log(snippetsLength);
+  const totalPages = Math.ceil(snippetsLength / 8);
+  const links = [];
+  for (let i = 1; i <= totalPages; i++) {
+    links.push(
+      <li
+        key={i}
+        className={` rounded border-2 border-purple bg-darkGray font-bold text-white transition-all duration-500 hover:bg-purple/70 ${page == i ? "bg-purple" : ""}`}
+      >
+        <Link
+          href={`?filter=${filter}&page=${i}`}
+          className="flex h-8 w-8  items-center justify-center"
+        >
+          {i}
+        </Link>
+      </li>,
+    );
   }
-  if (!language) {
+  const snippets = await getSnippetsWithPagination(languageName, page, filter);
+  if (!snippets) {
     return notFound();
   }
-
+  console.log("SNIPPETS", snippets);
+  let renderedPosts: any[] = [];
+  {
+    renderedPosts = snippets.map((snippet: any, i: number) => (
+      <SnippetCard
+        snippet={snippet}
+        languageName={snippet.language.name}
+        logoUrl={snippet.language.logoUrl}
+        key={snippet.id}
+        i={Number(i)}
+      />
+    ));
+  }
   return (
-    <div className="grid w-full grid-cols-1 gap-4 ">
-      {language.Snippet.map((snippet: Snippet, i: number) => (
-        <SnippetCard
-          snippet={snippet}
-          languageName={language.name}
-          logoUrl={language.logoUrl}
-          key={snippet.id}
-          i={Number(i)}
-        />
-      ))}
+    <div className="grid w-full grid-cols-1 gap-4 pb-10">
+      {renderedPosts}
+      <div className="absolute bottom-0 left-0 right-0 z-50 flex flex-col items-center gap-2  font-medium">
+        <ul className=" flex w-full items-center justify-center gap-4">
+          {links}
+        </ul>
+        <li className="list-none text-almostWhite">
+          {`Showing ${renderedPosts.length} result${renderedPosts.length > 1 || renderedPosts.length === 0 ? "s" : ""}`}
+        </li>
+      </div>
     </div>
   );
 }

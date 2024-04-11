@@ -7,9 +7,10 @@ import Filter from "@/components/common/Filter";
 
 function ShowSnippetsPage({ params, searchParams }: any) {
   console.log(searchParams);
+  const page = searchParams.page ?? 1;
   return (
     <>
-      <main className="col-start-1 col-end-6 flex flex-col gap-4 px-2 lg:col-start-2 lg:col-end-5">
+      <main className="relative col-start-1 col-end-6 flex flex-col gap-4 px-2 pb-10 lg:col-start-2 lg:col-end-5">
         <p className="text-small text-medGray">
           <Link href="/">Home</Link> /{" "}
           <Link href={`/${params.language}`}>{params.language}</Link> /{" "}
@@ -30,6 +31,7 @@ function ShowSnippetsPage({ params, searchParams }: any) {
           <SnippetList
             languageName={params.language}
             filter={searchParams.filter}
+            page={Number(page)}
           />
         </Suspense>
       </main>

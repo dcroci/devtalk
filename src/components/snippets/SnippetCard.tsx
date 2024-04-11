@@ -6,10 +6,14 @@ import ShareBtn from "../common/ShareBtn";
 import { createSnippetLike, deleteSnippetLike } from "@/actions/likes";
 import LikeBox from "../talkingPoints/LikeBox";
 import { animate, motion } from "framer-motion";
+import { Snippet } from "@prisma/client";
+import { SnippetLike } from "@prisma/client";
 
 interface SnippetCardProps {
   languageName: string;
-  snippet: any;
+  snippet: Snippet & {
+    likes: SnippetLike[];
+  };
   logoUrl: string;
   i: number;
 }
