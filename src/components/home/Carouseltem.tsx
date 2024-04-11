@@ -10,7 +10,7 @@ function CarouselItem({ image, language }: any) {
     <motion.div
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
-      className="relative flex h-[300px] w-full min-w-[125px] items-center justify-center overflow-hidden rounded-xl sm:min-w-[200px]"
+      className="relative flex h-[300px] w-full  min-w-[200px] items-center justify-center overflow-hidden rounded-xl"
     >
       <AnimatePresence>
         {showOverlay && (
