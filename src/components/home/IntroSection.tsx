@@ -6,7 +6,7 @@ function IntroSection() {
         Where Code Meets{" "}
         <span className="text-shadow text-purple shadow-md">Community</span>
       </h1>
-      <p className="col-start-1 col-end-6 mb-10 px-2 pb-4 text-center text-[16px] font-normal text-medGray sm:col-start-2 sm:col-end-5 sm:text-[20px] md:px-8">
+      <p className="col-start-1 col-end-6 mb-10 px-2 pb-4 text-center text-[16px] font-normal leading-relaxed text-medGray sm:col-start-2 sm:col-end-5 sm:text-[20px] md:px-8">
         Dive into coding with Dev Talk, where every line of code connects you to
         a world of resources, expert insights, and a vibrant developer
         community.
@@ -14,7 +14,7 @@ function IntroSection() {
       <div className="col-span-full grid grid-cols-1 place-items-center gap-4 lg:grid-cols-2 2xl:grid-cols-3">
         <section className="mx-auto  flex h-full min-h-[380px] w-[300px] flex-col  justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple sm:w-[400px]">
           <div>
-            <h3 className="text-[20px] font-semibold text-almostWhite">
+            <h3 className="mb-2 text-[20px] font-semibold text-almostWhite">
               Create Talking Points
             </h3>
             <p className="text-[14px] leading-relaxed text-medGray">
@@ -33,7 +33,7 @@ function IntroSection() {
         </section>
         <section className="flex h-full  min-h-[380px] w-[300px] flex-col  justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple sm:w-[400px]">
           <div>
-            <h3 className="text-[20px] font-semibold text-almostWhite">
+            <h3 className="mb-2 text-[20px] font-semibold text-almostWhite">
               Discover Code Snippets
             </h3>
             <p className="text-[14px] leading-relaxed text-medGray">
@@ -51,7 +51,7 @@ function IntroSection() {
         </section>
         <section className="flex h-full  min-h-[380px] w-[300px] flex-col  justify-between gap-2 rounded border-2 border-darkGray p-[24px] transition-all duration-1000 hover:shadow-md hover:shadow-purple sm:w-[400px]">
           <div>
-            <h3 className="text-[20px] font-semibold text-almostWhite">
+            <h3 className="mb-2 text-[20px] font-semibold text-almostWhite">
               Share Your Projects
             </h3>
             <p className="text-[14px] leading-relaxed text-medGray">
