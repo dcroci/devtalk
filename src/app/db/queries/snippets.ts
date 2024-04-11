@@ -25,26 +25,6 @@ async function getSnippetsWithPagination(
         createdAt: "desc",
       },
     });
-  } else if (filter === "comments") {
-    return await db.snippet.findMany({
-      where: {
-        language: {
-          name: { equals: languageName, mode: "insensitive" },
-        },
-      },
-
-      include: {
-        language: {
-          select: { name: true, logoUrl: true, id: true },
-        },
-        likes: true,
-      },
-      skip: (page - 1) * 8,
-      take: 8,
-      orderBy: {
-        createdAt: "asc",
-      },
-    });
   } else if (filter == "likes") {
     return await db.snippet.findMany({
       where: {

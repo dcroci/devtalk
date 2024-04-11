@@ -26,7 +26,7 @@ function ShowSnippetsPage({ params, searchParams }: any) {
             </Button>
           </Link>
         </div>
-        <Filter />
+        <Filter filters={["new", "likes", "oldest"]} />
         <Suspense fallback={<LoadingSuspense />}>
           <SnippetList
             languageName={params.language}

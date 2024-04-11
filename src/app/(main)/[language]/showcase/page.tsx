@@ -42,12 +42,12 @@ async function ShowShowcasePage({ params, searchParams }: any) {
       </p>
 
       <div className="mb-2 flex w-full items-center justify-between">
-        <h1 className=" text-[36px] font-bold text-almostWhite">
+        <h1 className="  w-full  text-[30px] font-bold text-almostWhite">
           {language.name} Showcase
         </h1>
         <CreateProjectForm languageId={language.id} languages={languages} />
       </div>
-      <Filter />
+      <Filter filters={["new", "oldest"]} />
       <Suspense fallback={<LoadingSuspense />}>
         <ShowcaseSection
           filter={filter}

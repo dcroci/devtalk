@@ -20,32 +20,6 @@ async function ShowcaseSection({
       where: { languageId: languageId },
       orderBy: { createdAt: "desc" },
     });
-  } else if (filter === "comments") {
-    projects = await db.project.findMany({
-      where: { languageId: languageId },
-      include: {
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        comments: {
-          _count: "desc",
-        },
-      },
-    });
-  }
-  //REWRITE ONCE LIKES ARE LINKED TO TALKING POINTS
-  else if (filter == "likes") {
-    projects = await db.project.findMany({
-      where: { languageId: languageId },
-      include: {
-        _count: { select: { comments: true } },
-      },
-      orderBy: {
-        comments: {
-          _count: "asc",
-        },
-      },
-    });
   } else if (filter == "oldest") {
     projects = await db.project.findMany({
       where: { languageId: languageId },
@@ -89,7 +63,7 @@ async function ShowcaseSection({
               className="  mb-2  w-2/4  rounded-xl object-cover shadow-md shadow-purple"
               src={project.imgUrl}
             />
-            <ul className="flex w-full flex-wrap items-center gap-2">
+            {/* <ul className="flex w-full flex-wrap items-center gap-2">
               {project.technologies.map((language: string, key: number) => (
                 <Link href={`/${languageName.toLowerCase()}`} key={key}>
                   <li className="w-fit cursor-pointer rounded px-1 py-1 text-tiny font-bold text-medGray">
@@ -102,7 +76,7 @@ async function ShowcaseSection({
                   </li>
                 </Link>
               ))}
-            </ul>
+            </ul> */}
           </CardBody>
         </Card>
       ))}
