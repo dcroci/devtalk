@@ -3,7 +3,13 @@ import Link from "next/link";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import fixWordLength from "@/scripts/fixWordLength";
 import { motion } from "framer-motion";
-function ProjectCard({ languageName, project, i }) {
+import { Project } from "@prisma/client";
+interface ProjectCardProps {
+  languageName: string;
+  project: Project;
+  i: number;
+}
+function ProjectCard({ languageName, project, i }: ProjectCardProps) {
   return (
     <motion.div
       className="relative  rounded "
