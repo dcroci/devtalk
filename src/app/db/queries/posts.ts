@@ -19,6 +19,7 @@ export async function fetchPostsByTopicSlug(
         language: { select: { name: true } },
         user: { select: { name: true, image: true } },
         _count: { select: { comments: true, likes: true } },
+        likes: true,
       },
       orderBy: {
         createdAt: "desc",
@@ -33,6 +34,7 @@ export async function fetchPostsByTopicSlug(
         language: { select: { name: true } },
         user: { select: { name: true, image: true } },
         _count: { select: { comments: true, likes: true } },
+        likes: true,
       },
       orderBy: {
         comments: {
@@ -49,6 +51,7 @@ export async function fetchPostsByTopicSlug(
         language: { select: { name: true } },
         user: { select: { name: true, image: true } },
         _count: { select: { comments: true, likes: true } },
+        likes: true,
       },
       orderBy: {
         likes: {
@@ -65,6 +68,7 @@ export async function fetchPostsByTopicSlug(
         language: { select: { name: true } },
         user: { select: { name: true, image: true } },
         _count: { select: { comments: true, likes: true } },
+        likes: true,
       },
       orderBy: {
         createdAt: "asc",
@@ -79,6 +83,7 @@ export async function fetchPostsByTopicSlug(
         language: { select: { name: true } },
         user: { select: { name: true, image: true } },
         _count: { select: { comments: true, likes: true } },
+        likes: true,
       },
       orderBy: {
         createdAt: "desc",

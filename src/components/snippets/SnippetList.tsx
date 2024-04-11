@@ -1,9 +1,9 @@
-import { Snippet } from "@prisma/client";
 import SnippetCard from "./SnippetCard";
 import { db } from "@/app/db";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import getSnippetsWithPagination from "@/app/db/queries/snippets";
+import getCurrentSession from "@/scripts/getCurrentSession";
 
 interface SnippetList {
   languageName: string;
@@ -46,6 +46,7 @@ async function SnippetList({ languageName, filter, page }: SnippetList) {
   if (!snippets) {
     return notFound();
   }
+  const session = await getCurrentSession();
   console.log("SNIPPETS", snippets);
   let renderedPosts: any[] = [];
   {
@@ -56,6 +57,7 @@ async function SnippetList({ languageName, filter, page }: SnippetList) {
         logoUrl={snippet.language.logoUrl}
         key={snippet.id}
         i={Number(i)}
+        session={session}
       />
     ));
   }

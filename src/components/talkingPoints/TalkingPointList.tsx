@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import LikeBox from "./LikeBox";
 import { db } from "@/app/db";
 import { fetchPostsByTopicSlug } from "@/app/db/queries/posts";
 import TalkingPointCard from "./TalkingPointCard";
+
+import getCurrentSession from "@/scripts/getCurrentSession";
 
 interface TalkingPointList {
   name: string;
@@ -18,6 +19,7 @@ export default async function TalkingPointList({
   const talkingPointLength = await db.talkingPoint.count({
     where: { language: { name } },
   });
+  const session = await getCurrentSession();
   const totalPages = Math.ceil(talkingPointLength / 8);
   const links = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -46,6 +48,7 @@ export default async function TalkingPointList({
           talkingPoint={talkingPoint}
           key={talkingPoint.id}
           i={i}
+          session={session}
         />
       );
     });

@@ -16,8 +16,15 @@ interface SnippetCardProps {
   };
   logoUrl: string;
   i: number;
+  session: any;
 }
-function SnippetCard({ snippet, languageName, logoUrl, i }: SnippetCardProps) {
+function SnippetCard({
+  snippet,
+  languageName,
+  logoUrl,
+  i,
+  session,
+}: SnippetCardProps) {
   const LikeSnippetAction = createSnippetLike.bind(
     null,
     snippet.id,
@@ -28,6 +35,15 @@ function SnippetCard({ snippet, languageName, logoUrl, i }: SnippetCardProps) {
     snippet.id,
     languageName,
   );
+  let userHasLikedPost: boolean = false;
+
+  for (let like of snippet.likes) {
+    if (session.user.id === like.userId) {
+      userHasLikedPost = true;
+    } else {
+      userHasLikedPost = false;
+    }
+  }
 
   return (
     <motion.div
@@ -77,12 +93,17 @@ function SnippetCard({ snippet, languageName, logoUrl, i }: SnippetCardProps) {
       <div className="absolute bottom-0 right-2 top-0 flex flex-col justify-center gap-2">
         <form action={LikeSnippetAction}>
           <div>
-            <Button type="submit" className="w-fit bg-transparent" size="sm">
+            <Button
+              type="submit"
+              className={`w-fit bg-transparent`}
+              size="sm"
+              disabled={userHasLikedPost ? true : false}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 strokeWidth={2}
-                className="h-6 w-6 stroke-purple drop-shadow-xl hover:shadow-purple"
+                className={`h-6 w-6  ${userHasLikedPost ? "stroke-purple/40" : "stroke-purple"}`}
               >
                 <path
                   strokeLinecap="round"
@@ -95,12 +116,17 @@ function SnippetCard({ snippet, languageName, logoUrl, i }: SnippetCardProps) {
         </form>
         <LikeBox likes={snippet.likes.length} />
         <form action={DeleteLikeSnippetAction}>
-          <Button type="submit" className="w-fit bg-transparent" size="sm">
+          <Button
+            type="submit"
+            className="w-fit bg-transparent"
+            size="sm"
+            disabled={userHasLikedPost ? false : true}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               strokeWidth={2}
-              className="h-6 w-6 stroke-purple"
+              className={`h-6 w-6  ${userHasLikedPost ? "stroke-purple" : "stroke-purple/40"}`}
             >
               <path
                 strokeLinecap="round"

@@ -11,7 +11,7 @@ import {
   deleteTalkingPointLike,
 } from "@/actions/likes";
 
-function TalkingPointCard({ talkingPoint, i }: any) {
+function TalkingPointCard({ talkingPoint, i, session }: any) {
   const createLikeAction = createTalkingPointLike.bind(
     null,
     talkingPoint.id,
@@ -22,12 +22,20 @@ function TalkingPointCard({ talkingPoint, i }: any) {
     talkingPoint.id,
     talkingPoint.language.name,
   );
+
+  let userHasLikedPost: boolean = false;
+
+  for (let like of talkingPoint.likes) {
+    if (session.user.id === like.userId) {
+      userHasLikedPost = true;
+    } else {
+      userHasLikedPost = false;
+    }
+  }
+
+  console.log(session);
+  console.log("LIKES", talkingPoint.likes);
   return (
-    // <motion.div
-    //   initial={{ opacity: 0 }}
-    //   animate={{ opacity: 1 }}
-    //   transition={{ ease: "linear", duration: i * 0.5 }}
-    // >
     <motion.div
       key={talkingPoint.id}
       initial={{ opacity: 0 }}
@@ -88,12 +96,17 @@ function TalkingPointCard({ talkingPoint, i }: any) {
         </div>
         <div className="absolute bottom-0 right-2 top-0 flex flex-col justify-center gap-2">
           <form action={createLikeAction}>
-            <Button type="submit" className="w-fit bg-transparent" size="sm">
+            <Button
+              type="submit"
+              className={`w-fit bg-transparent`}
+              size="sm"
+              disabled={userHasLikedPost ? true : false}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 strokeWidth={2}
-                className="h-6 w-6 stroke-purple drop-shadow-xl hover:shadow-purple"
+                className={`h-6 w-6  ${userHasLikedPost ? "stroke-purple/40" : "stroke-purple"}`}
               >
                 <path
                   strokeLinecap="round"
@@ -106,12 +119,17 @@ function TalkingPointCard({ talkingPoint, i }: any) {
 
           <LikeBox likes={talkingPoint._count.likes} />
           <form action={deleteLikeAction}>
-            <Button type="submit" className="w-fit bg-transparent" size="sm">
+            <Button
+              type="submit"
+              className="w-fit bg-transparent"
+              size="sm"
+              disabled={userHasLikedPost ? false : true}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 strokeWidth={2}
-                className="h-6 w-6 stroke-purple"
+                className={`h-6 w-6  ${userHasLikedPost ? "stroke-purple" : "stroke-purple/40"}`}
               >
                 <path
                   strokeLinecap="round"
