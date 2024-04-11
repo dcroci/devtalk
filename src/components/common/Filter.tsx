@@ -3,17 +3,20 @@ import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-function Filter() {
+interface FilterProps {
+  filters?: string[] | undefined;
+}
+function Filter({ filters }: FilterProps) {
   const searchParams = useSearchParams();
   const selectedFilter = searchParams.get("filter") || "new";
+  let filterOptions = filters || ["new", "likes", "comments", "oldest"];
 
-  const filters = ["new", "likes", "comments", "oldest"];
   return (
     <div className="mb-4 mt-2 w-full rounded bg-darkGray">
-      <ul className="grid w-full grid-cols-4 place-items-center  text-medium text-almostWhite">
-        {filters.map((filter, i) => (
+      <ul className="flex w-full items-center  text-medium text-almostWhite">
+        {filterOptions.map((filter, i) => (
           <li
-            className={`block h-full w-full ${filter == selectedFilter ? "border-b-2 border-purple" : ""} border-purple text-center text-[14px] transition-all duration-500 hover:border-b-2`}
+            className={`block h-full w-full ${filter == selectedFilter ? "border-b-2 border-purple" : ""} border-purple text-center text-[14px] hover:border-b-2`}
             key={i}
           >
             <Link href={`?filter=${filter}`}>
