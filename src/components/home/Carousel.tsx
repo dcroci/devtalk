@@ -17,7 +17,7 @@ function Carousel() {
     "/assets/logos/ts.png",
   ];
   const language = [
-    "C#",
+    "CSharp",
     "CSS",
     "Go",
     "HTML",
@@ -84,7 +84,7 @@ function Carousel() {
         }}
       >
         {[...images, ...images].map((image, id) => (
-          <CarouselItem image={image} key={id} language={language[id]} />
+          <CarouselItem image={image} key={id} language={language} />
         ))}
       </motion.div>
     </div>
