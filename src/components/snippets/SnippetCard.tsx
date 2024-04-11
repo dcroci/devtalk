@@ -5,7 +5,7 @@ import Link from "next/link";
 import ShareBtn from "../common/ShareBtn";
 import { createSnippetLike, deleteSnippetLike } from "@/actions/likes";
 import LikeBox from "../talkingPoints/LikeBox";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Snippet } from "@prisma/client";
 import { SnippetLike } from "@prisma/client";
 
