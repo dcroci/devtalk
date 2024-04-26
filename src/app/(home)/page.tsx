@@ -4,7 +4,7 @@ function HomePage() {
   return (
     <>
       <IntroSection />
-      <Carousel />
+      {/* <Carousel /> */}
     </>
   );
 }
